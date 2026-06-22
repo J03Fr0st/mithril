@@ -1,0 +1,23 @@
+{
+  "name": "mithril",
+  "version": "0.0.1",
+  "description": "Mithril skills and runtime bootstrap for coding agents",
+  "type": "module",
+  "main": ".opencode/plugins/mithril.js",
+  "keywords": [
+    "pi-package",
+    "skills",
+    "tdd",
+    "debugging",
+    "collaboration",
+    "workflow"
+  ],
+  "pi": {
+    "extensions": [
+      "./.pi/extensions/mithril.ts"
+    ],
+    "skills": [
+      "./skills"
+    ]
+  }
+}

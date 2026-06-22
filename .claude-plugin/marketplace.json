@@ -1,0 +1,20 @@
+{
+  "name": "mithril-dev",
+  "description": "Development marketplace for Mithril core skills library",
+  "owner": {
+    "name": "Joe Vreugdenburg",
+    "email": "joevreug@gmail.com"
+  },
+  "plugins": [
+    {
+      "name": "mithril",
+      "description": "Core skills library for Claude Code: TDD, debugging, collaboration patterns, and proven techniques",
+      "version": "0.0.1",
+      "source": "./",
+      "author": {
+        "name": "Joe Vreugdenburg",
+        "email": "joevreug@gmail.com"
+      }
+    }
+  ]
+}
