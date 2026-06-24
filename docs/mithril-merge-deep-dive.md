@@ -26,7 +26,8 @@ The recommended architecture is:
 4. Import agent-skills specialist coverage for security, performance, observability, API/UI, CI/CD, migration, and launch.
 5. Import Matt Pocock's strongest alignment/domain/codebase-design skills, excluding deprecated, personal, and draft material.
 6. Add explicit code-shape governance so formatter, linter, tests, architecture vocabulary, and review gates drive how code looks.
-7. Add the Mithril Simplicity Layer as a cross-cutting discipline that challenges bloat before implementation and reviews over-engineering after changes.
+7. Use agent-skills documentation, `AGENTS.md`, and `CLAUDE.md` as the baseline for Mithril's public docs and harness instruction files.
+8. Add the Mithril Simplicity Layer as a cross-cutting discipline that challenges bloat before implementation and reviews over-engineering after changes.
 
 ## Current Mithril State
 
@@ -46,7 +47,7 @@ The existing untracked `skills/` directory should be preserved and intentionally
 | Repository | Tracked Skills | Commands | Agents | Tracked Tests | Hooks | Strength |
 |---|---:|---:|---:|---:|---:|---|
 | Superpowers | 14 | 0 | 0 | 50 | 6 | Runtime, strict workflow enforcement, autonomous execution, plugin tests |
-| agent-skills | 24 | 8 | 4 | 0 | 9 | Broad SDLC coverage, commands, review personas, validators |
+| agent-skills | 24 | 8 | 4 | 0 | 9 | Broad SDLC coverage, commands, review personas, validators, strong docs/AGENTS/CLAUDE structure |
 | Matt skills | 34 total | 0 | 0 | 0 | 0 | Human-agent alignment, domain modeling, codebase design, sharp TDD/debug habits |
 | Simplicity source | 6 | 6 | 0 | 13 plus 34 benchmark files | 10 | Simplicity ladder, over-engineering review/audit, mode hooks, benchmark evidence |
 | Mithril | 0 tracked, 1 untracked | 0 | 0 | 0 | 6 | Rebranded plugin shell and bootstrap |
@@ -70,7 +71,7 @@ The larger issue is conceptual overlap:
 | Planning | `writing-plans` | `planning-and-task-breakdown` | `to-issues` | Keep executable plans as canonical; add issue publishing as adapter. |
 | Review/ship | `requesting-code-review`, `receiving-code-review` | `code-review-and-quality`, `/ship`, personas | `review` draft | Keep Superpowers review gates; add agent-skills personas and fan-out command. |
 | Delivery/git | `finishing-a-development-branch`, worktrees | `git-workflow-and-versioning`, `shipping-and-launch` | guardrails misc | Keep worktree/finish flow; add launch/security/perf checks. |
-| Simplicity/over-engineering | YAGNI language in planning/TDD | `code-simplification` | codebase design/deep modules | Add the Mithril Simplicity Layer's ladder as a cross-cutting discipline; keep review/audit/debt as explicit specialist commands. |
+| Simplicity/over-engineering | YAGNI language in planning/TDD | `code-simplification` | codebase design/deep modules | Add the Mithril Simplicity Layer's ladder as a cross-cutting discipline; keep review and audit as explicit specialist commands. |
 
 ## Recommended Mithril Architecture
 
@@ -135,6 +136,17 @@ Combine:
 - Superpowers `writing-skills`.
 - Matt `writing-great-skills`.
 - agent-skills `docs/skill-anatomy.md` and validator expectations.
+
+Normalization rule: every imported or adapted Mithril skill should be rewritten into the `docs/skill-anatomy.md` structure before it becomes routed product behavior. Raw upstream `SKILL.md` files can be used as source material, but the Mithril version should have:
+
+- Required YAML frontmatter with `name` and `description`.
+- A clear overview and when-to-use section.
+- A concrete workflow or core process.
+- Common rationalizations and red flags when the skill enforces discipline.
+- Verification criteria with evidence requirements.
+- Supporting files only for heavy references, scripts, templates, or assets.
+
+This gives Mithril one skill shape across all imported sources instead of preserving each upstream repo's authoring style.
 
 ### 3. Code Shape Governance
 
@@ -208,7 +220,30 @@ Rename Matt's setup flow:
 
 This setup skill should configure issue tracker, triage labels, and domain docs for Mithril-owned workflows.
 
-### 5. Mithril Simplicity Layer
+### 5. Documentation and Agent Instruction Baseline
+
+Use agent-skills as the documentation and harness-instruction model. Its docs are strongest where they keep human-facing guidance, agent-facing rules, personas, commands, references, and setup guides separate.
+
+Mithril should adapt this structure:
+
+- `README.md`: concise product overview, installation path, lifecycle, commands, and what Mithril is for.
+- `AGENTS.md`: generic coding-agent instructions, intent-to-skill mapping, lifecycle mapping, anti-rationalization rules, and composition boundaries.
+- `CLAUDE.md`: Claude-specific project structure, skills by phase, conventions, commands, and boundaries.
+- `docs/getting-started.md`: universal quick start and recommended setup.
+- `docs/agents.md`: persona matrix, composition rules, and valid/invalid orchestration patterns.
+- `docs/comparison.md`: fair comparison against upstream influences without turning it into marketing.
+- Host setup docs: one focused page per supported tool or harness.
+- `references/`: reusable checklists for testing, security, performance, accessibility, observability, orchestration, and definition of done.
+
+Rules to carry forward:
+
+- Skills, personas, and commands are separate layers: skill is the how, persona is the who, command is the when.
+- The user or command orchestrates composition; personas do not invoke other personas.
+- Parallel fan-out is allowed only for independent review perspectives with a merge step.
+- Docs meant for humans stay in `docs/`; agent-loaded guidance stays in `AGENTS.md`, `CLAUDE.md`, skills, personas, commands, or references.
+- Skill authoring and validation follow `docs/skill-anatomy.md`.
+
+### 6. Mithril Simplicity Layer
 
 The simplicity source should fit into Mithril as the negative-code and anti-bloat discipline. The public Mithril name should be the Mithril Simplicity Layer; the upstream name should remain source provenance only. This layer should not become a second router and should not override TDD, security, accessibility, or root-cause debugging.
 
@@ -217,12 +252,12 @@ Import or adapt:
 - `simplicity`: the simplicity ladder: YAGNI, reuse existing code, standard library, native platform feature, installed dependency, one-line solution, then minimum custom code.
 - `simplicity-review`: diff-focused over-engineering review.
 - `simplicity-audit`: repo-wide over-engineering audit.
-- `simplicity-debt`: ledger for deliberate `simplicity:` simplification comments.
 
-Consider importing as lower-priority utility commands:
+Do not import:
 
-- `simplicity-help`
-- `simplicity-gain`
+- `simplicity-debt`: Mithril does not need a dedicated shortcut ledger.
+- `simplicity-help`: Mithril help should be generated from its own command catalog later.
+- `simplicity-gain`: benchmark scoreboards are marketing/reference material, not core behavior.
 
 Best fit inside Mithril:
 
@@ -266,7 +301,6 @@ Recommended commands:
 - `/simplicity` -> optional simplicity intensity or one-shot reminder
 - `/simplicity-review` -> diff-focused over-engineering review
 - `/simplicity-audit` -> repo-wide over-engineering audit
-- `/simplicity-debt` -> collect deliberate `simplicity:` simplification comments
 
 Recommended agents/personas:
 
@@ -287,12 +321,14 @@ Minimum validation:
 - Port agent-skills `scripts/validate-commands.js` once commands are added.
 - Port Superpowers plugin/runtime tests before deeper behavior edits.
 - Port the upstream simplicity source's Node test suite if its hooks/commands are imported.
+- Add a `skill-anatomy.md` conformance check for every Mithril-owned `skills/*/SKILL.md`.
 - Add a workflow that runs skill validation, command validation, manifest validation, formatter/linter/type checks where available, and selected shell/runtime tests.
 - Document each target repo's formatter, linter, typecheck, and focused-test commands so `implementation-standards`, TDD, and review use the same evidence.
 
 Verification gates before a merge is complete:
 
 - Skill validator passes.
+- Every imported/adapted skill follows the `skill-anatomy.md` structure or has a documented exception.
 - Command validator passes.
 - Formatter, linter, typecheck, and focused-test commands are documented or explicitly marked unavailable.
 - Superpowers brainstorm-server tests pass after Mithril rebrand.
@@ -326,10 +362,12 @@ Verification gates before a merge is complete:
 - Merge review into a canonical review skill.
 - Merge skill-writing guidance into a canonical skill-design workflow.
 - Add `implementation-standards` as the shared code-shape skill used by planning, implementation, TDD, and review.
+- Establish `skill-anatomy.md` as the required format for all Mithril-owned skills.
 
 ### Wave 4: Add agent-skills Specialist Layer
 
 - Add specialist skills for API, UI, security, performance, observability, CI/CD, migration, launch, and docs.
+- Rewrite imported specialist skills into the `skill-anatomy.md` structure before routing them from `using-mithril`.
 - Add `references/`.
 - Add commands and command validation.
 - Add review personas and persona documentation.
@@ -337,23 +375,27 @@ Verification gates before a merge is complete:
 ### Wave 5: Add Matt Alignment and Domain Layer
 
 - Add grilling, domain modeling, codebase design, prototype, PRD, issues, triage, and handoff flows.
+- Rewrite imported alignment/domain skills into the `skill-anatomy.md` structure before routing them from `using-mithril`.
 - Rename project setup flow to `setup-mithril-project`.
 - Update `using-mithril` to route domain/alignment workflows without over-triggering user-only flows.
 
 ### Wave 6: Add Mithril Simplicity Layer
 
 - Add the simplicity ladder to Mithril's operating principles.
-- Add `simplicity-review`, `simplicity-audit`, and `simplicity-debt` as explicit specialist skills.
+- Add `simplicity-review` and `simplicity-audit` as explicit specialist skills.
+- Rewrite simplicity-layer skills into the `skill-anatomy.md` structure before routing them from `using-mithril`.
 - Add simplicity commands if Mithril supports commands by this point.
 - Merge the minimalism rules into planning, TDD, implementation, and review guidance.
-- Keep the upstream benchmark/gain material as optional reference, not as a promise about every repo.
+- Exclude the upstream debt, help, and benchmark/gain surfaces from the Mithril import.
 - Defer persistent mode hooks until Mithril has its own mode semantics.
 
 ### Wave 7: Rewrite Public Docs
 
 - Rewrite `README.md` around Mithril's own methodology.
+- Rewrite `AGENTS.md` and `CLAUDE.md` using agent-skills as the structural baseline, with Mithril-specific lifecycle, routing, composition, and boundaries.
 - Add a skill catalog.
-- Add install and verification docs.
+- Add `docs/getting-started.md`, `docs/agents.md`, `docs/comparison.md`, host setup docs, and verification docs.
+- Add `references/` checklists for definition of done, testing, security, performance, accessibility, observability, and orchestration.
 - Add contribution guidance that says skill text is behavior-shaping code.
 
 ### Wave 8: Final Consistency Pass
@@ -386,7 +428,7 @@ Proceed with:
 - Canonical merged TDD/debug/review/planning disciplines.
 - agent-skills as the broad SDLC and specialist layer.
 - Matt skills as the alignment, domain-language, issue, and architecture layer.
-- Mithril Simplicity Layer as the simplicity, negative-code, over-engineering review, and deferred-shortcut ledger layer.
+- Mithril Simplicity Layer as the simplicity, negative-code, over-engineering review, and repo-wide bloat-audit layer.
 - One router: `using-mithril`.
 
 Avoid:
