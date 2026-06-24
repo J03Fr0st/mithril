@@ -1,6 +1,6 @@
 # Security Policy
 
-## Reporting A Vulnerability
+## Reporting a Vulnerability
 
 Do not open a public issue for suspected secrets, credential exposure, command injection, supply-chain risk, or other sensitive security concerns.
 
