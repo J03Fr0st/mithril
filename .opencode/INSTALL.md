@@ -59,7 +59,7 @@ To pin a specific version:
 
 ```json
 {
-  "plugin": ["mithril@git+https://github.com/J03Fr0st/mithril.git#v0.0.1"]
+  "plugin": ["mithril@git+https://github.com/J03Fr0st/mithril.git#vX.Y.Z"]
 }
 ```
 

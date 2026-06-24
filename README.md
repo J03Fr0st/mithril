@@ -106,6 +106,16 @@ npm run validate:commands
 npm test
 ```
 
+Track release changes with Changesets and keep host manifests synced:
+
+```powershell
+npm run changeset
+npm run release:version
+npm run release:verify
+```
+
+`release:version` updates the changelog and syncs every version field declared in `.version-bump.json`.
+
 See [docs/testing.md](docs/testing.md), [docs/skill-anatomy.md](docs/skill-anatomy.md), and [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## License
