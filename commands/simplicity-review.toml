@@ -1,0 +1,7 @@
+description = "Review a diff for avoidable complexity and unnecessary code"
+
+prompt = """
+Invoke the `simplicity-review` skill.
+
+Review the current diff or requested scope for unnecessary abstractions, duplicated platform behavior, speculative options, avoidable dependencies, and code that can be deleted without losing requested behavior. Report only.
+"""

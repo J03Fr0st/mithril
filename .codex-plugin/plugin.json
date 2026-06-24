@@ -1,7 +1,7 @@
 {
   "name": "mithril",
   "version": "0.0.1",
-  "description": "An agentic skills framework & software development methodology that works: planning, TDD, debugging, and collaboration workflows.",
+  "description": "Curated agent engineering methodology for planning, TDD, debugging, review, simplicity, and launch readiness.",
   "author": {
     "name": "Joe Vreugdenburg",
     "email": "joevreug@gmail.com",
@@ -24,8 +24,8 @@
   "hooks": "./hooks/hooks-codex.json",
   "interface": {
     "displayName": "Mithril",
-    "shortDescription": "Planning, TDD, debugging, and delivery workflows for coding agents",
-    "longDescription": "Use Mithril to guide agent work through brainstorming, implementation planning, test-driven development, systematic debugging, parallel execution, code review, and finish-the-branch workflows.",
+    "shortDescription": "Planning, TDD, debugging, review, simplicity, and launch readiness",
+    "longDescription": "Use Mithril to guide agent work through brainstorming, implementation planning, test-driven development, systematic debugging, parallel execution, code review, code simplification, and release-readiness workflows.",
     "developerName": "Joe Vreugdenburg",
     "category": "Coding",
     "capabilities": [

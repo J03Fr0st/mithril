@@ -1,0 +1,11 @@
+description = "Run Mithril launch readiness with fan-out review and a main-agent merge"
+
+prompt = """
+Invoke the `shipping-and-launch` skill.
+
+Fan out to `code-reviewer`, `security-auditor`, and `test-engineer` in parallel when subagent support exists. Each persona reports independently and must not invoke other personas or mutate files.
+
+The command/main agent owns the merge step: deduplicate findings, promote launch blockers, check rollback and monitoring needs, and return a single GO or NO-GO recommendation with the full specialist reports attached.
+
+Do not deploy, push, merge, change remote state, or contact external services without explicit user approval.
+"""

@@ -1,0 +1,7 @@
+description = "Simplify code while preserving behavior and local conventions"
+
+prompt = """
+Invoke the `code-simplification` skill.
+
+Simplify the specified scope or current diff without changing behavior. Prefer the smallest reversible edits, preserve local style, and verify with relevant tests before reporting.
+"""
