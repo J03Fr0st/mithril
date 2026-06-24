@@ -1,0 +1,32 @@
+name: Feature Request
+description: Propose a Mithril skill, command, host integration, or workflow change.
+title: "feat: "
+labels:
+  - enhancement
+body:
+  - type: textarea
+    id: need
+    attributes:
+      label: Need
+      description: What workflow gap should this solve?
+    validations:
+      required: true
+  - type: textarea
+    id: shape
+    attributes:
+      label: Proposed Shape
+      description: What should change, and where should it live?
+    validations:
+      required: false
+  - type: dropdown
+    id: release-impact
+    attributes:
+      label: Release Impact
+      options:
+        - patch
+        - minor
+        - major
+        - unclear
+    validations:
+      required: true
+
