@@ -25,7 +25,8 @@ The recommended architecture is:
 3. Fold overlapping TDD/debug/planning/review guidance into canonical Mithril skills.
 4. Import agent-skills specialist coverage for security, performance, observability, API/UI, CI/CD, migration, and launch.
 5. Import Matt Pocock's strongest alignment/domain/codebase-design skills, excluding deprecated, personal, and draft material.
-6. Add the Mithril Simplicity Layer as a cross-cutting discipline that challenges bloat before implementation and reviews over-engineering after changes.
+6. Add explicit code-shape governance so formatter, linter, tests, architecture vocabulary, and review gates drive how code looks.
+7. Add the Mithril Simplicity Layer as a cross-cutting discipline that challenges bloat before implementation and reviews over-engineering after changes.
 
 ## Current Mithril State
 
@@ -135,7 +136,37 @@ Combine:
 - Matt `writing-great-skills`.
 - agent-skills `docs/skill-anatomy.md` and validator expectations.
 
-### 3. Specialist Skill Imports
+### 3. Code Shape Governance
+
+Mithril should treat code appearance and structure as enforceable engineering constraints, not taste. The merged system should add a canonical `implementation-standards` or `code-shape-governance` skill that every implementation and review flow can reference.
+
+Source-backed rules to pull into Mithril:
+
+| Principle | Source evidence | Mithril rule |
+|---|---|---|
+| Mechanical style belongs to tools | agent-skills `definition-of-done` requires linting and formatting; agent-skills also ships skill and command validators. | Formatters, linters, type checks, manifest checks, and skill/command validators decide objective style and structural validity. |
+| Local consistency beats external preference | agent-skills `code-simplification` requires studying neighboring code and warns that simplification which breaks project consistency is churn. | Before writing code, inspect nearby files, identify the local pattern, and follow it unless the pattern is the thing being deliberately changed. |
+| Behavior drives shape | Superpowers TDD enforces RED -> GREEN -> REFACTOR with minimal code; Matt TDD insists tests verify behavior through public interfaces. | Add one behavior at a time, write the smallest green implementation, then refactor only while tests stay green. |
+| Interfaces are design surfaces | Matt `codebase-design` defines deep modules as small interfaces with substantial implementation and says the interface is the test surface. | Prefer deep modules, narrow public APIs, and tests that cross the same seam as callers. Avoid exposing internal seams just for tests. |
+| Simplicity is not code golf | The simplicity source ladder prefers YAGNI, existing code, stdlib, native platform, installed dependencies, one-line solutions, then minimum custom code, while preserving validation, security, accessibility, and data-loss handling. | Use the Mithril Simplicity Layer to remove speculative code, but never remove safety, trust-boundary validation, or behavior checks. |
+| Review covers more than passing tests | agent-skills `code-review-and-quality` reviews correctness, readability, architecture, security, and performance; it also flags structural complexity and unjustified new patterns. | A passing test suite is necessary but insufficient. Review must include architecture, readability, security, performance, type boundaries, dependency choices, and missed simplifications. |
+| Refactors stay separate and reversible | agent-skills `code-simplification` and `code-review-and-quality` both warn against mixing refactors with feature work. | Keep behavior changes, refactors, generated artifacts, and formatting-only changes separate unless the user explicitly approves a combined change. |
+| Domain language shapes names | Matt `domain-modeling` treats `CONTEXT.md` as glossary truth and asks agents to challenge conflicting terms. | Names should come from the repo's glossary, ADRs, and surrounding code; unclear vocabulary is a design question, not a naming whim. |
+| Evidence before claims | Superpowers `verification-before-completion` requires fresh command output before completion claims. | Agents must run and report the command that proves formatting, linting, tests, or validation actually passed. |
+
+The resulting Mithril code-shape loop should be:
+
+1. Inspect the touched area and identify local style, architecture, naming, and test patterns.
+2. Choose the smallest behavior slice and write or update the test at the public seam.
+3. Implement the minimum code that passes using existing code, stdlib, native features, or installed dependencies first.
+4. Run formatter, linter, type checks, and the focused test.
+5. Refactor only while tests stay green, keeping feature and refactor changes separable.
+6. Run review against correctness, readability, architecture, security, performance, and simplicity.
+7. Report verification evidence, including any skipped checks and why.
+
+This gives Mithril a concrete answer to "how should the code look": it should look like the local repo, obey automated tooling, expose small behavior-rich interfaces, use domain vocabulary, avoid speculative structure, and be backed by behavior-level tests.
+
+### 4. Specialist Skill Imports
 
 Import mostly as-is with light Mithril rebranding:
 
@@ -177,7 +208,7 @@ Rename Matt's setup flow:
 
 This setup skill should configure issue tracker, triage labels, and domain docs for Mithril-owned workflows.
 
-### 4. Mithril Simplicity Layer
+### 5. Mithril Simplicity Layer
 
 The simplicity source should fit into Mithril as the negative-code and anti-bloat discipline. The public Mithril name should be the Mithril Simplicity Layer; the upstream name should remain source provenance only. This layer should not become a second router and should not override TDD, security, accessibility, or root-cause debugging.
 
@@ -230,6 +261,7 @@ Recommended commands:
 - `/review` -> canonical Mithril review workflow
 - `/ship` -> fan-out launch review using personas
 - `/webperf` -> web performance auditor
+- `/standards` -> inspect the touched area and report local code-shape rules before implementation or review
 - `/code-simplify` -> code simplification workflow
 - `/simplicity` -> optional simplicity intensity or one-shot reminder
 - `/simplicity-review` -> diff-focused over-engineering review
@@ -255,12 +287,14 @@ Minimum validation:
 - Port agent-skills `scripts/validate-commands.js` once commands are added.
 - Port Superpowers plugin/runtime tests before deeper behavior edits.
 - Port the upstream simplicity source's Node test suite if its hooks/commands are imported.
-- Add a workflow that runs skill validation, command validation, manifest validation, and selected shell/runtime tests.
+- Add a workflow that runs skill validation, command validation, manifest validation, formatter/linter/type checks where available, and selected shell/runtime tests.
+- Document each target repo's formatter, linter, typecheck, and focused-test commands so `implementation-standards`, TDD, and review use the same evidence.
 
 Verification gates before a merge is complete:
 
 - Skill validator passes.
 - Command validator passes.
+- Formatter, linter, typecheck, and focused-test commands are documented or explicitly marked unavailable.
 - Superpowers brainstorm-server tests pass after Mithril rebrand.
 - Simplicity command/skill tests pass after any simplicity-layer import.
 - Shell syntax checks pass for hooks and scripts.
@@ -291,6 +325,7 @@ Verification gates before a merge is complete:
 - Merge debugging into one Mithril `systematic-debugging`.
 - Merge review into a canonical review skill.
 - Merge skill-writing guidance into a canonical skill-design workflow.
+- Add `implementation-standards` as the shared code-shape skill used by planning, implementation, TDD, and review.
 
 ### Wave 4: Add agent-skills Specialist Layer
 
@@ -325,6 +360,7 @@ Verification gates before a merge is complete:
 
 - Run all validators and tests.
 - Search for stale upstream names.
+- Confirm the upstream simplicity source name appears only in provenance, attribution, or copied license text.
 - Confirm manifests and marketplace metadata.
 - Confirm source attribution.
 - Prepare release notes.
