@@ -31,6 +31,7 @@ The user or command orchestrates composition. Personas do not invoke other perso
 | Add or assess telemetry | `observability-and-instrumentation` |
 | Review a change | `code-review-and-quality`; add `simplicity-review`, `security-and-hardening`, or `performance-optimization` for the relevant risk |
 | Prepare release or branch integration | `shipping-and-launch`, `finishing-a-development-branch`, `ci-cd-and-automation`, `documentation-and-adrs` |
+| Create, edit, port, or review a skill | `skill-design` |
 
 ## Command Surface
 
@@ -64,6 +65,7 @@ Personas may inspect evidence and return reports. They must not edit files, stag
 
 - Skills live at `skills/<name>/SKILL.md` with `name` and `description` frontmatter.
 - New and edited skills follow [docs/skill-anatomy.md](docs/skill-anatomy.md).
+- Skill-writing work routes through `skill-design`; use official Agent Skills compatibility as the format baseline, pressure scenarios as behavioral proof, and Skillgrade-style evals when repeated regression coverage is worth the cost.
 - Commands live in `commands/*.toml` with `description` and `prompt`.
 - Personas live in `agents/*.md` and end with a composition boundary.
 - References live in `references/`; keep heavy checklists out of the router.
