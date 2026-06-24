@@ -1,4 +1,4 @@
-# Code Of Conduct
+# Code of Conduct
 
 This project expects direct, respectful collaboration.
 
