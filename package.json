@@ -1,16 +1,92 @@
 {
   "name": "mithril",
   "version": "0.0.1",
-  "description": "Mithril skills and runtime bootstrap for coding agents",
+  "private": true,
+  "description": "Curated agent engineering methodology for planning, TDD, debugging, review, simplicity, and launch readiness.",
   "type": "module",
   "main": ".opencode/plugins/mithril.js",
+  "license": "MIT",
+  "author": {
+    "name": "Joe Vreugdenburg",
+    "email": "joevreug@gmail.com",
+    "url": "https://github.com/J03Fr0st"
+  },
+  "homepage": "https://github.com/J03Fr0st/mithril#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/J03Fr0st/mithril.git"
+  },
+  "bugs": {
+    "url": "https://github.com/J03Fr0st/mithril/issues"
+  },
+  "scripts": {
+    "validate:skills": "node scripts/validate-skills.js",
+    "validate:commands": "node scripts/validate-commands.js",
+    "lint:shell": "node -e \"const { spawnSync } = require('node:child_process'); const fs = require('node:fs'); const path = require('node:path'); const win = process.platform === 'win32'; const bash = win && fs.existsSync('C:/Program Files/Git/bin/bash.exe') ? 'C:/Program Files/Git/bin/bash.exe' : 'bash'; const env = { ...process.env }; const bundledShellcheck = path.join(env.USERPROFILE || '', '.serena/language_servers/static/BashLanguageServer/bash-lsp/shellcheck'); if (win && fs.existsSync(path.join(bundledShellcheck, 'shellcheck.exe'))) env.PATH = bundledShellcheck + path.delimiter + (env.PATH || ''); const result = spawnSync(bash, ['scripts/lint-shell.sh'], { stdio: 'inherit', env }); if (result.error) { console.error(result.error.message); process.exit(1); } process.exit(result.status ?? 1);\"",
+    "test": "npm run validate:skills && npm run validate:commands && npm run lint:shell",
+    "changeset": "changeset",
+    "version": "changeset version",
+    "version:sync": "node scripts/sync-manifest-versions.js",
+    "version:check": "node scripts/sync-manifest-versions.js --check",
+    "version:audit": "node scripts/sync-manifest-versions.js --audit",
+    "release:version": "npm run version && npm run version:sync",
+    "release:verify": "npm run version:check && npm run version:audit && npm test && npm pack --dry-run --json"
+  },
   "keywords": [
-    "pi-package",
+    "agent-engineering",
+    "agent-methodology",
+    "codex",
+    "gemini",
+    "opencode",
     "skills",
+    "planning",
     "tdd",
     "debugging",
-    "collaboration",
-    "workflow"
+    "code-review",
+    "simplicity",
+    "launch-readiness"
+  ],
+  "files": [
+    ".claude-plugin/",
+    ".changeset/",
+    ".codex-plugin/",
+    ".cursor-plugin/",
+    ".kimi-plugin/",
+    ".opencode/",
+    ".pi/",
+    "AGENTS.md",
+    "CLAUDE.md",
+    "CONTRIBUTING.md",
+    "CHANGELOG.md",
+    "GEMINI.md",
+    "LICENSE",
+    "NOTICE.md",
+    "README.md",
+    "RELEASE-NOTES.md",
+    "agents/",
+    "assets/",
+    "commands/",
+    "docs/agents.md",
+    "docs/claude-code-setup.md",
+    "docs/codex-setup.md",
+    "docs/comparison.md",
+    "docs/copilot-setup.md",
+    "docs/cursor-setup.md",
+    "docs/gemini-cli-setup.md",
+    "docs/getting-started.md",
+    "docs/opencode-setup.md",
+    "docs/skill-anatomy.md",
+    "docs/testing.md",
+    "docs/windsurf-setup.md",
+    "gemini-extension.json",
+    "hooks/",
+    "references/",
+    "scripts/lint-shell.sh",
+    "scripts/sync-manifest-versions.js",
+    "scripts/validate-commands.js",
+    "scripts/validate-skills.js",
+    "skills/",
+    "tests/README.md"
   ],
   "pi": {
     "extensions": [
@@ -19,5 +95,10 @@
     "skills": [
       "./skills"
     ]
-  }
+  },
+  "devDependencies": {
+    "@changesets/changelog-github": "^0.7.0",
+    "@changesets/cli": "^2.30.0"
+  },
+  "packageManager": "npm@10.9.4"
 }

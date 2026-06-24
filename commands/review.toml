@@ -1,0 +1,7 @@
+description = "Review the current change through Mithril's code quality workflow"
+
+prompt = """
+Invoke the `code-review-and-quality` skill.
+
+Review the current diff, staged changes, or recent commits for correctness, readability, architecture, security, performance, tests, and missed simplifications. Report findings with file:line evidence; do not fan out or edit unless the user asks.
+"""

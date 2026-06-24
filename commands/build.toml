@@ -1,0 +1,7 @@
+description = "Execute the next approved Mithril plan slice with verification"
+
+prompt = """
+Invoke `subagent-driven-development` when the plan has independent slices and subagent support is available; otherwise invoke `executing-plans`.
+
+Read the plan and task ownership first. Implement the next approved slice, keep edits scoped, verify with the task commands, and do not mutate external systems without explicit user approval.
+"""

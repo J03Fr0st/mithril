@@ -1,0 +1,7 @@
+description = "Turn an approved design into a verifiable Mithril implementation plan"
+
+prompt = """
+Invoke the `writing-plans` skill.
+
+Read the approved design or spec, identify dependencies, slice work into small vertical tasks, and record acceptance criteria plus exact verification commands. Do not implement.
+"""

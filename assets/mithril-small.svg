@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title">
+  <title>Mithril</title>
+  <rect width="64" height="64" rx="14" fill="#111827"/>
+  <path fill="#F59E0B" d="M32 6 54 18.7v25.4L32 58 10 44.1V18.7L32 6Z"/>
+  <path fill="#111827" d="M20 21h7.3L32 32.6 36.7 21H44v25h-6V31.2l-4.1 9.6h-3.8L26 31.2V46h-6V21Z"/>
+</svg>

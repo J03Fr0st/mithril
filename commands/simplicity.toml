@@ -1,0 +1,7 @@
+description = "Apply the Mithril simplicity ladder before choosing an implementation"
+
+prompt = """
+Invoke the `simplicity` skill.
+
+Challenge scope and implementation shape before coding. Prefer no new code, existing code, standard library, native platform features, already-installed dependencies, one-line solutions, then minimal custom code while preserving safety, tests, and user requirements.
+"""

@@ -1,0 +1,7 @@
+description = "Shape a request into an approved Mithril design before planning or coding"
+
+prompt = """
+Invoke the `brainstorming` skill.
+
+Clarify the objective, constraints, acceptance criteria, and smallest viable scope. Produce or update the approved design artifact required by the skill, then stop for user approval before planning or implementation.
+"""

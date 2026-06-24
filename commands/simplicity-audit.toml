@@ -1,0 +1,7 @@
+description = "Audit a repository or large scope for removable complexity"
+
+prompt = """
+Invoke the `simplicity-audit` skill.
+
+Scan the requested repository area for over-engineering, deletion opportunities, avoidable dependencies, speculative abstractions, and native or standard-library replacements. Rank findings by removable complexity and report only.
+"""

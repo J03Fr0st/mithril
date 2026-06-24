@@ -1,0 +1,7 @@
+description = "Run the Mithril test-first workflow for features, fixes, and regressions"
+
+prompt = """
+Invoke the `test-driven-development` skill.
+
+Write or select the failing behavior proof first, verify RED, implement the smallest GREEN change, refactor only while tests stay green, then run the relevant regression checks before reporting.
+"""

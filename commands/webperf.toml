@@ -1,0 +1,7 @@
+description = "Run a focused Mithril web performance audit"
+
+prompt = """
+Invoke the `web-performance-auditor` persona for a browser-facing page, route, component, or live URL.
+
+Use provided Lighthouse, CrUX, PageSpeed, or trace artifacts when available. Without measurement artifacts, return a source-level report and mark metrics as not measured. Report only; do not edit or mutate external systems.
+"""

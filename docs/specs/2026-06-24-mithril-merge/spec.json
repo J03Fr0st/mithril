@@ -1,0 +1,371 @@
+{
+  "feature": "Mithril Merge",
+  "created": "2026-06-24",
+  "designPath": "docs/design/2026-06-24-mithril-merge/design.md",
+  "specPath": "docs/specs/2026-06-24-mithril-merge",
+  "requirementsPath": "docs/specs/2026-06-24-mithril-merge/requirements.md",
+  "actionRequiredPath": "docs/specs/2026-06-24-mithril-merge/action-required.md",
+  "implementationLogPath": "docs/specs/2026-06-24-mithril-merge/implementation-log.md",
+  "allowedTaskStatuses": [
+    "pending",
+    "in-progress",
+    "blocked",
+    "needs-context",
+    "done-with-concerns",
+    "review-failed",
+    "complete"
+  ],
+  "tasks": [
+    {
+      "id": "task-01-stabilize-shell-assets-attribution",
+      "title": "Stabilize Shell Assets and Attribution",
+      "file": "tasks/task-01-stabilize-shell-assets-attribution.md",
+      "wave": 1,
+      "status": "complete",
+      "dependsOn": [],
+      "blocks": [
+        "task-03-port-superpowers-core",
+        "task-09-rewrite-docs-router-integration"
+      ],
+      "files": {
+        "create": [
+          "assets/mithril-small.svg",
+          "assets/app-icon.png",
+          "NOTICE.md"
+        ],
+        "modify": [
+          ".codex-plugin/plugin.json",
+          "gemini-extension.json"
+        ]
+      },
+      "verificationCommands": [
+        "Test-Path assets/mithril-small.svg; Test-Path assets/app-icon.png; Test-Path NOTICE.md",
+        "rg -n \"assets/mithril-small.svg|assets/app-icon.png|NOTICE\" .codex-plugin gemini-extension.json package.json README.md"
+      ]
+    },
+    {
+      "id": "task-02-add-validation-harness",
+      "title": "Add Validation Harness",
+      "file": "tasks/task-02-add-validation-harness.md",
+      "wave": 1,
+      "status": "complete",
+      "dependsOn": [],
+      "blocks": [
+        "task-03-port-superpowers-core",
+        "task-04-merge-canonical-disciplines",
+        "task-05-add-agent-specialists-references",
+        "task-07-add-matt-alignment-domain",
+        "task-08-add-simplicity-layer",
+        "task-10-final-consistency-release"
+      ],
+      "files": {
+        "create": [
+          "scripts/validate-skills.js",
+          "scripts/validate-commands.js",
+          "tests/README.md"
+        ],
+        "modify": [
+          "package.json"
+        ]
+      },
+      "verificationCommands": [
+        "npm run validate:skills",
+        "npm run validate:commands",
+        "npm test"
+      ]
+    },
+    {
+      "id": "task-03-port-superpowers-core",
+      "title": "Port Superpowers Core",
+      "file": "tasks/task-03-port-superpowers-core.md",
+      "wave": 2,
+      "status": "complete",
+      "dependsOn": [
+        "task-01-stabilize-shell-assets-attribution",
+        "task-02-add-validation-harness"
+      ],
+      "blocks": [
+        "task-04-merge-canonical-disciplines"
+      ],
+      "files": {
+        "create": [
+          "skills/brainstorming/SKILL.md",
+          "skills/writing-plans/SKILL.md",
+          "skills/using-git-worktrees/SKILL.md",
+          "skills/subagent-driven-development/SKILL.md",
+          "skills/executing-plans/SKILL.md",
+          "skills/dispatching-parallel-agents/SKILL.md",
+          "skills/requesting-code-review/SKILL.md",
+          "skills/receiving-code-review/SKILL.md",
+          "skills/verification-before-completion/SKILL.md",
+          "skills/finishing-a-development-branch/SKILL.md"
+        ],
+        "modify": [
+          "skills/using-mithril/SKILL.md"
+        ]
+      },
+      "verificationCommands": [
+        "npm run validate:skills",
+        "rg -n \"superpowers|SUPERPOWERS|docs/superpowers|\\.superpowers\" skills"
+      ]
+    },
+    {
+      "id": "task-04-merge-canonical-disciplines",
+      "title": "Merge Canonical Disciplines",
+      "file": "tasks/task-04-merge-canonical-disciplines.md",
+      "wave": 3,
+      "status": "complete",
+      "dependsOn": [
+        "task-02-add-validation-harness",
+        "task-03-port-superpowers-core"
+      ],
+      "blocks": [
+        "task-05-add-agent-specialists-references",
+        "task-07-add-matt-alignment-domain",
+        "task-08-add-simplicity-layer",
+        "task-09-rewrite-docs-router-integration"
+      ],
+      "files": {
+        "create": [
+          "skills/test-driven-development/SKILL.md",
+          "skills/systematic-debugging/SKILL.md",
+          "skills/code-review-and-quality/SKILL.md",
+          "skills/skill-design/SKILL.md",
+          "skills/implementation-standards/SKILL.md",
+          "docs/skill-anatomy.md"
+        ],
+        "modify": [
+          "skills/using-mithril/SKILL.md"
+        ]
+      },
+      "verificationCommands": [
+        "npm run validate:skills",
+        "rg -n \"test-driven-development|systematic-debugging|code-review-and-quality|skill-design|implementation-standards\" skills/using-mithril/SKILL.md skills"
+      ]
+    },
+    {
+      "id": "task-05-add-agent-specialists-references",
+      "title": "Add agent-skills Specialists and References",
+      "file": "tasks/task-05-add-agent-specialists-references.md",
+      "wave": 4,
+      "status": "complete",
+      "dependsOn": [
+        "task-02-add-validation-harness",
+        "task-04-merge-canonical-disciplines"
+      ],
+      "blocks": [
+        "task-06-add-commands-personas",
+        "task-09-rewrite-docs-router-integration"
+      ],
+      "files": {
+        "create": [
+          "skills/api-and-interface-design/SKILL.md",
+          "skills/browser-testing-with-devtools/SKILL.md",
+          "skills/ci-cd-and-automation/SKILL.md",
+          "skills/code-simplification/SKILL.md",
+          "skills/context-engineering/SKILL.md",
+          "skills/deprecation-and-migration/SKILL.md",
+          "skills/documentation-and-adrs/SKILL.md",
+          "skills/doubt-driven-development/SKILL.md",
+          "skills/frontend-ui-engineering/SKILL.md",
+          "skills/observability-and-instrumentation/SKILL.md",
+          "skills/performance-optimization/SKILL.md",
+          "skills/security-and-hardening/SKILL.md",
+          "skills/shipping-and-launch/SKILL.md",
+          "skills/source-driven-development/SKILL.md",
+          "references/accessibility-checklist.md",
+          "references/definition-of-done.md",
+          "references/observability-checklist.md",
+          "references/performance-checklist.md",
+          "references/security-checklist.md",
+          "references/testing-patterns.md"
+        ],
+        "modify": []
+      },
+      "verificationCommands": [
+        "npm run validate:skills",
+        "rg -n \"agent-skills|using-agent-skills\" skills references"
+      ]
+    },
+    {
+      "id": "task-06-add-commands-personas",
+      "title": "Add Commands and Personas",
+      "file": "tasks/task-06-add-commands-personas.md",
+      "wave": 5,
+      "status": "complete",
+      "dependsOn": [
+        "task-05-add-agent-specialists-references",
+        "task-08-add-simplicity-layer"
+      ],
+      "blocks": [
+        "task-09-rewrite-docs-router-integration"
+      ],
+      "files": {
+        "create": [
+          "commands/spec.toml",
+          "commands/plan.toml",
+          "commands/build.toml",
+          "commands/test.toml",
+          "commands/review.toml",
+          "commands/ship.toml",
+          "commands/webperf.toml",
+          "commands/standards.toml",
+          "commands/code-simplify.toml",
+          "commands/simplicity.toml",
+          "commands/simplicity-review.toml",
+          "commands/simplicity-audit.toml",
+          "agents/code-reviewer.md",
+          "agents/security-auditor.md",
+          "agents/test-engineer.md",
+          "agents/web-performance-auditor.md",
+          "references/orchestration-patterns.md"
+        ],
+        "modify": []
+      },
+      "verificationCommands": [
+        "npm run validate:commands",
+        "rg -n \"simplicity-debt|simplicity-gain|simplicity-help|ponytail\" commands agents references"
+      ]
+    },
+    {
+      "id": "task-07-add-matt-alignment-domain",
+      "title": "Add Matt Alignment and Domain Layer",
+      "file": "tasks/task-07-add-matt-alignment-domain.md",
+      "wave": 4,
+      "status": "complete",
+      "dependsOn": [
+        "task-02-add-validation-harness",
+        "task-04-merge-canonical-disciplines"
+      ],
+      "blocks": [
+        "task-09-rewrite-docs-router-integration"
+      ],
+      "files": {
+        "create": [
+          "skills/grill-me/SKILL.md",
+          "skills/grill-with-docs/SKILL.md",
+          "skills/grilling/SKILL.md",
+          "skills/domain-modeling/SKILL.md",
+          "skills/codebase-design/SKILL.md",
+          "skills/prototype/SKILL.md",
+          "skills/to-prd/SKILL.md",
+          "skills/to-issues/SKILL.md",
+          "skills/triage/SKILL.md",
+          "skills/handoff/SKILL.md",
+          "skills/improve-codebase-architecture/SKILL.md",
+          "skills/resolving-merge-conflicts/SKILL.md",
+          "skills/setup-mithril-project/SKILL.md"
+        ],
+        "modify": []
+      },
+      "verificationCommands": [
+        "npm run validate:skills",
+        "rg -n \"setup-matt-pocock-skills|ask-matt|deprecated|in-progress|personal\" skills"
+      ]
+    },
+    {
+      "id": "task-08-add-simplicity-layer",
+      "title": "Add Mithril Simplicity Layer",
+      "file": "tasks/task-08-add-simplicity-layer.md",
+      "wave": 4,
+      "status": "complete",
+      "dependsOn": [
+        "task-02-add-validation-harness",
+        "task-04-merge-canonical-disciplines"
+      ],
+      "blocks": [
+        "task-06-add-commands-personas",
+        "task-09-rewrite-docs-router-integration"
+      ],
+      "files": {
+        "create": [
+          "skills/simplicity/SKILL.md",
+          "skills/simplicity-review/SKILL.md",
+          "skills/simplicity-audit/SKILL.md"
+        ],
+        "modify": [
+          "skills/test-driven-development/SKILL.md",
+          "skills/code-review-and-quality/SKILL.md",
+          "skills/implementation-standards/SKILL.md"
+        ]
+      },
+      "verificationCommands": [
+        "npm run validate:skills",
+        "rg -n \"simplicity-debt|simplicity-gain|simplicity-help|ponytail\" skills"
+      ]
+    },
+    {
+      "id": "task-09-rewrite-docs-router-integration",
+      "title": "Rewrite Docs and Router Integration",
+      "file": "tasks/task-09-rewrite-docs-router-integration.md",
+      "wave": 6,
+      "status": "complete",
+      "dependsOn": [
+        "task-01-stabilize-shell-assets-attribution",
+        "task-03-port-superpowers-core",
+        "task-04-merge-canonical-disciplines",
+        "task-05-add-agent-specialists-references",
+        "task-06-add-commands-personas",
+        "task-07-add-matt-alignment-domain",
+        "task-08-add-simplicity-layer"
+      ],
+      "blocks": [
+        "task-10-final-consistency-release"
+      ],
+      "files": {
+        "create": [
+          "docs/getting-started.md",
+          "docs/agents.md",
+          "docs/comparison.md",
+          "docs/testing.md",
+          "docs/claude-code-setup.md",
+          "docs/codex-setup.md",
+          "docs/copilot-setup.md",
+          "docs/cursor-setup.md",
+          "docs/gemini-cli-setup.md",
+          "docs/opencode-setup.md",
+          "docs/windsurf-setup.md",
+          "CONTRIBUTING.md"
+        ],
+        "modify": [
+          "README.md",
+          "AGENTS.md",
+          "CLAUDE.md",
+          "GEMINI.md",
+          "skills/using-mithril/SKILL.md"
+        ]
+      },
+      "verificationCommands": [
+        "npm run validate:skills",
+        "npm run validate:commands",
+        "rg -n \"using-superpowers|using-agent-skills|ask-matt|ponytail\" README.md AGENTS.md CLAUDE.md GEMINI.md docs skills/using-mithril/SKILL.md"
+      ]
+    },
+    {
+      "id": "task-10-final-consistency-release",
+      "title": "Final Consistency and Release Readiness",
+      "file": "tasks/task-10-final-consistency-release.md",
+      "wave": 7,
+      "status": "complete",
+      "dependsOn": [
+        "task-02-add-validation-harness",
+        "task-09-rewrite-docs-router-integration"
+      ],
+      "blocks": [],
+      "files": {
+        "create": [],
+        "modify": [
+          "package.json",
+          "RELEASE-NOTES.md",
+          ".codex-plugin/plugin.json",
+          "gemini-extension.json"
+        ]
+      },
+      "verificationCommands": [
+        "npm test",
+        "npm pack --dry-run",
+        "rg -n \"superpowers|agent-skills|setup-matt|docs/superpowers|\\.superpowers|SUPERPOWERS|ponytail|PONYTAIL\" ."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+description = "Inspect local implementation standards before implementation or review"
+
+prompt = """
+Invoke the `implementation-standards` skill.
+
+Inspect the relevant files, tests, project instructions, and existing patterns. Report the local code-shape, testing, dependency, naming, and verification standards that should govern the requested work.
+"""
