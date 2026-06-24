@@ -9,7 +9,7 @@ description: Use when creating, editing, porting, validating, or reviewing Mithr
 
 Skill design turns recurring agent behavior into a predictable, validator-backed workflow. A Mithril skill should be a concise process with clear triggers, completion criteria, and anti-rationalization only where agents are likely to skip discipline under pressure.
 
-Use `docs/skill-anatomy.md` as the format contract.
+Use `docs/skill-anatomy.md` as the format contract. Treat official Agent Skills guidance as the compatibility baseline, Superpowers-style pressure scenarios as the behavioral proof technique, and Skillgrade-style evals as the regression option when a skill is important enough to test repeatedly.
 
 ## When to Use
 
@@ -43,18 +43,23 @@ Do not use it for one-off project instructions that should live in repo docs, or
    - For discipline skills, use pressure scenarios or review known failures to capture actual rationalizations.
    - For shape guidance, compare against a no-guidance control when possible.
    - For this repo, also use validator failures and task RED checks as concrete red signals.
+   - If the change is only a typo, stale pointer, or small wording correction, name that defect as the red signal and keep the edit mechanical.
 
 4. Write the minimum skill.
    - Use `skills/<name>/SKILL.md`.
    - Frontmatter `name` must match the directory.
    - Frontmatter `description` must contain "Use when".
+   - Make the description a trigger surface, not a workflow summary.
    - Include the required headings or accepted aliases from `docs/skill-anatomy.md`.
-   - Put the main process inline. Move only heavy references, scripts, templates, or assets into supporting files.
+   - Choose the package shape from `docs/skill-anatomy.md`: self-contained, reusable artifact, heavy reference, or shared root reference.
+   - Put the main process inline. Move only branch-specific references, scripts, templates, examples, or assets into supporting files.
+   - Reference supporting files only at the step that needs them, with the condition for loading or using them.
    - Reference other skills by canonical Mithril name only when they already exist.
 
 5. Consolidate instead of duplicating.
    - Do not import competing loops for TDD, debugging, review, planning, delivery, or skill authoring.
    - Merge the useful guidance into one Mithril-owned workflow.
+   - When upstream sources disagree, prefer the behavior that fits Mithril's validator, router, and command model.
    - Keep one source of truth for each behavior and route only canonical names from `using-mithril`.
 
 6. Validate and prune.
@@ -62,6 +67,11 @@ Do not use it for one-off project instructions that should live in repo docs, or
    - Remove no-op prose that does not change agent behavior.
    - Make completion criteria checkable and evidence-based.
    - Ensure examples are reusable patterns, not narratives about one past session.
+
+7. Prove behavior when the change affects agent conduct.
+   - Re-run the pressure scenario, focused review, smoke test, or Skillgrade-style eval that motivated the edit.
+   - Compare against the red signal: the updated skill should prevent the failure or make it easier to catch.
+   - Report any skipped behavioral proof separately from structural validation.
 
 ## Common Rationalizations
 
@@ -73,6 +83,7 @@ Do not use it for one-off project instructions that should live in repo docs, or
 | "This rule is obvious." | If agents skip it under pressure, make the rationalization explicit. If they do not, omit it. |
 | "A warning list will shape the output." | Shape failures need a positive recipe, not only prohibitions. |
 | "Validation passing means the skill is useful." | Validation proves structure. Use scenarios or review to prove behavior. |
+| "Official guidance is enough." | Compatibility rules do not prove the skill changes behavior. Use Mithril anatomy plus a red signal. |
 
 ## Red Flags
 
@@ -82,6 +93,7 @@ Do not use it for one-off project instructions that should live in repo docs, or
 - The skill points to a future skill, persona, command, or reference that does not exist.
 - A router imports an upstream duplicate instead of a Mithril canonical skill.
 - The skill reads like a blog post, history, or generic advice.
+- A new behavior-changing skill was written without any pressure scenario, baseline comparison, known failure, or review finding.
 - Verification criteria cannot be checked with commands, artifacts, or concrete inspection.
 
 ## Verification
@@ -92,5 +104,7 @@ Before reporting skill work complete:
 - Router references point only to existing Mithril skills.
 - Required headings match `docs/skill-anatomy.md` or its accepted aliases.
 - Frontmatter descriptions are trigger-focused and contain "Use when".
+- The selected package shape is justified, and any supporting files are referenced by exact condition or command.
 - Duplicate upstream loops were merged into canonical Mithril skills instead of routed separately.
+- Behavior-changing edits include a red signal and evidence that the new guidance addresses it, or the missing proof is explicitly reported.
 - Any skipped scenario testing or unresolved authoring concern is reported.
