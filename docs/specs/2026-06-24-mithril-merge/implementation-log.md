@@ -139,3 +139,22 @@ Start with `task-01-stabilize-shell-assets-attribution`, then continue through t
 - Spec compliance review: PASS; selected source material exists and excluded surfaces were not imported.
 - Code quality review: PASS with documented concern; validator failures are deferred by design until the combined rewrite pass.
 - Final Wave 4 statuses: `task-05-add-agent-specialists-references` complete; `task-07-add-matt-alignment-domain` complete; `task-08-add-simplicity-layer` complete.
+
+## 2026-06-25 - Wave 5 Completion
+
+- Task: `task-06-add-commands-personas`.
+- Starting status: `pending`.
+- Wave risk preflight:
+  - This wave owns command entrypoints, advisory persona prompts, and orchestration pattern documentation.
+  - Security-sensitive: yes, because commands/personas can shape review, launch, audit, and external mutation boundaries.
+  - Integration risk: commands must route to Mithril names while personas remain advisory leaf reviewers.
+- Result:
+  - Required commands, four personas, and `references/orchestration-patterns.md` already existed in the branch baseline.
+  - No implementation edits were required for this wave.
+- Verification:
+  - `Test-Path commands/review.toml; Test-Path agents/code-reviewer.md`: both returned `True`.
+  - `npm run validate:commands`: passed, 12 commands checked.
+  - `rg -n "simplicity-debt|simplicity-gain|simplicity-help|ponytail" commands agents references`: no matches.
+- Spec compliance review: PASS; required command and persona surfaces exist and excluded simplicity surfaces are absent.
+- Code quality review: PASS; no implementation diff was introduced in this wave.
+- Final Wave 5 status: `task-06-add-commands-personas` complete.

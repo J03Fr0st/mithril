@@ -78,7 +78,7 @@ graph TD
 - [x] [task-08-add-simplicity-layer](./tasks/task-08-add-simplicity-layer.md) - Copy and rename Mithril Simplicity Layer skills and commands
 
 ### Wave 5
-- [ ] [task-06-add-commands-personas](./tasks/task-06-add-commands-personas.md) - Add commands, personas, and orchestration boundaries
+- [x] [task-06-add-commands-personas](./tasks/task-06-add-commands-personas.md) - Add commands, personas, and orchestration boundaries
 
 ### Wave 6
 - [ ] [task-09-rewrite-docs-router-integration](./tasks/task-09-rewrite-docs-router-integration.md) - Rewrite public docs, instruction files, and `using-mithril` routing

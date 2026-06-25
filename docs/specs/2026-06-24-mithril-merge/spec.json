@@ -235,7 +235,7 @@
       "title": "Add Commands and Personas",
       "file": "tasks/task-06-add-commands-personas.md",
       "wave": 5,
-      "status": "pending",
+      "status": "complete",
       "dependsOn": [
         "task-05-add-agent-specialists-references",
         "task-08-add-simplicity-layer"
