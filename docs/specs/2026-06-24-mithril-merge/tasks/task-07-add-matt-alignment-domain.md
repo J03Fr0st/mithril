@@ -2,7 +2,7 @@
 
 ## Status
 
-complete
+pending
 
 ## Wave
 
@@ -10,7 +10,7 @@ complete
 
 ## Description
 
-Add the selected Matt Pocock alignment, domain, issue, and architecture skills. The approved design values these skills for requirement interrogation, domain language, codebase design, PRD/issue flows, triage, handoff, and architecture deepening. This task imports selected material only and rewrites it into Mithril skill anatomy.
+Add the selected Matt Pocock alignment, domain, issue, and architecture skills by copying source files first and applying only required Mithril naming. The approved design values these skills for requirement interrogation, domain language, codebase design, PRD/issue flows, triage, handoff, and architecture deepening. This task preserves source behavior for the later combined rewrite.
 
 ## Dependencies
 
@@ -50,14 +50,15 @@ None. Router integration happens in task 09.
    - `skills/in-progress/*`
    - `skills/personal/*`
 3. Rename `setup-matt-pocock-skills` to `setup-mithril-project`.
-4. Rewrite all imported skills into `docs/skill-anatomy.md` structure.
+4. Preserve source structure in copied skills. Do not rewrite into `docs/skill-anatomy.md` during this task.
 5. Preserve the strongest Matt patterns:
    - `grill-me` for requirement interrogation.
    - `grill-with-docs` for stress-testing plans against `CONTEXT.md` and ADRs.
    - `domain-modeling` for glossary and decision clarity.
    - `codebase-design` for deep modules and interface/test-surface vocabulary.
    - `to-prd`, `to-issues`, and `triage` for issue-tracker workflows.
-6. Keep personal tone and naming out of product-facing Mithril text.
+6. Keep personal tone and naming out of product-facing Mithril text only where it conflicts with required renaming.
+7. Commit the copied-and-renamed Matt baseline before the later combined rewrite.
 
 ### Code Snippets
 
@@ -87,7 +88,7 @@ Not applicable.
 ### GREEN
 
 - Command: `npm run validate:skills`
-- Expected: Imported alignment/domain skills pass validation.
+- Expected: Copied-and-renamed alignment/domain skills exist. Validator failures caused only by preserved source structure are documented for the later rewrite pass.
 
 ### Final Verification
 
@@ -99,7 +100,7 @@ Not applicable.
 - [ ] Selected Matt-derived skills exist under Mithril names.
 - [ ] `setup-mithril-project` exists and no `setup-matt-pocock-skills` route remains.
 - [ ] Excluded deprecated, in-progress, personal, and `ask-matt` surfaces are absent.
-- [ ] Skills follow `docs/skill-anatomy.md`.
+- [ ] Source structure is preserved except required Mithril renaming.
 - [ ] Product-facing text uses Mithril naming and neutral attribution.
 
 ## Notes

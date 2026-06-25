@@ -16,15 +16,15 @@ All four source repositories are MIT licensed. A merged Mithril distribution sho
 
 ## Executive Summary
 
-Mithril should become a curated synthesis, not a bulk import. The four source systems are not independent libraries; they contain competing routers and overlapping behavioral disciplines. A raw copy would create duplicate TDD, debugging, planning, review, and delivery workflows that fight for authority.
+Mithril should become a curated synthesis, but the redo should start from source truth instead of hand-rewritten summaries. The four source systems are not independent libraries; they contain competing routers and overlapping behavioral disciplines. The implementation path is therefore: copy selected source skills directly, apply only required Mithril renaming, commit that source-derived baseline, then rewrite the combined Mithril behavior together in a later pass.
 
 The recommended architecture is:
 
 1. Keep `using-mithril` as the only router.
 2. Use Superpowers as the runtime and autonomous execution core.
-3. Fold overlapping TDD/debug/planning/review guidance into canonical Mithril skills.
-4. Import agent-skills specialist coverage for security, performance, observability, API/UI, CI/CD, migration, and launch.
-5. Import Matt Pocock's strongest alignment/domain/codebase-design skills, excluding deprecated, personal, and draft material.
+3. Copy overlapping TDD/debug/planning/review source skills first, with Mithril names where needed, before merging them.
+4. Import agent-skills specialist coverage for security, performance, observability, API/UI, CI/CD, migration, and launch by source copy plus naming cleanup first.
+5. Import Matt Pocock's strongest alignment/domain/codebase-design skills by source copy plus naming cleanup first, excluding deprecated, personal, and draft material.
 6. Add explicit code-shape governance so formatter, linter, tests, architecture vocabulary, and review gates drive how code looks.
 7. Use agent-skills documentation, `AGENTS.md`, and `CLAUDE.md` as the baseline for Mithril's public docs and harness instruction files.
 8. Add the Mithril Simplicity Layer as a cross-cutting discipline that challenges bloat before implementation and reviews over-engineering after changes.
@@ -137,7 +137,9 @@ Combine:
 - Matt `writing-great-skills`.
 - agent-skills `docs/skill-anatomy.md` and validator expectations.
 
-Normalization rule: every imported or adapted Mithril skill should be rewritten into the `docs/skill-anatomy.md` structure before it becomes routed product behavior. Raw upstream `SKILL.md` files can be used as source material, but the Mithril version should have:
+Source-first rule: every selected upstream skill should first be copied from its source repository and renamed into its Mithril destination. During this phase, do not rewrite the body into a new skill structure, do not merge competing loops, and do not normalize headings. Only apply required product naming changes such as `Superpowers` to `Mithril`, `superpowers:*` to `mithril:*`, `.superpowers` to `.mithril`, `SUPERPOWERS_*` to `MITHRIL_*`, and source-specific setup-skill renames.
+
+That copied-and-renamed baseline must be committed before the synthesis pass. The later rewrite pass can then merge duplicate behavior and move the final Mithril-owned skill set toward a consistent anatomy, but the rewrite should happen across the whole selected set with source text still visible in git history. The final Mithril version should have:
 
 - Required YAML frontmatter with `name` and `description`.
 - A clear overview and when-to-use section.
@@ -146,7 +148,7 @@ Normalization rule: every imported or adapted Mithril skill should be rewritten 
 - Verification criteria with evidence requirements.
 - Supporting files only for heavy references, scripts, templates, or assets.
 
-This gives Mithril one skill shape across all imported sources instead of preserving each upstream repo's authoring style.
+This gives Mithril one auditable source-copy commit followed by one deliberate rewrite path, instead of mixing copy, rename, synthesis, and validation cleanup in the same diff.
 
 ### 3. Code Shape Governance
 
@@ -241,7 +243,7 @@ Rules to carry forward:
 - The user or command orchestrates composition; personas do not invoke other personas.
 - Parallel fan-out is allowed only for independent review perspectives with a merge step.
 - Docs meant for humans stay in `docs/`; agent-loaded guidance stays in `AGENTS.md`, `CLAUDE.md`, skills, personas, commands, or references.
-- Skill authoring and validation follow `docs/skill-anatomy.md`.
+- Skill authoring and validation eventually follow `docs/skill-anatomy.md`, after the selected source skills have first landed as copied-and-renamed source material.
 
 ### 6. Mithril Simplicity Layer
 
@@ -321,14 +323,14 @@ Minimum validation:
 - Port agent-skills `scripts/validate-commands.js` once commands are added.
 - Port Superpowers plugin/runtime tests before deeper behavior edits.
 - Port the upstream simplicity source's Node test suite if its hooks/commands are imported.
-- Add a `skill-anatomy.md` conformance check for every Mithril-owned `skills/*/SKILL.md`.
+- Add a `skill-anatomy.md` conformance check only after the copied-and-renamed source baseline has been committed and the combined rewrite pass begins.
 - Add a workflow that runs skill validation, command validation, manifest validation, formatter/linter/type checks where available, and selected shell/runtime tests.
 - Document each target repo's formatter, linter, typecheck, and focused-test commands so `implementation-standards`, TDD, and review use the same evidence.
 
 Verification gates before a merge is complete:
 
 - Skill validator passes.
-- Every imported/adapted skill follows the `skill-anatomy.md` structure or has a documented exception.
+- The source-copy baseline is committed before anatomy rewrites. Final adapted skills follow `skill-anatomy.md` or document an exception.
 - Command validator passes.
 - Formatter, linter, typecheck, and focused-test commands are documented or explicitly marked unavailable.
 - Superpowers brainstorm-server tests pass after Mithril rebrand.
@@ -348,26 +350,27 @@ Verification gates before a merge is complete:
 - Add initial docs directory and validation scripts.
 - Preserve existing bootstrap behavior.
 
-### Wave 2: Port Superpowers Core
+### Wave 2: Copy and Rename Superpowers Core
 
 - Copy Superpowers core skills except `using-superpowers`.
-- Rebrand internal skill references, paths, env vars, and state directories.
+- Apply Mithril renames to internal skill references, paths, env vars, and state directories.
+- Do not rewrite the source skill structure in this wave.
+- Commit the copied-and-renamed source baseline before any behavioral synthesis.
 - Port relevant tests and update expectations from Superpowers to Mithril.
 - Verify runtime/bootstrap tests.
 
-### Wave 3: Merge Canonical Collision Skills
+### Wave 3: Copy and Rename Canonical Collision Sources
 
-- Merge TDD into one Mithril `test-driven-development`.
-- Merge debugging into one Mithril `systematic-debugging`.
-- Merge review into a canonical review skill.
-- Merge skill-writing guidance into a canonical skill-design workflow.
-- Add `implementation-standards` as the shared code-shape skill used by planning, implementation, TDD, and review.
-- Establish `skill-anatomy.md` as the required format for all Mithril-owned skills.
+- Copy the selected TDD, debugging, review, skill-writing, and code-shape source skills from Superpowers, agent-skills, and Matt sources.
+- Rename them into the intended Mithril destination names where there is a clear one-to-one target.
+- Keep duplicate source behavior visible in the copied baseline rather than prematurely merging it.
+- Commit the copied-and-renamed collision-source baseline.
+- Defer the single canonical Mithril rewrite of TDD, debugging, review, skill-design, and implementation standards until after all source families have landed.
 
 ### Wave 4: Add agent-skills Specialist Layer
 
 - Add specialist skills for API, UI, security, performance, observability, CI/CD, migration, launch, and docs.
-- Rewrite imported specialist skills into the `skill-anatomy.md` structure before routing them from `using-mithril`.
+- Copy specialist skills from source and apply required Mithril naming only.
 - Add `references/`.
 - Add commands and command validation.
 - Add review personas and persona documentation.
@@ -375,7 +378,7 @@ Verification gates before a merge is complete:
 ### Wave 5: Add Matt Alignment and Domain Layer
 
 - Add grilling, domain modeling, codebase design, prototype, PRD, issues, triage, and handoff flows.
-- Rewrite imported alignment/domain skills into the `skill-anatomy.md` structure before routing them from `using-mithril`.
+- Copy alignment/domain skills from source and apply required Mithril naming only.
 - Rename project setup flow to `setup-mithril-project`.
 - Update `using-mithril` to route domain/alignment workflows without over-triggering user-only flows.
 
@@ -383,7 +386,7 @@ Verification gates before a merge is complete:
 
 - Add the simplicity ladder to Mithril's operating principles.
 - Add `simplicity-review` and `simplicity-audit` as explicit specialist skills.
-- Rewrite simplicity-layer skills into the `skill-anatomy.md` structure before routing them from `using-mithril`.
+- Copy simplicity-layer skills from source and apply required Mithril naming only.
 - Add simplicity commands if Mithril supports commands by this point.
 - Merge the minimalism rules into planning, TDD, implementation, and review guidance.
 - Exclude the upstream debt, help, and benchmark/gain surfaces from the Mithril import.

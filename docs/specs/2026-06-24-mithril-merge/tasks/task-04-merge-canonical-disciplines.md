@@ -2,7 +2,7 @@
 
 ## Status
 
-complete
+pending
 
 ## Wave
 
@@ -10,7 +10,7 @@ complete
 
 ## Description
 
-Create the canonical Mithril discipline skills that resolve overlap across source repos. The approved design identifies duplicate or overlapping TDD, debugging, review, planning, skill-writing, and code-shape guidance. This task creates single Mithril-owned versions so downstream imports do not create competing behavior.
+Copy and rename the source material for the canonical Mithril discipline skills that will later resolve overlap across source repos. The approved design identifies duplicate or overlapping TDD, debugging, review, planning, skill-writing, and code-shape guidance. This task preserves the selected source text first so the later rewrite can synthesize from an auditable baseline.
 
 ## Dependencies
 
@@ -36,31 +36,26 @@ Create the canonical Mithril discipline skills that resolve overlap across sourc
 
 ### Implementation Steps
 
-1. Create `docs/skill-anatomy.md` from the agent-skills structure, adapted for Mithril.
-2. Build `test-driven-development` from:
+1. Create or copy `docs/skill-anatomy.md` only as reference material for the later rewrite pass; do not force current copied skills into that structure.
+2. Copy source material for `test-driven-development` from:
    - Superpowers strict RED-GREEN-REFACTOR and no production code before failing test.
    - Matt public-interface tests, vertical tracer bullets, and `CONTEXT.md` vocabulary guidance.
    - agent-skills test pyramid, DAMP-over-DRY, browser testing, and resource model.
-3. Build `systematic-debugging` from:
+3. Copy source material for `systematic-debugging` from:
    - Matt tight red-capable feedback loop.
    - Superpowers root-cause tracing and hypothesis discipline.
    - agent-skills safe error recovery and untrusted-error-output warnings.
-4. Build `code-review-and-quality` from:
+4. Copy source material for `code-review-and-quality` from:
    - Superpowers task/final review gates.
    - agent-skills five-axis review and severity taxonomy.
    - persona fan-out support from agent-skills.
-5. Build `skill-design` from:
+5. Copy source material for `skill-design` from:
    - Superpowers writing-skills.
    - Matt writing-great-skills.
    - `docs/skill-anatomy.md` and validation expectations.
-6. Build `implementation-standards` from the approved Code Shape Governance section.
-7. Ensure all five skills have:
-   - YAML frontmatter
-   - overview
-   - when-to-use
-   - concrete process
-   - rationalizations/red flags where discipline-enforcing
-   - verification section
+6. Copy or draft the initial `implementation-standards` source baseline from the approved Code Shape Governance section without merging it into other skills yet.
+7. Apply only required Mithril naming and destination renames.
+8. Commit the copied-and-renamed collision-source baseline before the later synthesis pass creates single canonical Mithril-owned workflows.
 
 ### Code Snippets
 
@@ -92,7 +87,7 @@ Not applicable.
 ### GREEN
 
 - Command: `npm run validate:skills`
-- Expected: Canonical discipline skills pass validation.
+- Expected: Copied-and-renamed discipline source files exist. Validator failures caused only by preserved source structure are documented for the later rewrite pass.
 
 ### Final Verification
 
@@ -101,11 +96,10 @@ Not applicable.
 
 ## Acceptance Criteria
 
-- [ ] No duplicate TDD, debugging, review, or skill-design skill is routed.
-- [ ] `docs/skill-anatomy.md` exists and is the required Mithril skill format.
-- [ ] `implementation-standards` answers how code should look and be verified.
-- [ ] `using-mithril` routes canonical disciplines.
-- [ ] `npm run validate:skills` passes.
+- [ ] Selected source material for TDD, debugging, review, skill-design, and implementation standards exists under Mithril destinations.
+- [ ] Source structure is preserved except required Mithril renaming.
+- [ ] No duplicate upstream router is activated from `using-mithril`.
+- [ ] The copied-and-renamed baseline can be committed before canonical rewriting.
 
 ## Notes
 

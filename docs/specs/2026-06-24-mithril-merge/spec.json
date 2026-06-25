@@ -21,7 +21,7 @@
       "title": "Stabilize Shell Assets and Attribution",
       "file": "tasks/task-01-stabilize-shell-assets-attribution.md",
       "wave": 1,
-      "status": "complete",
+      "status": "pending",
       "dependsOn": [],
       "blocks": [
         "task-03-port-superpowers-core",
@@ -48,7 +48,7 @@
       "title": "Add Validation Harness",
       "file": "tasks/task-02-add-validation-harness.md",
       "wave": 1,
-      "status": "complete",
+      "status": "pending",
       "dependsOn": [],
       "blocks": [
         "task-03-port-superpowers-core",
@@ -76,10 +76,10 @@
     },
     {
       "id": "task-03-port-superpowers-core",
-      "title": "Port Superpowers Core",
+      "title": "Copy and Rename Superpowers Core",
       "file": "tasks/task-03-port-superpowers-core.md",
       "wave": 2,
-      "status": "complete",
+      "status": "pending",
       "dependsOn": [
         "task-01-stabilize-shell-assets-attribution",
         "task-02-add-validation-harness"
@@ -111,10 +111,10 @@
     },
     {
       "id": "task-04-merge-canonical-disciplines",
-      "title": "Merge Canonical Disciplines",
+      "title": "Copy and Rename Canonical Sources",
       "file": "tasks/task-04-merge-canonical-disciplines.md",
       "wave": 3,
-      "status": "complete",
+      "status": "pending",
       "dependsOn": [
         "task-02-add-validation-harness",
         "task-03-port-superpowers-core"
@@ -145,10 +145,10 @@
     },
     {
       "id": "task-05-add-agent-specialists-references",
-      "title": "Add agent-skills Specialists and References",
+      "title": "Copy and Rename agent-skills Specialists and References",
       "file": "tasks/task-05-add-agent-specialists-references.md",
       "wave": 4,
-      "status": "complete",
+      "status": "pending",
       "dependsOn": [
         "task-02-add-validation-harness",
         "task-04-merge-canonical-disciplines"
@@ -192,7 +192,7 @@
       "title": "Add Commands and Personas",
       "file": "tasks/task-06-add-commands-personas.md",
       "wave": 5,
-      "status": "complete",
+      "status": "pending",
       "dependsOn": [
         "task-05-add-agent-specialists-references",
         "task-08-add-simplicity-layer"
@@ -229,10 +229,10 @@
     },
     {
       "id": "task-07-add-matt-alignment-domain",
-      "title": "Add Matt Alignment and Domain Layer",
+      "title": "Copy and Rename Matt Alignment and Domain Layer",
       "file": "tasks/task-07-add-matt-alignment-domain.md",
       "wave": 4,
-      "status": "complete",
+      "status": "pending",
       "dependsOn": [
         "task-02-add-validation-harness",
         "task-04-merge-canonical-disciplines"
@@ -265,10 +265,10 @@
     },
     {
       "id": "task-08-add-simplicity-layer",
-      "title": "Add Mithril Simplicity Layer",
+      "title": "Copy and Rename Mithril Simplicity Layer",
       "file": "tasks/task-08-add-simplicity-layer.md",
       "wave": 4,
-      "status": "complete",
+      "status": "pending",
       "dependsOn": [
         "task-02-add-validation-harness",
         "task-04-merge-canonical-disciplines"
@@ -299,7 +299,7 @@
       "title": "Rewrite Docs and Router Integration",
       "file": "tasks/task-09-rewrite-docs-router-integration.md",
       "wave": 6,
-      "status": "complete",
+      "status": "pending",
       "dependsOn": [
         "task-01-stabilize-shell-assets-attribution",
         "task-03-port-superpowers-core",
@@ -346,7 +346,7 @@
       "title": "Final Consistency and Release Readiness",
       "file": "tasks/task-10-final-consistency-release.md",
       "wave": 7,
-      "status": "complete",
+      "status": "pending",
       "dependsOn": [
         "task-02-add-validation-harness",
         "task-09-rewrite-docs-router-integration"

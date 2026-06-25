@@ -2,7 +2,7 @@
 
 ## Status
 
-complete
+pending
 
 ## Wave
 
@@ -10,7 +10,7 @@ complete
 
 ## Description
 
-Add the Mithril Simplicity Layer as a native anti-bloat discipline. The approved design says Mithril should adopt the simplicity ladder and explicit over-engineering review/audit tools, while excluding upstream branding, debt ledger, gain scoreboard, help card, and persistent mode hooks.
+Add the Mithril Simplicity Layer as a native anti-bloat discipline by copying selected source skills first and applying only required Mithril naming. The approved design says Mithril should adopt the simplicity ladder and explicit over-engineering review/audit tools, while excluding upstream branding, debt ledger, gain scoreboard, help card, and persistent mode hooks.
 
 ## Dependencies
 
@@ -45,7 +45,7 @@ Add the Mithril Simplicity Layer as a native anti-bloat discipline. The approved
    - `simplicity-gain`
    - `simplicity-help`
 4. Do not import upstream persistent mode hooks, mode trackers, config files, or state behavior.
-5. Rewrite the ladder in Mithril tone:
+5. Preserve source structure in the copied skills. Do not rewrite the ladder into final Mithril tone until the later combined rewrite pass. The intended final ladder remains:
    - Does this need to exist?
    - Is it already in this codebase?
    - Does the standard library solve it?
@@ -60,6 +60,7 @@ Add the Mithril Simplicity Layer as a native anti-bloat discipline. The approved
    - never remove accessibility basics
    - never bypass root-cause debugging
 7. Keep `simplicity-review` and `simplicity-audit` report-only.
+8. Commit the copied-and-renamed simplicity baseline before the later combined rewrite.
 
 ### Code Snippets
 
@@ -91,7 +92,7 @@ Not applicable.
 ### GREEN
 
 - Command: `npm run validate:skills`
-- Expected: Simplicity skills pass validation.
+- Expected: Copied-and-renamed simplicity skills exist. Validator failures caused only by preserved source structure are documented for the later rewrite pass.
 
 ### Final Verification
 
@@ -103,7 +104,8 @@ Not applicable.
 - [ ] `simplicity`, `simplicity-review`, and `simplicity-audit` exist.
 - [ ] Excluded debt, gain, and help skills do not exist.
 - [ ] Persistent mode hooks/config/state behavior is not imported.
-- [ ] Simplicity principles are integrated into TDD, review, and implementation standards.
+- [ ] Source structure is preserved except required Mithril naming.
+- [ ] Simplicity principles are ready to integrate into TDD, review, and implementation standards during the later rewrite.
 - [ ] Safety boundaries are explicit.
 
 ## Notes
