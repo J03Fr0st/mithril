@@ -85,3 +85,27 @@ Start with `task-01-stabilize-shell-assets-attribution`, then continue through t
 - Spec compliance review: PASS; selected source skill directories were copied, renamed, and kept structurally intact.
 - Code quality review: PASS with documented concern; validator failures are limited to preserved source structure and are deferred to the later rewrite pass by design.
 - Final Wave 2 status: `task-03-port-superpowers-core` complete.
+
+## 2026-06-25 - Wave 3 Completion
+
+- Task: `task-04-merge-canonical-disciplines`.
+- Starting status: `pending`.
+- Wave risk preflight:
+  - This wave owns the copied canonical collision-source skill directories for TDD, debugging, review, skill design, and implementation standards.
+  - Security-sensitive: yes, because copied debugging and skill-design source material includes shell, TypeScript, and Node helper files.
+  - Integration risk: copied source structures intentionally precede later Mithril synthesis, so `validate:skills` failures remain expected until the rewrite pass.
+- Result:
+  - Copied root source baselines for `test-driven-development`, `systematic-debugging`, `code-review-and-quality`, and `skill-design`.
+  - Preserved additional source material under each canonical destination's `sources/` folder.
+  - Added `implementation-standards` from the approved Code Shape Governance source baseline.
+  - Applied required Mithril renames for upstream routers, Superpowers naming, agent-skills naming, and `skill-design` destination naming.
+  - `skills/using-mithril/SKILL.md` already routed the canonical names and did not require edits.
+- Verification:
+  - `Test-Path skills/test-driven-development/SKILL.md; Test-Path skills/skill-design/SKILL.md`: both returned `True`.
+  - `rg -n "using-superpowers|using-agent-skills|ask-matt|superpowers:|agent-skills:|docs/superpowers|\\.superpowers|SUPERPOWERS|Superpowers|superpowers" skills/test-driven-development skills/systematic-debugging skills/code-review-and-quality skills/skill-design skills/implementation-standards`: no matches.
+  - `rg -n "test-driven-development|systematic-debugging|code-review-and-quality|skill-design|implementation-standards" skills/using-mithril/SKILL.md skills/test-driven-development skills/systematic-debugging skills/code-review-and-quality skills/skill-design skills/implementation-standards`: found canonical names in the router and copied skill set.
+  - `bash -n` on copied debugging scripts and `node --check` on copied skill-design Node helper: passed.
+  - `npm run validate:skills`: failed with 44 errors and 6 warnings, limited to preserved source structure and known future-skill cross-references. This is the expected documented validator gap for the source-copy baseline.
+- Spec compliance review: PASS; selected source material exists under canonical Mithril destinations and duplicate source behavior is preserved for later synthesis.
+- Code quality review: PASS with documented concern; validator failures are deferred by design until the combined rewrite pass.
+- Final Wave 3 status: `task-04-merge-canonical-disciplines` complete.

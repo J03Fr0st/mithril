@@ -2,7 +2,7 @@
 
 ## Status
 
-pending
+complete
 
 ## Wave
 
@@ -22,9 +22,39 @@ Copy and rename the source material for the canonical Mithril discipline skills 
 ## Files to Create
 
 - `skills/test-driven-development/SKILL.md`
+- `skills/test-driven-development/testing-anti-patterns.md`
+- `skills/test-driven-development/sources/agent-skills/SKILL.md`
+- `skills/test-driven-development/sources/matt-tdd/SKILL.md`
+- `skills/test-driven-development/sources/matt-tdd/mocking.md`
+- `skills/test-driven-development/sources/matt-tdd/refactoring.md`
+- `skills/test-driven-development/sources/matt-tdd/tests.md`
 - `skills/systematic-debugging/SKILL.md`
+- `skills/systematic-debugging/condition-based-waiting-example.ts`
+- `skills/systematic-debugging/condition-based-waiting.md`
+- `skills/systematic-debugging/CREATION-LOG.md`
+- `skills/systematic-debugging/defense-in-depth.md`
+- `skills/systematic-debugging/find-polluter.sh`
+- `skills/systematic-debugging/root-cause-tracing.md`
+- `skills/systematic-debugging/test-academic.md`
+- `skills/systematic-debugging/test-pressure-1.md`
+- `skills/systematic-debugging/test-pressure-2.md`
+- `skills/systematic-debugging/test-pressure-3.md`
+- `skills/systematic-debugging/sources/agent-skills-debugging-and-error-recovery/SKILL.md`
+- `skills/systematic-debugging/sources/matt-diagnosing-bugs/SKILL.md`
+- `skills/systematic-debugging/sources/matt-diagnosing-bugs/scripts/hitl-loop.template.sh`
 - `skills/code-review-and-quality/SKILL.md`
+- `skills/code-review-and-quality/sources/superpowers-receiving-code-review/SKILL.md`
+- `skills/code-review-and-quality/sources/superpowers-requesting-code-review/SKILL.md`
+- `skills/code-review-and-quality/sources/superpowers-requesting-code-review/code-reviewer.md`
 - `skills/skill-design/SKILL.md`
+- `skills/skill-design/anthropic-best-practices.md`
+- `skills/skill-design/examples/CLAUDE_MD_TESTING.md`
+- `skills/skill-design/graphviz-conventions.dot`
+- `skills/skill-design/persuasion-principles.md`
+- `skills/skill-design/render-graphs.js`
+- `skills/skill-design/testing-skills-with-subagents.md`
+- `skills/skill-design/sources/matt-writing-great-skills/GLOSSARY.md`
+- `skills/skill-design/sources/matt-writing-great-skills/SKILL.md`
 - `skills/implementation-standards/SKILL.md`
 
 ## Files to Modify

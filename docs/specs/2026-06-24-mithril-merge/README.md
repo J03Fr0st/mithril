@@ -70,7 +70,7 @@ graph TD
 - [x] [task-03-port-superpowers-core](./tasks/task-03-port-superpowers-core.md) - Copy and rename the Superpowers core workflow skills
 
 ### Wave 3
-- [ ] [task-04-merge-canonical-disciplines](./tasks/task-04-merge-canonical-disciplines.md) - Copy and rename TDD, debugging, review, skill-design, and implementation standards source material
+- [x] [task-04-merge-canonical-disciplines](./tasks/task-04-merge-canonical-disciplines.md) - Copy and rename TDD, debugging, review, skill-design, and implementation standards source material
 
 ### Wave 4
 - [ ] [task-05-add-agent-specialists-references](./tasks/task-05-add-agent-specialists-references.md) - Copy and rename selected agent-skills specialists and references
