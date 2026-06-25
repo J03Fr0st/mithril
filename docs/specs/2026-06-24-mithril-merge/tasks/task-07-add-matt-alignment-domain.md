@@ -1,4 +1,4 @@
-# Task 07: Add Matt Alignment and Domain Layer
+# Task 07: Copy and Rename Matt Alignment and Domain Layer
 
 ## Status
 

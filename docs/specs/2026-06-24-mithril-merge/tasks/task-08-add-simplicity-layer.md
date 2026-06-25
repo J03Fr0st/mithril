@@ -1,4 +1,4 @@
-# Task 08: Add Mithril Simplicity Layer
+# Task 08: Copy and Rename Mithril Simplicity Layer
 
 ## Status
 

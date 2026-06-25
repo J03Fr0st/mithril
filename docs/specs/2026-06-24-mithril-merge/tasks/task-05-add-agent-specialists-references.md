@@ -1,4 +1,4 @@
-# Task 05: Add agent-skills Specialists and References
+# Task 05: Copy and Rename agent-skills Specialists and References
 
 ## Status
 

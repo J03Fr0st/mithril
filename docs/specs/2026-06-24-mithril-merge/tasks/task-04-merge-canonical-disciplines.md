@@ -1,4 +1,4 @@
-# Task 04: Merge Canonical Disciplines
+# Task 04: Copy and Rename Canonical Sources
 
 ## Status
 

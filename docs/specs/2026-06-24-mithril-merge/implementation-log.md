@@ -1,5 +1,17 @@
 # Implementation Log: Mithril Merge
 
+## 2026-06-25 - Design Approved
+
+- Approved design path: `docs/design/2026-06-24-mithril-merge/design.md`.
+- Approval evidence: the current conversation confirms the redo direction, including source-copy-first import, Mithril renaming before synthesis, keeping `using-mithril`, and not using `docs/skill-anatomy.md` as a renaming or refactoring basis.
+- Optional `grill-me`: skipped.
+
+## 2026-06-25 - Spec Created
+
+- Source design: `docs/design/2026-06-24-mithril-merge/design.md`.
+- Existing spec path: `docs/specs/2026-06-24-mithril-merge`.
+- Initial reset plan: 10 tasks across 7 dependency waves.
+
 ## 2026-06-25 - Progress Reset for Source-First Redo
 
 - Branch baseline: `rebase/big`.

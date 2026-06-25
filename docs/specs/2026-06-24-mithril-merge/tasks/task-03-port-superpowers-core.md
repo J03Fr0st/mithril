@@ -1,4 +1,4 @@
-# Task 03: Port Superpowers Core
+# Task 03: Copy and Rename Superpowers Core
 
 ## Status
 

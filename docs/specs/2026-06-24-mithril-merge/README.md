@@ -18,12 +18,12 @@ Implement the approved Mithril merge plan by turning the current rebranded plugi
 graph TD
     task01["01: Stabilize Shell Assets and Attribution"]
     task02["02: Add Validation Harness"]
-    task03["03: Port Superpowers Core"]
-    task04["04: Merge Canonical Disciplines"]
-    task05["05: Add agent-skills Specialists and References"]
+    task03["03: Copy and Rename Superpowers Core"]
+    task04["04: Copy and Rename Canonical Sources"]
+    task05["05: Copy and Rename agent-skills Specialists and References"]
     task06["06: Add Commands and Personas"]
-    task07["07: Add Matt Alignment and Domain Layer"]
-    task08["08: Add Mithril Simplicity Layer"]
+    task07["07: Copy and Rename Matt Alignment and Domain Layer"]
+    task08["08: Copy and Rename Mithril Simplicity Layer"]
     task09["09: Rewrite Docs and Router Integration"]
     task10["10: Final Consistency and Release Readiness"]
     task01 --> task03
