@@ -243,7 +243,7 @@ Rules to carry forward:
 - The user or command orchestrates composition; personas do not invoke other personas.
 - Parallel fan-out is allowed only for independent review perspectives with a merge step.
 - Docs meant for humans stay in `docs/`; agent-loaded guidance stays in `AGENTS.md`, `CLAUDE.md`, skills, personas, commands, or references.
-- Skill authoring and validation eventually follow Mithril's own `skill-design` guidance and validators, after the selected source skills have first landed as copied-and-renamed source material.
+- Skill authoring and validation stay source-preserving for copied skills: after the selected source skills land as copied-and-renamed source material, later alignment applies only required Mithril naming, routing, and validator fixes unless a redesign is explicitly approved.
 
 ### 6. Mithril Simplicity Layer
 
@@ -330,7 +330,7 @@ Minimum validation:
 Verification gates before a merge is complete:
 
 - Skill validator passes.
-- The source-copy baseline is committed before behavioral rewrites. Final adapted skills follow Mithril's own `skill-design` guidance and validators or document an exception.
+- The source-copy baseline is committed before behavioral rewrites. Final adapted skills preserve source structure and satisfy validators unless an explicit redesign is approved and documented.
 - Command validator passes.
 - Formatter, linter, typecheck, and focused-test commands are documented or explicitly marked unavailable.
 - Superpowers brainstorm-server tests pass after Mithril rebrand.

@@ -212,7 +212,7 @@ You MUST complete each phase before proceeding to the next.
 
    This is NOT a failed hypothesis - this is a wrong architecture.
 
-## Red Flags - STOP and Follow Process
+## Red Flags
 
 If you catch yourself thinking:
 - "Quick fix for now, investigate later"
@@ -294,3 +294,6 @@ From debugging sessions:
 - Random fixes approach: 2-3 hours of thrashing
 - First-time fix rate: 95% vs 40%
 - New bugs introduced: Near zero vs common
+
+
+## Verification

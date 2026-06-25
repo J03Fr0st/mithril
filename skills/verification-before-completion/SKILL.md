@@ -49,7 +49,7 @@ Skip any step = lying, not verifying
 | Agent completed | VCS diff shows changes | Agent reports "success" |
 | Requirements met | Line-by-line checklist | Tests passing |
 
-## Red Flags - STOP
+## Red Flags
 
 - Using "should", "probably", "seems to"
 - Expressing satisfaction before verification ("Great!", "Perfect!", "Done!", etc.)
@@ -60,7 +60,7 @@ Skip any step = lying, not verifying
 - Tired and wanting work over
 - **ANY wording implying success without having run verification**
 
-## Rationalization Prevention
+## Common Rationalizations
 
 | Excuse | Reality |
 |--------|---------|
@@ -114,7 +114,7 @@ From 24 failure memories:
 - Time wasted on false completion → redirect → rework
 - Violates: "Honesty is a core value. If you lie, you'll be replaced."
 
-## When To Apply
+## When to Use
 
 **ALWAYS before:**
 - ANY variation of success/completion claims
@@ -137,3 +137,6 @@ From 24 failure memories:
 Run the command. Read the output. THEN claim the result.
 
 This is non-negotiable.
+
+
+## Verification

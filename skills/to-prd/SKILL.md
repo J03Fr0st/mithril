@@ -1,14 +1,17 @@
 ---
 name: to-prd
-description: Turn the current conversation into a PRD and publish it to the project issue tracker — no interview, just synthesis of what you've already discussed.
+description: Use when current conversation context should become a PRD for the project tracker without a fresh interview.
 disable-model-invocation: true
 ---
+# To Prd
+
+## Overview
 
 This skill takes the current conversation context and codebase understanding and produces a PRD. Do NOT interview the user — just synthesize what you already know.
 
 The issue tracker and triage label vocabulary should have been provided to you — run `/setup-mithril-project` if not.
 
-## Process
+## When to Use
 
 1. Explore the repo to understand the current state of the codebase, if you haven't already. Use the project's domain glossary vocabulary throughout the PRD, and respect any ADRs in the area you're touching.
 
@@ -73,3 +76,10 @@ A description of the things that are out of scope for this PRD.
 Any further notes about the feature.
 
 </prd-template>
+
+
+## Common Rationalizations
+
+## Red Flags
+
+## Verification

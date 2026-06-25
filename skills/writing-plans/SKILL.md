@@ -172,3 +172,12 @@ After saving the plan, offer execution choice:
 **If Inline Execution chosen:**
 - **REQUIRED SUB-SKILL:** Use mithril:executing-plans
 - Batch execution with checkpoints for review
+
+
+## When to Use
+
+## Common Rationalizations
+
+## Red Flags
+
+## Verification

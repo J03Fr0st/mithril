@@ -353,7 +353,7 @@
       "title": "Rewrite Docs and Router Integration",
       "file": "tasks/task-09-rewrite-docs-router-integration.md",
       "wave": 6,
-      "status": "pending",
+      "status": "complete",
       "dependsOn": [
         "task-01-stabilize-shell-assets-attribution",
         "task-03-port-superpowers-core",

@@ -31,7 +31,7 @@ The user or command orchestrates composition. Personas do not invoke other perso
 | Add or assess telemetry | `observability-and-instrumentation` |
 | Review a change | `code-review-and-quality`; add `simplicity-review`, `security-and-hardening`, or `performance-optimization` for the relevant risk |
 | Prepare release or branch integration | `shipping-and-launch`, `finishing-a-development-branch`, `ci-cd-and-automation`, `documentation-and-adrs` |
-| Create, edit, port, or review a skill | `skill-design` |
+| Create, edit, port, or review a copied/source skill | `source-driven-development`; preserve source material and apply only requested Mithril naming, routing, and validator alignment |
 
 ## Command Surface
 
@@ -64,8 +64,8 @@ Personas may inspect evidence and return reports. They must not edit files, stag
 ## Repository Conventions
 
 - Skills live at `skills/<name>/SKILL.md` with `name` and `description` frontmatter.
-- Skill-writing work routes through `skill-design`; for source-copy work, preserve source structure and apply only required Mithril renaming before the baseline commit.
-- Later skill rewrites use Mithril's own `skill-design` guidance, official Agent Skills compatibility as a compatibility check, pressure scenarios as behavioral proof, and Skillgrade-style evals when repeated regression coverage is worth the cost.
+- Skill-copy and skill-rewrite work is source-first: preserve copied structure, apply required Mithril renaming, and make only requested validator or routing alignment unless a redesign is explicitly approved.
+- Do not use `skill-design` or `docs/skill-anatomy.md` as the basis for copied-skill rewrites unless the user explicitly asks for that structure.
 - Commands live in `commands/*.toml` with `description` and `prompt`.
 - Personas live in `agents/*.md` and end with a composition boundary.
 - References live in `references/`; keep heavy checklists out of the router.

@@ -161,7 +161,7 @@ If you pushed back and were wrong:
 
 State the correction factually and move on.
 
-## Common Mistakes
+## Common Rationalizations
 
 | Mistake | Fix |
 |---------|-----|
@@ -211,3 +211,10 @@ When replying to inline review comments on GitHub, reply in the comment thread (
 Verify. Question. Then implement.
 
 No performative agreement. Technical rigor always.
+
+
+## When to Use
+
+## Red Flags
+
+## Verification

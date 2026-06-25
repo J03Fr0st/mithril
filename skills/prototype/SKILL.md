@@ -1,14 +1,16 @@
 ---
 name: prototype
-description: Build a throwaway prototype to flesh out a design — a runnable terminal app for state/business-logic questions, or several radically different UI variations toggleable from one route.
+description: Use when a throwaway prototype should validate a design, UI variation, state model, workflow, or business-logic question.
 disable-model-invocation: true
 ---
 
 # Prototype
 
+## Overview
+
 A prototype is **throwaway code that answers a question**. The question decides the shape.
 
-## Pick a branch
+## When to Use
 
 Identify which question is being answered — from the user's prompt, the surrounding code, or by asking if the user is around:
 
@@ -26,6 +28,11 @@ The two branches produce very different artifacts — getting this wrong wastes 
 5. **Surface the state.** After every action (logic) or on every variant switch (UI), print or render the full relevant state so the user can see what changed.
 6. **Delete or absorb when done.** When the prototype has answered its question, either delete it or fold the validated decision into the real code — don't leave it rotting in the repo.
 
-## When done
+## Verification
 
 The _answer_ is the only thing worth keeping from a prototype. Capture it somewhere durable (commit message, ADR, issue, or a `NOTES.md` next to the prototype) along with the question it was answering. If the user is around, that capture is a quick conversation; if not, leave the placeholder so they (or you, on the next pass) can fill in the verdict before deleting the prototype.
+
+
+## Common Rationalizations
+
+## Red Flags

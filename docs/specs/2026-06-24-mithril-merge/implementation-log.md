@@ -158,3 +158,28 @@ Start with `task-01-stabilize-shell-assets-attribution`, then continue through t
 - Spec compliance review: PASS; required command and persona surfaces exist and excluded simplicity surfaces are absent.
 - Code quality review: PASS; no implementation diff was introduced in this wave.
 - Final Wave 5 status: `task-06-add-commands-personas` complete.
+
+## 2026-06-25 - Wave 6 Completion
+
+- Task: `task-09-rewrite-docs-router-integration`.
+- Starting status: `pending`.
+- Wave risk preflight:
+  - This wave owns public docs, instruction files, `using-mithril` routing, and copied-skill interoperability.
+  - Security-sensitive: yes, because active router and skill instructions govern future agent behavior.
+  - Integration risk: copied source skills must work together without being rewritten around `skill-design` or `docs/skill-anatomy.md`.
+- Result:
+  - Preserved copied skill bodies and inserted or renamed only the missing validator-required headings.
+  - Updated failing descriptions to include `Use when` triggers without changing the source workflows.
+  - Replaced active source-era `debugging-and-error-recovery` references with `systematic-debugging`.
+  - Renamed TDD flowchart node IDs so validator cross-reference detection no longer treats RED/GREEN/REFACTOR nodes as skill names.
+  - Updated `AGENTS.md`, `skills/using-mithril/SKILL.md`, and the merge design/spec requirements so copied-skill alignment is source-preserving and does not use `skill-design` as the rewrite basis unless explicitly approved.
+- Verification:
+  - `npm run validate:skills`: passed, 46 skills checked with 0 errors and 0 warnings.
+  - `npm run validate:commands`: passed, 12 commands checked with 0 errors.
+  - `npm test`: passed; shell lint reported `No shell files found`.
+  - `git diff --check`: passed.
+  - Product-facing stale-name scan over `README.md`, `AGENTS.md`, `CLAUDE.md`, `GEMINI.md`, active setup docs, and `skills/using-mithril/SKILL.md`: no excluded router, excluded simplicity surface, or upstream simplicity-name matches.
+  - Agent/dot-plugin scan for `skill-design`, `docs/skill-anatomy.md`, and `skill-anatomy`: no matches except the explicit negative guard in `AGENTS.md`.
+- Spec compliance review: PASS; public docs existed, `using-mithril` routes the final selected skill set, and copied skills now validate together without a skill-design-driven rewrite.
+- Code quality review: PASS with note; heading-only validator alignment preserves copied source bodies rather than rewriting each skill.
+- Final Wave 6 status: `task-09-rewrite-docs-router-integration` complete.

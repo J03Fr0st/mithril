@@ -2,7 +2,7 @@
 
 ## Status
 
-pending
+complete
 
 ## Wave
 
@@ -104,12 +104,12 @@ Not applicable.
 
 ## Acceptance Criteria
 
-- [ ] Public docs follow the agent-skills structural baseline.
-- [ ] `AGENTS.md` and `CLAUDE.md` are Mithril-specific and clear about routing boundaries.
-- [ ] `using-mithril` routes the final selected skill set.
-- [ ] Persona and command composition rules are documented.
-- [ ] Excluded routers and excluded simplicity surfaces are not routed.
-- [ ] Host setup docs exist for supported harnesses.
+- [x] Public docs follow the agent-skills structural baseline.
+- [x] `AGENTS.md` and `CLAUDE.md` are Mithril-specific and clear about routing boundaries.
+- [x] `using-mithril` routes the final selected skill set.
+- [x] Persona and command composition rules are documented.
+- [x] Excluded routers and excluded simplicity surfaces are not routed.
+- [x] Host setup docs exist for supported harnesses.
 
 ## Notes
 

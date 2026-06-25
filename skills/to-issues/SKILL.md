@@ -1,16 +1,18 @@
 ---
 name: to-issues
-description: Break a plan, spec, or PRD into independently-grabbable issues on the project issue tracker using tracer-bullet vertical slices.
+description: Use when a plan, spec, or PRD needs to become independently executable project-tracker issues.
 disable-model-invocation: true
 ---
 
 # To Issues
 
+## Overview
+
 Break a plan into independently-grabbable issues using vertical slices (tracer bullets).
 
 The issue tracker and triage label vocabulary should have been provided to you — run `/setup-mithril-project` if not.
 
-## Process
+## When to Use
 
 ### 1. Gather context
 
@@ -82,3 +84,10 @@ Or "None - can start immediately" if no blockers.
 </issue-template>
 
 Do NOT close or modify any parent issue.
+
+
+## Common Rationalizations
+
+## Red Flags
+
+## Verification

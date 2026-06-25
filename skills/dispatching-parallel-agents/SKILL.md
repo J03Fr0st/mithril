@@ -112,7 +112,7 @@ Do NOT just increase timeouts - find the real issue.
 Return: Summary of what you found and what you fixed.
 ```
 
-## Common Mistakes
+## Common Rationalizations
 
 **❌ Too broad:** "Fix all the tests" - agent gets lost
 **✅ Specific:** "Fix agent-tool-abort.test.ts" - focused scope
@@ -183,3 +183,6 @@ From debugging session (2025-10-03):
 - All investigations completed concurrently
 - All fixes integrated successfully
 - Zero conflicts between agent changes
+
+
+## Red Flags

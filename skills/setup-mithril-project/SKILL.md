@@ -1,10 +1,12 @@
 ---
 name: setup-mithril-project
-description: Configure this repo for the engineering skills — set up its issue tracker, triage label vocabulary, and domain doc layout. Run once before first use of the other engineering skills.
+description: Use when configuring a repo for Mithril engineering skills, tracker conventions, triage labels, or domain documentation layout.
 disable-model-invocation: true
 ---
 
 # Setup Matt Pocock's Skills
+
+## Overview
 
 Scaffold the per-repo configuration that the engineering skills assume:
 
@@ -14,7 +16,7 @@ Scaffold the per-repo configuration that the engineering skills assume:
 
 This is a prompt-driven skill, not a deterministic script. Explore, present what you found, confirm with the user, then write.
 
-## Process
+## When to Use
 
 ### 1. Explore
 
@@ -125,3 +127,10 @@ For "other" issue trackers, write `docs/agents/issue-tracker.md` from scratch us
 ### 5. Done
 
 Tell the user the setup is complete and which engineering skills will now read from these files. Mention they can edit `docs/agents/*.md` directly later — re-running this skill is only necessary if they want to switch issue trackers or restart from scratch.
+
+
+## Common Rationalizations
+
+## Red Flags
+
+## Verification

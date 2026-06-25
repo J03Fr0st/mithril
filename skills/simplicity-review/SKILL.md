@@ -1,14 +1,10 @@
 ---
 name: simplicity-review
-description: >
-  Code review focused exclusively on over-engineering. Finds what to delete:
-  reinvented standard library, unneeded dependencies, speculative abstractions,
-  dead flexibility. One line per finding: location, what to cut, what replaces
-  it. Use when the user says "review for over-engineering", "what can we
-  delete", "is this over-engineered", "simplify review", or invokes
-  /simplicity-review. Complements correctness-focused review, this one only
-  hunts complexity.
+description: Use when reviewing a diff for over-engineering, removable code, speculative abstractions, unnecessary dependencies, or simpler stdlib/native replacements.
 ---
+# Simplicity Review
+
+## Overview
 
 Review diffs for unnecessary complexity. One line per finding: location, what
 to cut, what replaces it. The diff's best outcome is getting shorter.
@@ -55,3 +51,12 @@ pass, not this one. A single smoke test or `assert`-based
 self-check is the simplicity minimum, not bloat, never flag it for deletion.
 Does not apply the fixes, only lists them.
 "stop simplicity-review" or "normal mode": revert to verbose review style.
+
+
+## When to Use
+
+## Common Rationalizations
+
+## Red Flags
+
+## Verification

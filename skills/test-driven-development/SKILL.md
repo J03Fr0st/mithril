@@ -49,22 +49,22 @@ Implement fresh from tests. Period.
 ```dot
 digraph tdd_cycle {
     rankdir=LR;
-    red [label="RED\nWrite failing test", shape=box, style=filled, fillcolor="#ffcccc"];
-    verify_red [label="Verify fails\ncorrectly", shape=diamond];
-    green [label="GREEN\nMinimal code", shape=box, style=filled, fillcolor="#ccffcc"];
-    verify_green [label="Verify passes\nAll green", shape=diamond];
-    refactor [label="REFACTOR\nClean up", shape=box, style=filled, fillcolor="#ccccff"];
-    next [label="Next", shape=ellipse];
+    tdd_red [label="RED\nWrite failing test", shape=box, style=filled, fillcolor="#ffcccc"];
+    tdd_verify_red [label="Verify fails\ncorrectly", shape=diamond];
+    tdd_green [label="GREEN\nMinimal code", shape=box, style=filled, fillcolor="#ccffcc"];
+    tdd_verify_green [label="Verify passes\nAll green", shape=diamond];
+    tdd_refactor [label="REFACTOR\nClean up", shape=box, style=filled, fillcolor="#ccccff"];
+    tdd_next [label="Next", shape=ellipse];
 
-    red -> verify_red;
-    verify_red -> green [label="yes"];
-    verify_red -> red [label="wrong\nfailure"];
-    green -> verify_green;
-    verify_green -> refactor [label="yes"];
-    verify_green -> green [label="no"];
-    refactor -> verify_green [label="stay\ngreen"];
-    verify_green -> next;
-    next -> red;
+    tdd_red -> tdd_verify_red;
+    tdd_verify_red -> tdd_green [label="yes"];
+    tdd_verify_red -> tdd_red [label="wrong\nfailure"];
+    tdd_green -> tdd_verify_green;
+    tdd_verify_green -> tdd_refactor [label="yes"];
+    tdd_verify_green -> tdd_green [label="no"];
+    tdd_refactor -> tdd_verify_green [label="stay\ngreen"];
+    tdd_verify_green -> tdd_next;
+    tdd_next -> tdd_red;
 }
 ```
 
@@ -269,7 +269,7 @@ Tests-first force edge case discovery before implementing. Tests-after verify yo
 | "Manual test faster" | Manual doesn't prove edge cases. You'll re-test every change. |
 | "Existing code has no tests" | You're improving it. Add tests for existing code. |
 
-## Red Flags - STOP and Start Over
+## Red Flags
 
 - Code before test
 - Test after implementation
@@ -324,7 +324,7 @@ PASS
 **REFACTOR**
 Extract validation for multiple fields if needed.
 
-## Verification Checklist
+## Verification
 
 Before marking work complete:
 

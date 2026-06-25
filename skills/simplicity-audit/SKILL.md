@@ -1,13 +1,10 @@
 ---
 name: simplicity-audit
-description: >
-  Whole-repo audit for over-engineering. Like simplicity-review, but scans the
-  entire codebase instead of a diff: a ranked list of what to delete, simplify,
-  or replace with stdlib/native equivalents. Use when the user says "audit this
-  codebase", "audit for over-engineering", "what can I delete from this repo",
-  "find bloat", "simplicity-audit", or "/simplicity-audit". One-shot report, does
-  not apply fixes.
+description: Use when auditing a whole codebase for over-engineering, bloat, unnecessary dependencies, speculative abstractions, or code that can be deleted.
 ---
+# Simplicity Audit
+
+## Overview
 
 simplicity-review, repo-wide. Scan the whole tree instead of a diff. Rank
 findings biggest cut first.
@@ -39,3 +36,12 @@ Scope: over-engineering and complexity only. Correctness bugs, security holes,
 and performance are explicitly out of scope. Route them to a normal review
 pass. Lists findings, applies nothing. One-shot.
 "stop simplicity-audit" or "normal mode" to revert.
+
+
+## When to Use
+
+## Common Rationalizations
+
+## Red Flags
+
+## Verification

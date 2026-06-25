@@ -190,7 +190,7 @@ git worktree prune  # Self-healing: clean up any stale registrations
 | 3. Keep as-is | - | - | yes | - |
 | 4. Discard | - | - | - | yes (force) |
 
-## Common Mistakes
+## Common Rationalizations
 
 **Skipping test verification**
 - **Problem:** Merge broken code, create failing PR
@@ -239,3 +239,8 @@ git worktree prune  # Self-healing: clean up any stale registrations
 - Clean up worktree for Options 1 & 4 only
 - `cd` to main repo root before worktree removal
 - Run `git worktree prune` after removal
+
+
+## When to Use
+
+## Verification

@@ -2,6 +2,9 @@
 name: resolving-merge-conflicts
 description: "Use when you need to resolve an in-progress git merge/rebase conflict."
 ---
+# Resolving Merge Conflicts
+
+## Overview
 
 1. **See the current state** of the merge/rebase. Check git history, and the conflicting files.
 
@@ -12,3 +15,12 @@ description: "Use when you need to resolve an in-progress git merge/rebase confl
 4. Discover the project's **automated checks** and run them — typically typecheck, then tests, then format. Fix anything the merge broke.
 
 5. **Finish the merge/rebase.** Stage everything and commit. If rebasing, continue the rebase process until all commits are rebased.
+
+
+## When to Use
+
+## Common Rationalizations
+
+## Red Flags
+
+## Verification

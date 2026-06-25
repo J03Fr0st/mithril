@@ -68,3 +68,12 @@ After all tasks complete and verified:
 - **mithril:using-git-worktrees** - Ensures isolated workspace (creates one or verifies existing)
 - **mithril:writing-plans** - Creates the plan this skill executes
 - **mithril:finishing-a-development-branch** - Complete development after all tasks
+
+
+## When to Use
+
+## Common Rationalizations
+
+## Red Flags
+
+## Verification

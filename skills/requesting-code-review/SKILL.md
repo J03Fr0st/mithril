@@ -5,11 +5,13 @@ description: Use when completing tasks, implementing major features, or before m
 
 # Requesting Code Review
 
+## Overview
+
 Dispatch a code reviewer subagent to catch issues before they cascade. The reviewer gets precisely crafted context for evaluation — never your session's history. This keeps the reviewer focused on the work product, not your thought process, and preserves your own context for continued work.
 
 **Core principle:** Review early, review often.
 
-## When to Request Review
+## When to Use
 
 **Mandatory:**
 - After each task in subagent-driven development
@@ -101,3 +103,8 @@ You: [Fix progress indicators]
 - Request clarification
 
 See template at: [code-reviewer.md](code-reviewer.md)
+
+
+## Common Rationalizations
+
+## Verification

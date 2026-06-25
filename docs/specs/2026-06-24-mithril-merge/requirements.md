@@ -31,7 +31,7 @@ The merge must be selective and source-first. Mithril keeps one router, `using-m
 - [ ] `using-mithril` is the only active router.
 - [ ] Selected Superpowers, agent-skills, Matt, and simplicity-source skills are copied from source before rewrite.
 - [ ] Source-copied skills receive only required Mithril renaming before the source-baseline commit.
-- [ ] Final Mithril-owned skills follow Mithril's own `skill-design` guidance and validators or document an exception after the later rewrite pass.
+- [ ] Final Mithril-owned copied skills preserve source structure and satisfy validators, with documented exceptions where needed; do not use `skill-design` or `docs/skill-anatomy.md` as the rewrite basis unless explicitly approved.
 - [ ] Selected Superpowers, agent-skills, Matt, and simplicity-source material is renamed where product-facing and attribution is preserved.
 - [ ] `simplicity-review` and `simplicity-audit` exist, while `simplicity-debt`, `simplicity-gain`, and `simplicity-help` do not.
 - [ ] Public docs, `AGENTS.md`, and `CLAUDE.md` follow the agent-skills structural baseline with Mithril-specific lifecycle and boundaries.
@@ -51,7 +51,7 @@ The merge must be selective and source-first. Mithril keeps one router, `using-m
 
 - Use `skills/<skill-name>/SKILL.md` for Mithril-owned skills.
 - Rebrand internal references from Superpowers to Mithril: `docs/superpowers` to `docs/mithril`, `.superpowers` to `.mithril`, `superpowers:*` to `mithril:*`, and `SUPERPOWERS_*` to `MITHRIL_*`.
-- Do not rewrite copied skills into a new structure during the source-baseline commit. Use Mithril's own `skill-design` guidance and validators during the later combined rewrite pass.
+- Do not rewrite copied skills into a new structure during the source-baseline commit. During the later alignment pass, make minimal source-preserving naming, routing, and validator fixes unless the user explicitly approves a redesign.
 - Keep skills, commands, personas, references, and human docs as separate layers.
 - Personas do not invoke other personas; commands or the main agent orchestrate fan-out and merge reports.
 - Validation should be available through package scripts once the validation harness is added.

@@ -44,7 +44,7 @@ A **skill** is a reference guide for proven techniques, patterns, or tools. Skil
 
 The entire skill creation process follows RED-GREEN-REFACTOR.
 
-## When to Create a Skill
+## When to Use
 
 **Create when:**
 - Technique wasn't intuitively obvious to you
@@ -441,7 +441,7 @@ Different skill types need different test approaches:
 
 **Success criteria:** Agent finds and correctly applies reference information
 
-## Common Rationalizations for Skipping Testing
+## Common Rationalizations
 
 | Excuse | Reality |
 |--------|---------|
@@ -590,7 +590,7 @@ Micro-tests verify wording; they do not replace pressure scenarios for disciplin
 - Plugging holes systematically
 - Meta-testing techniques
 
-## Anti-Patterns
+## Red Flags
 
 ### ❌ Narrative Example
 "In session 2025-10-03, we found empty projectDir caused..."
@@ -624,7 +624,7 @@ helper1, helper2, step3, pattern4
 
 Deploying untested skills = deploying untested code. It's a violation of quality standards.
 
-## Skill Creation Checklist (TDD Adapted)
+## Verification
 
 **IMPORTANT: Create a todo for EACH checklist item below.**
 

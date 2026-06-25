@@ -81,7 +81,7 @@ graph TD
 - [x] [task-06-add-commands-personas](./tasks/task-06-add-commands-personas.md) - Add commands, personas, and orchestration boundaries
 
 ### Wave 6
-- [ ] [task-09-rewrite-docs-router-integration](./tasks/task-09-rewrite-docs-router-integration.md) - Rewrite public docs, instruction files, and `using-mithril` routing
+- [x] [task-09-rewrite-docs-router-integration](./tasks/task-09-rewrite-docs-router-integration.md) - Rewrite public docs, instruction files, and `using-mithril` routing
 
 ### Wave 7
 - [ ] [task-10-final-consistency-release](./tasks/task-10-final-consistency-release.md) - Final validation, stale-name search, packaging, and release notes

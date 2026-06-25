@@ -156,7 +156,7 @@ Ready to implement <feature-name>
 | Tests fail during baseline | Report failures + ask |
 | No package.json/Cargo.toml | Skip dependency install |
 
-## Common Mistakes
+## Common Rationalizations
 
 ### Fighting the harness
 
@@ -200,3 +200,8 @@ Ready to implement <feature-name>
 - Verify directory is ignored for project-local
 - Auto-detect and run project setup
 - Verify clean test baseline
+
+
+## When to Use
+
+## Verification
