@@ -131,8 +131,7 @@
           "skills/systematic-debugging/SKILL.md",
           "skills/code-review-and-quality/SKILL.md",
           "skills/skill-design/SKILL.md",
-          "skills/implementation-standards/SKILL.md",
-          "docs/skill-anatomy.md"
+          "skills/implementation-standards/SKILL.md"
         ],
         "modify": [
           "skills/using-mithril/SKILL.md"

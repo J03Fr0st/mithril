@@ -17,7 +17,7 @@ Add the selected agent-skills specialist layer and reference checklists by copyi
 **Depends on:** task-02-add-validation-harness.md, task-04-merge-canonical-disciplines.md
 **Blocks:** task-06-add-commands-personas.md, task-09-rewrite-docs-router-integration.md
 
-**Context from dependencies:** Task 02 provides validators. Task 04 creates `docs/skill-anatomy.md` and canonical discipline skills that these specialists should reference instead of duplicating.
+**Context from dependencies:** Task 02 provides validators. Task 04 creates copied-and-renamed canonical discipline source material that these specialists should reference instead of duplicating.
 
 ## Files to Create
 

@@ -64,8 +64,8 @@ Personas may inspect evidence and return reports. They must not edit files, stag
 ## Repository Conventions
 
 - Skills live at `skills/<name>/SKILL.md` with `name` and `description` frontmatter.
-- New and edited skills follow [docs/skill-anatomy.md](docs/skill-anatomy.md).
-- Skill-writing work routes through `skill-design`; use official Agent Skills compatibility as the format baseline, pressure scenarios as behavioral proof, and Skillgrade-style evals when repeated regression coverage is worth the cost.
+- Skill-writing work routes through `skill-design`; for source-copy work, preserve source structure and apply only required Mithril renaming before the baseline commit.
+- Later skill rewrites use Mithril's own `skill-design` guidance, official Agent Skills compatibility as a compatibility check, pressure scenarios as behavioral proof, and Skillgrade-style evals when repeated regression coverage is worth the cost.
 - Commands live in `commands/*.toml` with `description` and `prompt`.
 - Personas live in `agents/*.md` and end with a composition boundary.
 - References live in `references/`; keep heavy checklists out of the router.

@@ -54,8 +54,8 @@ Copy the Superpowers core workflow skills into Mithril as the runtime and autono
    - subagent-driven task execution where appropriate
    - review gates
    - verification before completion claims
-5. Keep the source skill structure intact for this commit. Do not rewrite headings, merge loops, or force `docs/skill-anatomy.md` structure in this task.
-6. Commit the copied-and-renamed Superpowers baseline before any later synthesis or anatomy rewrite.
+5. Keep the source skill structure intact for this commit. Do not rewrite headings, merge loops, or force a new Mithril structure in this task.
+6. Commit the copied-and-renamed Superpowers baseline before any later synthesis or behavioral rewrite.
 
 ### Code Snippets
 

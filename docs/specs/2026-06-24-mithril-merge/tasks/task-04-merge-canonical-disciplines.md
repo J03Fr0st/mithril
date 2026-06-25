@@ -26,7 +26,6 @@ Copy and rename the source material for the canonical Mithril discipline skills 
 - `skills/code-review-and-quality/SKILL.md`
 - `skills/skill-design/SKILL.md`
 - `skills/implementation-standards/SKILL.md`
-- `docs/skill-anatomy.md`
 
 ## Files to Modify
 
@@ -36,7 +35,7 @@ Copy and rename the source material for the canonical Mithril discipline skills 
 
 ### Implementation Steps
 
-1. Create or copy `docs/skill-anatomy.md` only as reference material for the later rewrite pass; do not force current copied skills into that structure.
+1. Do not use `docs/skill-anatomy.md` as a renaming or refactoring basis. Preserve source structure during the copy-and-rename baseline.
 2. Copy source material for `test-driven-development` from:
    - Superpowers strict RED-GREEN-REFACTOR and no production code before failing test.
    - Matt public-interface tests, vertical tracer bullets, and `CONTEXT.md` vocabulary guidance.
@@ -52,7 +51,7 @@ Copy and rename the source material for the canonical Mithril discipline skills 
 5. Copy source material for `skill-design` from:
    - Superpowers writing-skills.
    - Matt writing-great-skills.
-   - `docs/skill-anatomy.md` and validation expectations.
+   - validation expectations and practical authoring guidance.
 6. Copy or draft the initial `implementation-standards` source baseline from the approved Code Shape Governance section without merging it into other skills yet.
 7. Apply only required Mithril naming and destination renames.
 8. Commit the copied-and-renamed collision-source baseline before the later synthesis pass creates single canonical Mithril-owned workflows.
@@ -81,7 +80,7 @@ Not applicable.
 
 ### RED
 
-- Command: `Test-Path skills/test-driven-development/SKILL.md; Test-Path docs/skill-anatomy.md`
+- Command: `Test-Path skills/test-driven-development/SKILL.md; Test-Path skills/skill-design/SKILL.md`
 - Expected: At least one canonical discipline file is missing before this task.
 
 ### GREEN

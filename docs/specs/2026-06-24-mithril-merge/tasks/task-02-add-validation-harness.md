@@ -21,7 +21,7 @@ Add validation early so later import tasks can verify their work. The approved d
 
 ## Files to Create
 
-- `scripts/validate-skills.js` - validates Mithril-owned `skills/*/SKILL.md` frontmatter and `skill-anatomy.md` expectations.
+- `scripts/validate-skills.js` - validates Mithril-owned `skills/*/SKILL.md` frontmatter and Mithril skill-design expectations.
 - `scripts/validate-commands.js` - validates command files once `commands/` exists.
 - `tests/README.md` - documents available local checks and which source repo each came from.
 

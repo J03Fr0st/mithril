@@ -17,7 +17,7 @@ Add the selected Matt Pocock alignment, domain, issue, and architecture skills b
 **Depends on:** task-02-add-validation-harness.md, task-04-merge-canonical-disciplines.md
 **Blocks:** task-09-rewrite-docs-router-integration.md
 
-**Context from dependencies:** Task 02 provides validators. Task 04 creates `docs/skill-anatomy.md` and canonical discipline skills that Matt-derived skills should reference.
+**Context from dependencies:** Task 02 provides validators. Task 04 creates copied-and-renamed canonical discipline source material that Matt-derived skills should reference.
 
 ## Files to Create
 
@@ -50,7 +50,7 @@ None. Router integration happens in task 09.
    - `skills/in-progress/*`
    - `skills/personal/*`
 3. Rename `setup-matt-pocock-skills` to `setup-mithril-project`.
-4. Preserve source structure in copied skills. Do not rewrite into `docs/skill-anatomy.md` during this task.
+4. Preserve source structure in copied skills. Do not rewrite into a new Mithril structure during this task.
 5. Preserve the strongest Matt patterns:
    - `grill-me` for requirement interrogation.
    - `grill-with-docs` for stress-testing plans against `CONTEXT.md` and ADRs.

@@ -135,11 +135,11 @@ Combine:
 
 - Superpowers `writing-skills`.
 - Matt `writing-great-skills`.
-- agent-skills `docs/skill-anatomy.md` and validator expectations.
+- agent-skills validator expectations and practical authoring guidance.
 
 Source-first rule: every selected upstream skill should first be copied from its source repository and renamed into its Mithril destination. During this phase, do not rewrite the body into a new skill structure, do not merge competing loops, and do not normalize headings. Only apply required product naming changes such as `Superpowers` to `Mithril`, `superpowers:*` to `mithril:*`, `.superpowers` to `.mithril`, `SUPERPOWERS_*` to `MITHRIL_*`, and source-specific setup-skill renames.
 
-That copied-and-renamed baseline must be committed before the synthesis pass. The later rewrite pass can then merge duplicate behavior and move the final Mithril-owned skill set toward a consistent anatomy, but the rewrite should happen across the whole selected set with source text still visible in git history. The final Mithril version should have:
+That copied-and-renamed baseline must be committed before the synthesis pass. The later rewrite pass can then merge duplicate behavior and move the final Mithril-owned skill set toward a consistent Mithril style, but the rewrite should happen across the whole selected set with source text still visible in git history. The final Mithril version should have:
 
 - Required YAML frontmatter with `name` and `description`.
 - A clear overview and when-to-use section.
@@ -243,7 +243,7 @@ Rules to carry forward:
 - The user or command orchestrates composition; personas do not invoke other personas.
 - Parallel fan-out is allowed only for independent review perspectives with a merge step.
 - Docs meant for humans stay in `docs/`; agent-loaded guidance stays in `AGENTS.md`, `CLAUDE.md`, skills, personas, commands, or references.
-- Skill authoring and validation eventually follow `docs/skill-anatomy.md`, after the selected source skills have first landed as copied-and-renamed source material.
+- Skill authoring and validation eventually follow Mithril's own `skill-design` guidance and validators, after the selected source skills have first landed as copied-and-renamed source material.
 
 ### 6. Mithril Simplicity Layer
 
@@ -323,14 +323,14 @@ Minimum validation:
 - Port agent-skills `scripts/validate-commands.js` once commands are added.
 - Port Superpowers plugin/runtime tests before deeper behavior edits.
 - Port the upstream simplicity source's Node test suite if its hooks/commands are imported.
-- Add a `skill-anatomy.md` conformance check only after the copied-and-renamed source baseline has been committed and the combined rewrite pass begins.
+- Add skill validation checks only after the copied-and-renamed source baseline has been committed and the combined rewrite pass begins.
 - Add a workflow that runs skill validation, command validation, manifest validation, formatter/linter/type checks where available, and selected shell/runtime tests.
 - Document each target repo's formatter, linter, typecheck, and focused-test commands so `implementation-standards`, TDD, and review use the same evidence.
 
 Verification gates before a merge is complete:
 
 - Skill validator passes.
-- The source-copy baseline is committed before anatomy rewrites. Final adapted skills follow `skill-anatomy.md` or document an exception.
+- The source-copy baseline is committed before behavioral rewrites. Final adapted skills follow Mithril's own `skill-design` guidance and validators or document an exception.
 - Command validator passes.
 - Formatter, linter, typecheck, and focused-test commands are documented or explicitly marked unavailable.
 - Superpowers brainstorm-server tests pass after Mithril rebrand.
