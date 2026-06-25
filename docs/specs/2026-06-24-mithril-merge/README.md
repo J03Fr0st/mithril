@@ -73,9 +73,9 @@ graph TD
 - [x] [task-04-merge-canonical-disciplines](./tasks/task-04-merge-canonical-disciplines.md) - Copy and rename TDD, debugging, review, skill-design, and implementation standards source material
 
 ### Wave 4
-- [ ] [task-05-add-agent-specialists-references](./tasks/task-05-add-agent-specialists-references.md) - Copy and rename selected agent-skills specialists and references
-- [ ] [task-07-add-matt-alignment-domain](./tasks/task-07-add-matt-alignment-domain.md) - Copy and rename selected Matt alignment, domain, issue, and architecture skills
-- [ ] [task-08-add-simplicity-layer](./tasks/task-08-add-simplicity-layer.md) - Copy and rename Mithril Simplicity Layer skills and commands
+- [x] [task-05-add-agent-specialists-references](./tasks/task-05-add-agent-specialists-references.md) - Copy and rename selected agent-skills specialists and references
+- [x] [task-07-add-matt-alignment-domain](./tasks/task-07-add-matt-alignment-domain.md) - Copy and rename selected Matt alignment, domain, issue, and architecture skills
+- [x] [task-08-add-simplicity-layer](./tasks/task-08-add-simplicity-layer.md) - Copy and rename Mithril Simplicity Layer skills and commands
 
 ### Wave 5
 - [ ] [task-06-add-commands-personas](./tasks/task-06-add-commands-personas.md) - Add commands, personas, and orchestration boundaries

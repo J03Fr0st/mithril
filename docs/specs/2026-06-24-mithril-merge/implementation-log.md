@@ -109,3 +109,33 @@ Start with `task-01-stabilize-shell-assets-attribution`, then continue through t
 - Spec compliance review: PASS; selected source material exists under canonical Mithril destinations and duplicate source behavior is preserved for later synthesis.
 - Code quality review: PASS with documented concern; validator failures are deferred by design until the combined rewrite pass.
 - Final Wave 3 status: `task-04-merge-canonical-disciplines` complete.
+
+## 2026-06-25 - Wave 4 Completion
+
+- Tasks: `task-05-add-agent-specialists-references`, `task-07-add-matt-alignment-domain`, `task-08-add-simplicity-layer`.
+- Starting statuses: all `pending`.
+- Wave risk preflight:
+  - `task-05` owns copied agent-skills specialist skills and selected references.
+  - `task-07` owns copied Matt alignment, domain, issue, triage, handoff, architecture, and setup skills.
+  - `task-08` owns copied simplicity-layer skills only; canonical TDD/review/implementation integration remains deferred to the later rewrite.
+  - Security-sensitive: yes, because copied specialist and setup guidance affects security, external issue workflows, browser testing, and future agent behavior.
+  - Integration risk: copied source structures intentionally precede later Mithril synthesis, so `validate:skills` failures remain expected until the rewrite pass.
+- Result:
+  - Copied 14 selected agent-skills specialist skill directories and six selected reference checklists.
+  - Copied 13 selected Matt-derived skill directories, renaming `setup-matt-pocock-skills` to `setup-mithril-project`.
+  - Copied `ponytail`, `ponytail-review`, and `ponytail-audit` into `simplicity`, `simplicity-review`, and `simplicity-audit`.
+  - Excluded upstream routers, Matt deprecated/in-progress/personal directories, and simplicity debt/gain/help surfaces.
+  - Applied required Mithril naming for active upstream router/setup/simplicity names.
+- Verification:
+  - `Test-Path skills/security-and-hardening/SKILL.md; Test-Path references/security-checklist.md`: both returned `True`.
+  - `Test-Path skills/domain-modeling/SKILL.md; Test-Path skills/setup-mithril-project/SKILL.md`: both returned `True`.
+  - `Test-Path skills/simplicity/SKILL.md; Test-Path skills/simplicity-review/SKILL.md; Test-Path skills/simplicity-audit/SKILL.md`: all returned `True`.
+  - `rg -n "using-agent-skills|agent-skills" skills references`: no matches.
+  - `Test-Path skills/ask-matt; Test-Path skills/setup-matt-pocock-skills; Test-Path skills/deprecated; Test-Path skills/in-progress; Test-Path skills/personal`: all returned `False`.
+  - `rg -n "ask-matt|setup-matt-pocock-skills" skills`: no matches.
+  - `Test-Path skills/simplicity-debt; Test-Path skills/simplicity-gain; Test-Path skills/simplicity-help`: all returned `False`.
+  - `rg -n "ponytail|PONYTAIL|simplicity-debt|simplicity-gain|simplicity-help" skills/simplicity skills/simplicity-review skills/simplicity-audit`: no matches.
+  - `npm run validate:skills`: failed with 136 errors and 5 warnings, limited to preserved source structure and known future-skill cross-references. This is the expected documented validator gap for the source-copy baseline.
+- Spec compliance review: PASS; selected source material exists and excluded surfaces were not imported.
+- Code quality review: PASS with documented concern; validator failures are deferred by design until the combined rewrite pass.
+- Final Wave 4 statuses: `task-05-add-agent-specialists-references` complete; `task-07-add-matt-alignment-domain` complete; `task-08-add-simplicity-layer` complete.

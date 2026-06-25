@@ -2,7 +2,7 @@
 
 ## Status
 
-pending
+complete
 
 ## Wave
 
@@ -25,15 +25,29 @@ Add the selected Matt Pocock alignment, domain, issue, and architecture skills b
 - `skills/grill-with-docs/SKILL.md`
 - `skills/grilling/SKILL.md`
 - `skills/domain-modeling/SKILL.md`
+- `skills/domain-modeling/ADR-FORMAT.md`
+- `skills/domain-modeling/CONTEXT-FORMAT.md`
 - `skills/codebase-design/SKILL.md`
+- `skills/codebase-design/DEEPENING.md`
+- `skills/codebase-design/DESIGN-IT-TWICE.md`
 - `skills/prototype/SKILL.md`
+- `skills/prototype/LOGIC.md`
+- `skills/prototype/UI.md`
 - `skills/to-prd/SKILL.md`
 - `skills/to-issues/SKILL.md`
 - `skills/triage/SKILL.md`
+- `skills/triage/AGENT-BRIEF.md`
+- `skills/triage/OUT-OF-SCOPE.md`
 - `skills/handoff/SKILL.md`
 - `skills/improve-codebase-architecture/SKILL.md`
+- `skills/improve-codebase-architecture/HTML-REPORT.md`
 - `skills/resolving-merge-conflicts/SKILL.md`
 - `skills/setup-mithril-project/SKILL.md`
+- `skills/setup-mithril-project/domain.md`
+- `skills/setup-mithril-project/issue-tracker-github.md`
+- `skills/setup-mithril-project/issue-tracker-gitlab.md`
+- `skills/setup-mithril-project/issue-tracker-local.md`
+- `skills/setup-mithril-project/triage-labels.md`
 
 ## Files to Modify
 
@@ -92,8 +106,11 @@ Not applicable.
 
 ### Final Verification
 
-- Command: `rg -n "ask-matt|setup-matt-pocock-skills|deprecated|in-progress|personal" skills`
-- Expected: No excluded Matt surfaces are imported or routed.
+- Command: `Test-Path skills/ask-matt; Test-Path skills/setup-matt-pocock-skills; Test-Path skills/deprecated; Test-Path skills/in-progress; Test-Path skills/personal`
+- Expected: All checks return `False`.
+
+- Command: `rg -n "ask-matt|setup-matt-pocock-skills" skills`
+- Expected: No excluded Matt router or setup names remain.
 
 ## Acceptance Criteria
 

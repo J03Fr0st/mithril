@@ -191,7 +191,7 @@
       "title": "Copy and Rename agent-skills Specialists and References",
       "file": "tasks/task-05-add-agent-specialists-references.md",
       "wave": 4,
-      "status": "pending",
+      "status": "complete",
       "dependsOn": [
         "task-02-add-validation-harness",
         "task-04-merge-canonical-disciplines"
@@ -275,7 +275,7 @@
       "title": "Copy and Rename Matt Alignment and Domain Layer",
       "file": "tasks/task-07-add-matt-alignment-domain.md",
       "wave": 4,
-      "status": "pending",
+      "status": "complete",
       "dependsOn": [
         "task-02-add-validation-harness",
         "task-04-merge-canonical-disciplines"
@@ -289,21 +289,36 @@
           "skills/grill-with-docs/SKILL.md",
           "skills/grilling/SKILL.md",
           "skills/domain-modeling/SKILL.md",
+          "skills/domain-modeling/ADR-FORMAT.md",
+          "skills/domain-modeling/CONTEXT-FORMAT.md",
           "skills/codebase-design/SKILL.md",
+          "skills/codebase-design/DEEPENING.md",
+          "skills/codebase-design/DESIGN-IT-TWICE.md",
           "skills/prototype/SKILL.md",
+          "skills/prototype/LOGIC.md",
+          "skills/prototype/UI.md",
           "skills/to-prd/SKILL.md",
           "skills/to-issues/SKILL.md",
           "skills/triage/SKILL.md",
+          "skills/triage/AGENT-BRIEF.md",
+          "skills/triage/OUT-OF-SCOPE.md",
           "skills/handoff/SKILL.md",
           "skills/improve-codebase-architecture/SKILL.md",
+          "skills/improve-codebase-architecture/HTML-REPORT.md",
           "skills/resolving-merge-conflicts/SKILL.md",
-          "skills/setup-mithril-project/SKILL.md"
+          "skills/setup-mithril-project/SKILL.md",
+          "skills/setup-mithril-project/domain.md",
+          "skills/setup-mithril-project/issue-tracker-github.md",
+          "skills/setup-mithril-project/issue-tracker-gitlab.md",
+          "skills/setup-mithril-project/issue-tracker-local.md",
+          "skills/setup-mithril-project/triage-labels.md"
         ],
         "modify": []
       },
       "verificationCommands": [
         "npm run validate:skills",
-        "rg -n \"setup-matt-pocock-skills|ask-matt|deprecated|in-progress|personal\" skills"
+        "Test-Path skills/ask-matt; Test-Path skills/setup-matt-pocock-skills; Test-Path skills/deprecated; Test-Path skills/in-progress; Test-Path skills/personal",
+        "rg -n \"ask-matt|setup-matt-pocock-skills\" skills"
       ]
     },
     {
@@ -311,7 +326,7 @@
       "title": "Copy and Rename Mithril Simplicity Layer",
       "file": "tasks/task-08-add-simplicity-layer.md",
       "wave": 4,
-      "status": "pending",
+      "status": "complete",
       "dependsOn": [
         "task-02-add-validation-harness",
         "task-04-merge-canonical-disciplines"
@@ -326,11 +341,7 @@
           "skills/simplicity-review/SKILL.md",
           "skills/simplicity-audit/SKILL.md"
         ],
-        "modify": [
-          "skills/test-driven-development/SKILL.md",
-          "skills/code-review-and-quality/SKILL.md",
-          "skills/implementation-standards/SKILL.md"
-        ]
+        "modify": []
       },
       "verificationCommands": [
         "npm run validate:skills",

@@ -2,7 +2,7 @@
 
 ## Status
 
-pending
+complete
 
 ## Wave
 
@@ -27,9 +27,7 @@ Add the Mithril Simplicity Layer as a native anti-bloat discipline by copying se
 
 ## Files to Modify
 
-- `skills/test-driven-development/SKILL.md` - include "minimum code that passes" without weakening RED-GREEN-REFACTOR.
-- `skills/code-review-and-quality/SKILL.md` - include simplicity review as a complexity lens.
-- `skills/implementation-standards/SKILL.md` - include the simplicity ladder in pre-implementation code-shape checks.
+None during the source-copy baseline. Integration into TDD, review, and implementation standards is deferred to the later combined rewrite pass.
 
 ## Technical Details
 

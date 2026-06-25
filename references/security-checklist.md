@@ -1,72 +1,179 @@
 # Security Checklist
 
-Quick reference for web and AI-assisted application security. Use with the `security-and-hardening` skill.
+Quick reference for web application security. Use alongside the `security-and-hardening` skill.
 
-## Threat Modeling
+## Table of Contents
 
-- [ ] Trust boundaries mapped: requests, forms, uploads, webhooks, queues, third-party APIs, browser content, model output.
-- [ ] Assets named: credentials, PII, payment data, tenant data, admin actions, money movement, availability.
-- [ ] STRIDE considered for each boundary: spoofing, tampering, repudiation, information disclosure, denial of service, elevation of privilege.
-- [ ] Abuse cases written beside use cases.
+- [Threat Modeling (Start Here)](#threat-modeling-start-here)
+- [Pre-Commit Checks](#pre-commit-checks)
+- [Authentication](#authentication)
+- [Authorization](#authorization)
+- [Input Validation](#input-validation)
+- [Security Headers](#security-headers)
+- [CORS Configuration](#cors-configuration)
+- [Data Protection](#data-protection)
+- [Dependency Security](#dependency-security)
+- [AI / LLM Security](#ai--llm-security)
+- [Error Handling](#error-handling)
+- [OWASP Top 10 Quick Reference](#owasp-top-10-quick-reference)
+- [OWASP Top 10 for LLMs Quick Reference](#owasp-top-10-for-llms-quick-reference)
 
-## Authentication and Authorization
+## Threat Modeling (Start Here)
 
-- [ ] Passwords use bcrypt, scrypt, or argon2 with current parameters.
-- [ ] Sessions use httpOnly, secure, sameSite cookies.
-- [ ] Login, password reset, and MFA flows have rate limits and expiry.
-- [ ] Every protected endpoint checks authentication.
-- [ ] Every resource action checks ownership, role, tenant, or policy.
-- [ ] Admin actions require explicit admin authorization.
-- [ ] JWTs or API keys validate signature, expiry, issuer, and scope.
+Before reaching for controls, spend five minutes thinking like an attacker:
 
-## Input, Output, and Data
+- [ ] Trust boundaries mapped (requests, uploads, webhooks, third-party APIs, LLM output)
+- [ ] Assets named (credentials, PII, payment data, admin actions, money movement)
+- [ ] STRIDE run per boundary (Spoofing, Tampering, Repudiation, Info disclosure, DoS, Elevation)
+- [ ] Abuse cases written next to use cases ("how would I misuse this?")
 
-- [ ] All external input is parsed and allowlist-validated at the boundary.
-- [ ] String lengths, numeric ranges, enum values, URLs, dates, and file sizes are bounded.
-- [ ] Database queries are parameterized; no string concatenation with untrusted input.
-- [ ] HTML output is encoded or sanitized before reaching raw HTML sinks.
-- [ ] Redirect targets are allowlisted.
-- [ ] Server-side URL fetches are allowlisted and block private or reserved IPs.
-- [ ] File uploads check size, type, and content where risk warrants it.
-- [ ] Sensitive fields are excluded from API responses.
-- [ ] PII and regulated data are encrypted when required.
+## Pre-Commit Checks
 
-## Secrets and Errors
+- [ ] No secrets in code (`git diff --cached | grep -i "password\|secret\|api_key\|token"`)
+- [ ] `.gitignore` covers: `.env`, `.env.local`, `*.pem`, `*.key`
+- [ ] `.env.example` uses placeholder values (not real secrets)
 
-- [ ] No secrets, tokens, keys, passwords, or certificates are in source or staged diffs.
-- [ ] Secret-bearing files are ignored by VCS.
-- [ ] Secrets are stored in a vault, platform secret store, or environment injection.
-- [ ] Logs, telemetry, prompts, screenshots, and errors do not include secrets or unredacted PII.
-- [ ] User-facing errors are generic; internal stack traces stay server-side.
-- [ ] Committed secrets are rotated before cleanup is considered complete.
+## Authentication
 
-## Headers, CORS, and Browser Hardening
+- [ ] Passwords hashed with bcrypt (≥12 rounds), scrypt, or argon2
+- [ ] Session cookies: `httpOnly`, `secure`, `sameSite: 'lax'`
+- [ ] Session expiration configured (reasonable max-age)
+- [ ] Rate limiting on login endpoint (≤10 attempts per 15 minutes)
+- [ ] Password reset tokens: time-limited (≤1 hour), single-use
+- [ ] Account lockout after repeated failures (optional, with notification)
+- [ ] MFA supported for sensitive operations (optional but recommended)
 
-- [ ] CSP is configured and as restrictive as practical.
-- [ ] HSTS is enabled for HTTPS deployments.
-- [ ] `X-Content-Type-Options: nosniff` is present.
-- [ ] Framing policy prevents clickjacking where embedding is not required.
-- [ ] Referrer and Permissions policies are explicit.
-- [ ] CORS is restricted to known origins and methods; wildcard is not used with credentials.
+## Authorization
 
-## Dependencies and Supply Chain
+- [ ] Every protected endpoint checks authentication
+- [ ] Every resource access checks ownership/role (prevents IDOR)
+- [ ] Admin endpoints require admin role verification
+- [ ] API keys scoped to minimum necessary permissions
+- [ ] JWT tokens validated (signature, expiration, issuer)
 
-- [ ] Lockfile is committed and CI uses reproducible install.
-- [ ] New dependencies are reviewed for maintenance, license, size, typosquat risk, and install scripts.
-- [ ] Known critical or high vulnerabilities are fixed or explicitly risk-accepted with a review date.
-- [ ] Runtime dependencies are distinguished from dev-only dependencies.
+## Input Validation
 
-## AI and Model Features
+- [ ] All user input validated at system boundaries (API routes, form handlers)
+- [ ] Validation uses allowlists (not denylists)
+- [ ] String lengths constrained (min/max)
+- [ ] Numeric ranges validated
+- [ ] Email, URL, and date formats validated with proper libraries
+- [ ] File uploads: type restricted, size limited, content verified
+- [ ] SQL queries parameterized (no string concatenation)
+- [ ] HTML output encoded (use framework auto-escaping)
+- [ ] URLs validated before redirect (prevent open redirect)
+- [ ] Server-side URL fetches allowlisted; private/reserved IPs blocked (prevent SSRF)
 
-- [ ] Model output is treated as untrusted before use in SQL, shell, HTML, file paths, or tool calls.
-- [ ] Prompt injection is assumed; permissions are enforced in code.
-- [ ] Secrets, system prompts, and cross-tenant data are kept out of model context.
-- [ ] Tool permissions are least-privilege; destructive or irreversible actions require confirmation.
-- [ ] Token, request-rate, recursion, and loop limits prevent unbounded consumption.
-- [ ] Retrieval data is partitioned by tenant and validated before indexing.
+## Security Headers
 
-## Verification
+```
+Content-Security-Policy: default-src 'self'; script-src 'self'
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+X-Content-Type-Options: nosniff
+X-Frame-Options: DENY
+X-XSS-Protection: 0  (disabled, rely on CSP)
+Referrer-Policy: strict-origin-when-cross-origin
+Permissions-Policy: camera=(), microphone=(), geolocation=()
+```
 
-- [ ] Abuse-case tests cover the risky paths.
-- [ ] Security-relevant checks were run or the skipped reason is reported.
-- [ ] Review found no unresolved critical trust-boundary, auth, secret, or injection issue.
+## CORS Configuration
+
+```typescript
+// Restrictive (recommended)
+cors({
+  origin: ['https://yourdomain.com', 'https://app.yourdomain.com'],
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+})
+
+// NEVER use in production:
+cors({ origin: '*' })  // Allows any origin
+```
+
+## Data Protection
+
+- [ ] Sensitive fields excluded from API responses (`passwordHash`, `resetToken`, etc.)
+- [ ] Sensitive data not logged (passwords, tokens, full CC numbers)
+- [ ] PII encrypted at rest (if required by regulation)
+- [ ] HTTPS for all external communication
+- [ ] Database backups encrypted
+
+## Dependency Security
+
+```bash
+# Audit dependencies
+npm audit
+
+# Fix automatically where possible
+npm audit fix
+
+# Check for critical vulnerabilities
+npm audit --audit-level=critical
+
+# Keep dependencies updated
+npx npm-check-updates
+```
+
+**Supply-chain hygiene** (`npm audit` won't catch malicious packages):
+- [ ] Lockfile committed; CI installs with `npm ci` (not `npm install`)
+- [ ] New dependencies reviewed (maintenance, downloads, `postinstall` scripts)
+- [ ] No typosquats (`cross-env` vs `crossenv`, `react-dom` vs `reactdom`)
+
+## AI / LLM Security
+
+For any feature that calls an LLM (chatbots, summarizers, agents, RAG):
+
+- [ ] Model output treated as untrusted — never into `eval`/SQL/shell/`innerHTML`/file paths
+- [ ] Prompt injection assumed; permissions enforced in code, not in the system prompt
+- [ ] Secrets, cross-tenant data, and full system prompts kept out of the context window
+- [ ] Tool/agent permissions scoped; destructive or irreversible actions require confirmation
+- [ ] Token, rate, and recursion/loop limits set (bound consumption)
+
+## Error Handling
+
+```typescript
+// Production: generic error, no internals
+res.status(500).json({
+  error: { code: 'INTERNAL_ERROR', message: 'Something went wrong' }
+});
+
+// NEVER in production:
+res.status(500).json({
+  error: err.message,
+  stack: err.stack,         // Exposes internals
+  query: err.sql,           // Exposes database details
+});
+```
+
+## OWASP Top 10 Quick Reference
+
+| # | Vulnerability | Prevention |
+|---|---|---|
+| 1 | Broken Access Control | Auth checks on every endpoint, ownership verification |
+| 2 | Cryptographic Failures | HTTPS, strong hashing, no secrets in code |
+| 3 | Injection | Parameterized queries, input validation |
+| 4 | Insecure Design | Threat modeling, spec-driven development |
+| 5 | Security Misconfiguration | Security headers, minimal permissions, audit deps |
+| 6 | Vulnerable Components | `npm audit`, keep deps updated, minimal deps |
+| 7 | Auth Failures | Strong passwords, rate limiting, session management |
+| 8 | Data Integrity Failures | Verify updates/dependencies, signed artifacts |
+| 9 | Logging Failures | Log security events, don't log secrets |
+| 10 | SSRF | Validate/allowlist URLs, restrict outbound requests |
+
+## OWASP Top 10 for LLMs Quick Reference
+
+For apps with LLM features. See the [OWASP GenAI Security Project](https://genai.owasp.org/llm-top-10/).
+
+| ID | Risk | Prevention |
+|---|---|---|
+| LLM01 | Prompt Injection | Don't trust the system prompt as a boundary; enforce permissions in code |
+| LLM02 | Sensitive Information Disclosure | Keep secrets/PII out of prompts; filter outputs |
+| LLM03 | Supply Chain | Vet models, datasets, and plugins like any dependency |
+| LLM04 | Data and Model Poisoning | Use trusted model sources, verify integrity; vet fine-tuning and RAG data |
+| LLM05 | Improper Output Handling | Treat model output as untrusted; validate, parameterize, encode |
+| LLM06 | Excessive Agency | Scope tool permissions; confirm destructive actions |
+| LLM07 | System Prompt Leakage | Assume the system prompt can leak; put no secrets in it |
+| LLM08 | Vector and Embedding Weaknesses | Partition RAG embeddings per tenant; validate documents before indexing |
+| LLM09 | Misinformation | Ground answers with citations; validate critical claims; keep a human in the loop |
+| LLM10 | Unbounded Consumption | Cap tokens, request rate, and loop/recursion depth |
