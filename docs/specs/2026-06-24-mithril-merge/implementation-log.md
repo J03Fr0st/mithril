@@ -32,3 +32,33 @@
 ## Next Step
 
 Start with `task-01-stabilize-shell-assets-attribution`, then continue through the dependency graph. For skill import tasks, do not synthesize or normalize during the source-baseline commit.
+
+## 2026-06-25 - Baseline Verification
+
+- Build-feature preflight passed for `docs/specs/2026-06-24-mithril-merge`.
+- Subagent dispatch was available but not explicitly authorized by the user request, so execution proceeded sequentially in the current session.
+- `npm test`: passed.
+  - `npm run validate:skills`: 1 skill checked, 0 errors, 0 warnings.
+  - `npm run validate:commands`: 12 commands checked, 0 errors.
+  - `npm run lint:shell`: no shell files found.
+
+## 2026-06-25 - Wave 1 Completion
+
+- Tasks: `task-01-stabilize-shell-assets-attribution`, `task-02-add-validation-harness`.
+- Starting status: both `pending`.
+- Wave risk preflight:
+  - `task-01` owns package assets, attribution, and manifest asset references.
+  - `task-02` owns validation scripts, package scripts, and local test documentation.
+  - Security-sensitive: yes for validation scripts because they inspect repository files and are invoked through package scripts.
+  - Integration risk: later waves depend on validators continuing to tolerate the source-copy baseline while only `using-mithril` is present.
+- Result: both tasks were already implemented in the branch baseline and required no implementation edits.
+- Verification:
+  - `Test-Path assets/mithril-small.svg; Test-Path assets/app-icon.png; Test-Path NOTICE.md`: all returned `True`.
+  - `rg -n "assets/mithril-small.svg|assets/app-icon.png|NOTICE" .codex-plugin gemini-extension.json package.json README.md`: found manifest asset references and package/README notice references.
+  - `rg -n "Superpowers|agent-skills|Matt Pocock|Simplicity source|DietrichGebert|obra/superpowers|addyosmani/agent-skills|mattpocock/skills|ponytail" NOTICE.md`: found all required source provenance entries.
+  - `npm run validate:skills`: passed.
+  - `npm run validate:commands`: passed.
+  - `npm test`: passed.
+- Spec compliance review: PASS; task-owned files and acceptance criteria are satisfied.
+- Code quality review: PASS; no implementation diff was introduced in this wave.
+- Final Wave 1 statuses: `task-01-stabilize-shell-assets-attribution` complete; `task-02-add-validation-harness` complete.

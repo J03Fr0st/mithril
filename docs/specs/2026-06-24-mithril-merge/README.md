@@ -63,8 +63,8 @@ graph TD
 ## Task Status
 
 ### Wave 1
-- [ ] [task-01-stabilize-shell-assets-attribution](./tasks/task-01-stabilize-shell-assets-attribution.md) - Stabilize shell assets, attribution, and existing bootstrap ownership
-- [ ] [task-02-add-validation-harness](./tasks/task-02-add-validation-harness.md) - Add validators, test scripts, and CI-ready verification commands
+- [x] [task-01-stabilize-shell-assets-attribution](./tasks/task-01-stabilize-shell-assets-attribution.md) - Stabilize shell assets, attribution, and existing bootstrap ownership
+- [x] [task-02-add-validation-harness](./tasks/task-02-add-validation-harness.md) - Add validators, test scripts, and CI-ready verification commands
 
 ### Wave 2
 - [ ] [task-03-port-superpowers-core](./tasks/task-03-port-superpowers-core.md) - Copy and rename the Superpowers core workflow skills

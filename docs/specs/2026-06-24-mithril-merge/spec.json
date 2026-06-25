@@ -21,7 +21,7 @@
       "title": "Stabilize Shell Assets and Attribution",
       "file": "tasks/task-01-stabilize-shell-assets-attribution.md",
       "wave": 1,
-      "status": "pending",
+      "status": "complete",
       "dependsOn": [],
       "blocks": [
         "task-03-port-superpowers-core",
@@ -48,7 +48,7 @@
       "title": "Add Validation Harness",
       "file": "tasks/task-02-add-validation-harness.md",
       "wave": 1,
-      "status": "pending",
+      "status": "complete",
       "dependsOn": [],
       "blocks": [
         "task-03-port-superpowers-core",
