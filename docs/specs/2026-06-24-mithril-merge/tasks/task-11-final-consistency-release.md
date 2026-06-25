@@ -2,7 +2,7 @@
 
 ## Status
 
-pending
+complete
 
 ## Wave
 
@@ -97,12 +97,12 @@ Not applicable.
 
 ## Acceptance Criteria
 
-- [ ] `npm test` passes.
-- [ ] `npm pack --dry-run` succeeds.
-- [ ] Stale-name search has only intentional provenance/history matches.
-- [ ] Excluded routers and surfaces are absent from product behavior.
-- [ ] `RELEASE-NOTES.md` describes the merge.
-- [ ] `git status` contains only intended Mithril changes.
+- [x] `npm test` passes.
+- [x] `npm pack --dry-run` succeeds.
+- [x] Stale-name search has only intentional provenance/history matches.
+- [x] Excluded routers and surfaces are absent from product behavior.
+- [x] `RELEASE-NOTES.md` describes the merge.
+- [x] `git status` contains only intended Mithril changes.
 
 ## Notes
 

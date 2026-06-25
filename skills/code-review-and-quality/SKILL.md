@@ -202,6 +202,45 @@ Check the author's verification story:
 - Is there a before/after comparison?
 ```
 
+## Review Workflow Roles
+
+`code-review-and-quality` is the canonical review standard. The dedicated `requesting-code-review` and `receiving-code-review` skills remain active for their narrower workflows, but shared principles live here.
+
+### Requesting Review
+
+Prepare context that lets the reviewer evaluate the actual change:
+
+- State the intent, scope, and acceptance criteria.
+- Provide the relevant commit SHA, branch, diff, PR, or task path.
+- List verification already run and any known gaps.
+- Ask for the specific review lens needed: correctness, architecture, security, performance, simplicity, tests, or release readiness.
+- Keep review requests focused. Split changes that mix behavior, refactor, generated output, or formatting-only churn.
+
+Do not ask a reviewer to infer intent from session history. The review artifact must stand alone.
+
+### Reviewing
+
+Use the five axes, but tune comments to what the author can act on:
+
+- Prefer high-conviction findings over long cosmetic lists.
+- Tie each issue to a file, line, behavior, or missing test.
+- Separate required fixes from optional suggestions.
+- Check whether the simplest local pattern would solve the problem before recommending a new abstraction.
+- Use additional models or tools when the change is large, risky, or crosses unfamiliar boundaries.
+
+### Receiving Review
+
+Treat review comments as technical claims to evaluate, not instructions to obey blindly:
+
+- Reproduce or inspect the issue before changing code.
+- Ask clarifying questions when feedback is ambiguous.
+- Push back with evidence when a suggestion conflicts with project constraints, tests, or simpler design.
+- Apply YAGNI to requested abstractions, configurability, and speculative cleanup.
+- Address required correctness, security, and regression issues before optional polish.
+- Reply with the verification that proves each accepted fix.
+
+Never performatively agree to questionable feedback. The goal is a better change, not a longer patch.
+
 ## Multi-Model Review Pattern
 
 Use different models for different review perspectives:
@@ -374,6 +413,9 @@ After review is complete:
 
 - [ ] All Critical issues are resolved
 - [ ] All Required (no-prefix) changes are resolved or explicitly deferred with justification
+- [ ] Optional, Nit, and FYI comments were not treated as mandatory without reason
+- [ ] Ambiguous feedback was clarified before implementation
+- [ ] Disputed feedback was resolved with technical evidence, not preference
 - [ ] Tests pass
 - [ ] Build succeeds
 - [ ] The verification story is documented (what changed, how it was verified)

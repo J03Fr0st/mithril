@@ -88,7 +88,7 @@ graph TD
 - [x] [task-09-rewrite-docs-router-integration](./tasks/task-09-rewrite-docs-router-integration.md) - Rewrite public docs, instruction files, and `using-mithril` routing
 
 ### Wave 7
-- [ ] [task-10-synthesize-merged-skills](./tasks/task-10-synthesize-merged-skills.md) - Synthesize copied source instances into active Mithril skills
+- [x] [task-10-synthesize-merged-skills](./tasks/task-10-synthesize-merged-skills.md) - Synthesize copied source instances into active Mithril skills
 
 ### Wave 8
-- [ ] [task-11-final-consistency-release](./tasks/task-11-final-consistency-release.md) - Final validation, stale-name search, packaging, and release notes
+- [x] [task-11-final-consistency-release](./tasks/task-11-final-consistency-release.md) - Final validation, stale-name search, packaging, and release notes

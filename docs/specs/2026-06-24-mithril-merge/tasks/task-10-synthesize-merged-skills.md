@@ -2,7 +2,7 @@
 
 ## Status
 
-pending
+complete
 
 ## Wave
 
@@ -100,15 +100,15 @@ Not applicable.
 
 ## Acceptance Criteria
 
-- [ ] `test-driven-development` merges the best TDD guidance from active and copied sources into one active Mithril skill.
-- [ ] `systematic-debugging` merges the best debugging guidance from active and copied sources into one active Mithril skill.
-- [ ] `code-review-and-quality` merges the best review guidance from active, copied, requesting-review, and receiving-review surfaces without deleting dedicated workflow skills.
-- [ ] `skill-design` merges the best skill-writing guidance from active and copied sources without becoming the basis for this merge task itself.
-- [ ] `implementation-standards` reflects the final cross-cutting implementation guidance needed by the synthesized workflow.
-- [ ] Copied `sources/` material remains present for provenance.
-- [ ] `using-mithril` routes only the final active Mithril skill names.
-- [ ] `npm run validate:skills` passes.
-- [ ] `npm test` passes.
+- [x] `test-driven-development` merges the best TDD guidance from active and copied sources into one active Mithril skill.
+- [x] `systematic-debugging` merges the best debugging guidance from active and copied sources into one active Mithril skill.
+- [x] `code-review-and-quality` merges the best review guidance from active, copied, requesting-review, and receiving-review surfaces without deleting dedicated workflow skills.
+- [x] `skill-design` merges the best skill-writing guidance from active and copied sources without becoming the basis for this merge task itself.
+- [x] `implementation-standards` reflects the final cross-cutting implementation guidance needed by the synthesized workflow.
+- [x] Copied `sources/` material remains present for provenance.
+- [x] `using-mithril` routes only the final active Mithril skill names.
+- [x] `npm run validate:skills` passes.
+- [x] `npm test` passes.
 
 ## Notes
 

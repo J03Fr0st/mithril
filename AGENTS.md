@@ -65,7 +65,7 @@ Personas may inspect evidence and return reports. They must not edit files, stag
 
 - Skills live at `skills/<name>/SKILL.md` with `name` and `description` frontmatter.
 - Skill-copy and skill-rewrite work is source-first: preserve copied structure, apply required Mithril renaming, and make only requested validator or routing alignment unless a redesign is explicitly approved.
-- Do not use `skill-design` or `docs/skill-anatomy.md` as the basis for copied-skill rewrites unless the user explicitly asks for that structure.
+- Do not use skill-authoring templates as the basis for copied-skill rewrites unless the user explicitly asks for that structure.
 - Commands live in `commands/*.toml` with `description` and `prompt`.
 - Personas live in `agents/*.md` and end with a composition boundary.
 - References live in `references/`; keep heavy checklists out of the router.

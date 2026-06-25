@@ -401,7 +401,7 @@
       "title": "Synthesize Merged Skills",
       "file": "tasks/task-10-synthesize-merged-skills.md",
       "wave": 7,
-      "status": "pending",
+      "status": "complete",
       "dependsOn": [
         "task-02-add-validation-harness",
         "task-09-rewrite-docs-router-integration"
@@ -431,7 +431,7 @@
       "title": "Final Consistency and Release Readiness",
       "file": "tasks/task-11-final-consistency-release.md",
       "wave": 8,
-      "status": "pending",
+      "status": "complete",
       "dependsOn": [
         "task-02-add-validation-harness",
         "task-10-synthesize-merged-skills"

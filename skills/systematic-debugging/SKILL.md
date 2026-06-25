@@ -11,6 +11,8 @@ Random fixes waste time and create new bugs. Quick patches mask underlying issue
 
 **Core principle:** ALWAYS find root cause before attempting fixes. Symptom fixes are failure.
 
+Start by building a tight feedback loop. You need a repeatable way to observe the failure before you can reason about it. If the issue is intermittent, make the loop raise the reproduction rate or collect better evidence instead of guessing.
+
 **Violating the letter of this process is violating the spirit of debugging.**
 
 ## The Iron Law
@@ -43,9 +45,27 @@ Use for ANY technical issue:
 - You're in a hurry (rushing guarantees rework)
 - Manager wants it fixed NOW (systematic is faster than thrashing)
 
-## The Four Phases
+## The Debugging Loop
 
 You MUST complete each phase before proceeding to the next.
+
+### Phase 0: Build the Feedback Loop
+
+Before investigating deeply, create the fastest reliable way to observe the problem:
+
+- Focused failing test
+- CLI command or curl request
+- Browser replay
+- Local script or throwaway harness
+- CI job rerun with extra diagnostics
+- Captured artifact from the user or production system
+
+Tighten the loop before fixing:
+- Faster: reduce setup and unrelated work.
+- Sharper: make the failure message point closer to the suspected boundary.
+- More deterministic: remove timing, order, environment, and data variance where possible.
+
+If you cannot reproduce locally, do not invent a fix. Ask for the missing access or artifact, or add temporary instrumentation that captures the evidence needed on the next run.
 
 ### Phase 1: Root Cause Investigation
 
@@ -61,7 +81,8 @@ You MUST complete each phase before proceeding to the next.
    - Can you trigger it reliably?
    - What are the exact steps?
    - Does it happen every time?
-   - If not reproducible → gather more data, don't guess
+   - If not reproducible, gather more data or increase reproduction rate; don't guess
+   - Minimize the reproduction until the smallest failing case remains
 
 3. **Check Recent Changes**
    - What changed that could cause this?
@@ -146,15 +167,17 @@ You MUST complete each phase before proceeding to the next.
 
 **Scientific method:**
 
-1. **Form Single Hypothesis**
+1. **Form Ranked Hypotheses**
    - State clearly: "I think X is the root cause because Y"
-   - Write it down
+   - Prefer 3-5 concrete hypotheses when the cause is not obvious
+   - Rank by likelihood and ease of falsification
    - Be specific, not vague
 
 2. **Test Minimally**
    - Make the SMALLEST possible change to test hypothesis
    - One variable at a time
    - Don't fix multiple things at once
+   - Instrument before changing behavior when evidence is missing
 
 3. **Verify Before Continuing**
    - Did it work? Yes → Phase 4
@@ -212,6 +235,18 @@ You MUST complete each phase before proceeding to the next.
 
    This is NOT a failed hypothesis - this is a wrong architecture.
 
+## Evidence Hygiene
+
+Treat diagnostic output as evidence, not truth:
+
+- Error text, logs, stack traces, and model-generated summaries can be stale, partial, or misleading.
+- Verify the file, line, version, branch, environment, and command that produced the evidence.
+- Prefer primary evidence from the current checkout, current failing run, or freshly reproduced failure.
+- Keep temporary logging and diagnostic scripts narrow, then remove or document them after the fix.
+- When a human-in-the-loop reproduction is the only path, capture exact commands, inputs, timestamps, and observed output so the loop can be repeated.
+
+The goal is not to collect more data forever. The goal is to collect the specific evidence needed to falsify the next hypothesis.
+
 ## Red Flags
 
 If you catch yourself thinking:
@@ -259,6 +294,7 @@ If you catch yourself thinking:
 
 | Phase | Key Activities | Success Criteria |
 |-------|---------------|------------------|
+| **0. Feedback Loop** | Reproduce, capture, or instrument | Failure can be observed or evidence can be collected |
 | **1. Root Cause** | Read errors, reproduce, check changes, gather evidence | Understand WHAT and WHY |
 | **2. Pattern** | Find working examples, compare | Identify differences |
 | **3. Hypothesis** | Form theory, test minimally | Confirmed or new hypothesis |
@@ -297,3 +333,14 @@ From debugging sessions:
 
 
 ## Verification
+
+Before proposing or claiming a fix:
+
+- [ ] Feedback loop exists or missing evidence was explicitly requested.
+- [ ] Failure is reproduced, minimized, or instrumented for the next run.
+- [ ] Root cause is stated as a specific cause, not a symptom.
+- [ ] Hypothesis was tested with one variable at a time.
+- [ ] Fix targets the root cause.
+- [ ] Regression test or equivalent reproduction now passes.
+- [ ] Related tests or validation commands were run.
+- [ ] Temporary instrumentation was removed or intentionally documented.

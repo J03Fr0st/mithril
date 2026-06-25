@@ -195,3 +195,52 @@ Start with `task-01-stabilize-shell-assets-attribution`, then continue through t
   - The synthesis wave updates active top-level Mithril skills.
   - Copied `sources/` folders remain as provenance.
   - `skill-design` and `docs/skill-anatomy.md` are not the rewrite basis; the basis is direct comparison of copied source instances and Mithril routing needs.
+
+## 2026-06-25 - Wave 7 Completion
+
+- Task: `task-10-synthesize-merged-skills`.
+- Starting status: `pending`.
+- Wave risk preflight:
+  - This wave owns active top-level skill behavior after the copy-and-rename baseline.
+  - Security-sensitive: yes, because these skills govern future implementation, debugging, review, and skill-authoring behavior.
+  - Integration risk: copied source instances needed synthesis without deleting provenance or redesigning around `skill-design`.
+- Per-skill merge notes:
+  - `test-driven-development`: merged public-seam, vertical-slice, regression-test, DAMP, state-over-interaction, and system-boundary mocking guidance into the active TDD loop.
+  - `systematic-debugging`: merged feedback-loop-first, reproduce/minimize, ranked-hypothesis, instrumentation, evidence-hygiene, and regression-verification guidance into the active debugging process.
+  - `code-review-and-quality`: merged request/review/receive workflow principles into the canonical review standard while leaving `requesting-code-review` and `receiving-code-review` active for their dedicated workflows.
+  - `skill-design`: merged invocation metadata, information hierarchy, progressive disclosure, split/merge/prune, and failure-mode guidance without using the skill as the basis for this wave.
+  - `implementation-standards`: updated the cross-cutting guardrails to align TDD, debugging, review, skill-doc, dependency, naming, and evidence requirements.
+- Result:
+  - Active canonical skills now contain the missing synthesis guidance from copied source material.
+  - Copied `sources/` folders remain present as provenance.
+  - Removed the final live agent-facing `docs/skill-anatomy.md` filename reference from `AGENTS.md` while preserving the generic guard against template-driven rewrites.
+- Verification:
+  - `npm run validate:skills`: passed, 46 skills checked with 0 errors and 0 warnings.
+- Spec compliance review: PASS; the synthesized active skills are Mithril-owned guidance based on direct source comparison and routing needs.
+- Code quality review: PASS; edits are limited to canonical active skills, progress docs, and the agent-facing filename cleanup.
+- Final Wave 7 status: `task-10-synthesize-merged-skills` complete.
+
+## 2026-06-25 - Wave 8 Completion
+
+- Task: `task-11-final-consistency-release`.
+- Starting status: `pending`.
+- Wave risk preflight:
+  - This wave owns final consistency, validation, packaging, release notes, and stale-name classification.
+  - Security-sensitive: moderate, because package contents and public runtime-facing files define what users install.
+  - Integration risk: final checks must distinguish intentional source provenance/history from product-facing stale names.
+- Result:
+  - Updated `RELEASE-NOTES.md` with the synthesized-skill merge summary and final packaging evidence.
+  - Marked task 11 complete in the task file, README, and `spec.json`.
+  - Confirmed no excluded upstream router or deprecated simplicity surfaces exist as active skill directories.
+- Verification:
+  - `npm test`: passed; skill validation, command validation, and shell lint all passed. Shell lint reported `No shell files found`.
+  - `npm pack --dry-run --json`: initially failed because the default npm cache path under `C:\Users\joevr\AppData\Local\npm-cache` was not writable in this shell; reran successfully with `NPM_CONFIG_CACHE` pointed at a workspace-local temporary cache, then removed that cache.
+  - Package dry-run succeeded for `mithril@0.0.1` with 178 entries.
+  - Full stale-name scan over the repo found only intentional attribution, source provenance, copied source paths, and design/spec history.
+  - Product-facing stale-name scan over root docs, manifests, active skills, commands, agents, references, and setup docs: no matches.
+  - Excluded-surface check for upstream routers, deprecated Matt directories, and simplicity debt/gain/help directories: all returned `False`.
+  - Agent/dot-plugin scan for `skill-anatomy`, `skillsanat`, `skillsanats`, and `skill-design`: no matches.
+  - `git diff --check`: passed.
+- Spec compliance review: PASS; final release-readiness evidence is recorded and package contents exclude implementation-planning directories.
+- Code quality review: PASS; no implementation files outside the intended skill/docs/release scope were changed.
+- Final Wave 8 status: `task-11-final-consistency-release` complete.

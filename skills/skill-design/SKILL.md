@@ -27,6 +27,26 @@ A **skill** is a reference guide for proven techniques, patterns, or tools. Skil
 
 **Skills are NOT:** Narratives about how you solved a problem once
 
+## Invocation and Information Hierarchy
+
+Design for how the agent actually loads context:
+
+- **Model-invoked skills** are triggered by the `description` field. The description is routing metadata, not a mini tutorial.
+- **User-invoked skills** are named directly by the user. They still need clear descriptions because the agent may see multiple similar skills.
+- **SKILL.md is the entrypoint.** It should contain the decision points, core loop, and links to heavier references.
+- **Supporting files are context loads.** Move long APIs, examples, templates, scripts, and exhaustive references out of the entrypoint.
+- **Progressive disclosure wins.** The agent should read only the next relevant file, not a whole library of loosely related material.
+- **Single source of truth.** Do not duplicate the same rule across files unless one place is explicitly a short pointer to the canonical rule.
+
+Start every skill by answering:
+
+1. What exact situation should trigger this skill?
+2. What must the agent do differently after reading it?
+3. What can stay in a reference file until needed?
+4. What completion criterion proves the skill worked?
+
+If those answers are not concrete, the skill is probably too vague or too broad.
+
 ## TDD Mapping for Skills
 
 | TDD Concept | Skill Creation |
@@ -57,6 +77,26 @@ The entire skill creation process follows RED-GREEN-REFACTOR.
 - Standard practices well-documented elsewhere
 - Project-specific conventions (put in your instructions file)
 - Mechanical constraints (if it's enforceable with regex/validation, automate it—save documentation for judgment calls)
+
+## When to Split, Merge, or Prune
+
+Granularity is a routing decision:
+
+- Split a skill when two trigger situations, tools, or completion criteria would cause different behavior.
+- Merge skills when they always trigger together and force the agent to stitch duplicate guidance together.
+- Keep a router skill only when it routes to genuinely separate branches and each branch has a clear trigger.
+- Prune content that does not change future agent behavior.
+- Move rare or bulky detail into references, scripts, or templates.
+
+Watch for these failure modes:
+
+| Failure mode | Symptom | Fix |
+| --- | --- | --- |
+| Premature completion | Agent stops after reading or summarizing instead of executing | Add explicit completion criteria and verification |
+| Duplication | Same rule appears in multiple files with drift | Pick one canonical home and link to it |
+| Sediment | Historical notes accumulate but no longer guide behavior | Delete or move to provenance/history |
+| Sprawl | One skill covers many unrelated situations | Split by trigger and completion criterion |
+| No-op guidance | Skill says what a good agent already does | Add concrete steps, examples, or remove it |
 
 ## Skill Types
 
@@ -655,6 +695,11 @@ Deploying untested skills = deploying untested code. It's a violation of quality
 - [ ] Re-test until bulletproof
 
 **Quality Checks:**
+- [ ] Description names trigger conditions only, not the workflow
+- [ ] Entry point contains the core loop and links to heavy references
+- [ ] Supporting files load only when relevant to the current branch
+- [ ] Completion criterion is explicit
+- [ ] Duplicate guidance has one canonical home
 - [ ] Small flowchart only if decision non-obvious
 - [ ] Quick reference table
 - [ ] Common mistakes section

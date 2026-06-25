@@ -9,6 +9,8 @@ description: Use when implementing any feature or bugfix, before writing impleme
 
 Write the test first. Watch it fail. Write minimal code to pass.
 
+Mithril TDD is behavior-first and vertical. Test the public seam a caller uses, add one behavior, make it pass, then repeat. Do not build a whole test suite first and then a whole implementation.
+
 **Core principle:** If you didn't watch the test fail, you don't know if it tests the right thing.
 
 **Violating the letter of the rules is violating the spirit of the rules.**
@@ -72,6 +74,12 @@ digraph tdd_cycle {
 
 Write one minimal test showing what should happen.
 
+Choose the highest-value public seam available:
+- CLI command, API route, component behavior, exported function, or observable workflow.
+- Use integration-style tests when practical so the test proves real behavior.
+- Use unit tests for isolated pure logic or when the public seam is already narrow.
+- For bugs, first write the smallest test that reproduces the observed failure.
+
 <Good>
 ```typescript
 test('retries failed operations 3 times', async () => {
@@ -108,7 +116,9 @@ Vague name, tests mock not code
 **Requirements:**
 - One behavior
 - Clear name
-- Real code (no mocks unless unavoidable)
+- Real code through a public seam
+- No mocks for your own modules or private implementation details
+- Mocks only for true system boundaries such as network calls, clocks, file systems, payment providers, or unstable external services
 
 ### Verify RED - Watch It Fail
 
@@ -193,7 +203,14 @@ Keep tests green. Don't add behavior.
 
 ### Repeat
 
-Next failing test for next feature.
+Next failing test for the next behavior. Keep the loop vertical:
+
+1. Pick one visible behavior.
+2. Add one failing test at the caller-facing seam.
+3. Make only that behavior pass.
+4. Refactor while green.
+
+Avoid the horizontal anti-pattern: all tests, then all data models, then all services, then all UI. That hides design feedback until too late and produces tests that often follow the implementation instead of shaping it.
 
 ## Good Tests
 
@@ -202,6 +219,11 @@ Next failing test for next feature.
 | **Minimal** | One thing. "and" in name? Split it. | `test('validates email and domain and whitespace')` |
 | **Clear** | Name describes behavior | `test('test1')` |
 | **Shows intent** | Demonstrates desired API | Obscures what code should do |
+| **Public seam** | Calls the same interface production callers use | Reaches into private helpers |
+| **State over interaction** | Asserts observable result or state | Asserts internal call order |
+| **DAMP** | Test setup is readable at the point of use | DRY helpers hide the behavior being tested |
+
+Use Arrange-Act-Assert structure unless the local test style says otherwise. One assertion concept per test is the goal; multiple assertions are fine when they verify one behavior.
 
 ## Why Order Matters
 
@@ -331,11 +353,14 @@ Before marking work complete:
 - [ ] Every new function/method has a test
 - [ ] Watched each test fail before implementing
 - [ ] Each test failed for expected reason (feature missing, not typo)
+- [ ] Tests cross public seams or the narrowest stable API
 - [ ] Wrote minimal code to pass each test
 - [ ] All tests pass
 - [ ] Output pristine (no errors, warnings)
-- [ ] Tests use real code (mocks only if unavoidable)
+- [ ] Tests use real code
+- [ ] Mocks are only at true system boundaries, not for internal modules
 - [ ] Edge cases and errors covered
+- [ ] Bug fixes include a regression test that failed before the fix
 
 Can't check all boxes? You skipped TDD. Start over.
 
