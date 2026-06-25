@@ -139,7 +139,7 @@ Combine:
 
 Source-first rule: every selected upstream skill should first be copied from its source repository and renamed into its Mithril destination. During this phase, do not rewrite the body into a new skill structure, do not merge competing loops, and do not normalize headings. Only apply required product naming changes such as `Superpowers` to `Mithril`, `superpowers:*` to `mithril:*`, `.superpowers` to `.mithril`, `SUPERPOWERS_*` to `MITHRIL_*`, and source-specific setup-skill renames.
 
-That copied-and-renamed baseline must be committed before the synthesis pass. The later rewrite pass can then merge duplicate behavior and move the final Mithril-owned skill set toward a consistent Mithril style, but the rewrite should happen across the whole selected set with source text still visible in git history. The final Mithril version should have:
+That copied-and-renamed baseline must be committed before the synthesis pass. The later synthesis pass compares the active Mithril skill with each copied source instance, then updates the active top-level skill with the best compatible guidance from all sources. Copied `sources/` folders remain as provenance and audit material. The final Mithril version should have:
 
 - Required YAML frontmatter with `name` and `description`.
 - A clear overview and when-to-use section.
@@ -330,7 +330,7 @@ Minimum validation:
 Verification gates before a merge is complete:
 
 - Skill validator passes.
-- The source-copy baseline is committed before behavioral rewrites. Final adapted skills preserve source structure and satisfy validators unless an explicit redesign is approved and documented.
+- The source-copy baseline is committed before behavioral rewrites. Final active Mithril skills synthesize duplicate source instances into one routed skill while preserving copied source folders for auditability.
 - Command validator passes.
 - Formatter, linter, typecheck, and focused-test commands are documented or explicitly marked unavailable.
 - Superpowers brainstorm-server tests pass after Mithril rebrand.
@@ -401,7 +401,15 @@ Verification gates before a merge is complete:
 - Add `references/` checklists for definition of done, testing, security, performance, accessibility, observability, and orchestration.
 - Add contribution guidance that says skill text is behavior-shaping code.
 
-### Wave 8: Final Consistency Pass
+### Wave 8: Synthesize Merged Skills
+
+- Compare active top-level skills with their copied `sources/` material.
+- Merge the best compatible guidance into active `test-driven-development`, `systematic-debugging`, `code-review-and-quality`, `skill-design`, and `implementation-standards`.
+- For review, compare `requesting-code-review` and `receiving-code-review` before updating `code-review-and-quality`, but keep those dedicated workflow skills unless a later task explicitly retires them.
+- Preserve copied source folders as provenance.
+- Validate skills after each merged target and again at the end of the wave.
+
+### Wave 9: Final Consistency Pass
 
 - Run all validators and tests.
 - Search for stale upstream names.

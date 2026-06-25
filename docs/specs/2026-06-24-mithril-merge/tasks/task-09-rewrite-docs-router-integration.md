@@ -15,7 +15,7 @@ Rewrite Mithril public docs and instruction files using agent-skills as the stru
 ## Dependencies
 
 **Depends on:** task-01-stabilize-shell-assets-attribution.md, task-03-port-superpowers-core.md, task-04-merge-canonical-disciplines.md, task-05-add-agent-specialists-references.md, task-06-add-commands-personas.md, task-07-add-matt-alignment-domain.md, task-08-add-simplicity-layer.md
-**Blocks:** task-10-final-consistency-release.md
+**Blocks:** task-10-synthesize-merged-skills.md
 
 **Context from dependencies:** Prior tasks create assets, validation, core skills, canonical skills, specialists, commands, personas, Matt-derived skills, and simplicity skills. This task wires them together and documents the finished shape.
 

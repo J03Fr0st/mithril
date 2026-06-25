@@ -183,3 +183,15 @@ Start with `task-01-stabilize-shell-assets-attribution`, then continue through t
 - Spec compliance review: PASS; public docs existed, `using-mithril` routes the final selected skill set, and copied skills now validate together without a skill-design-driven rewrite.
 - Code quality review: PASS with note; heading-only validator alignment preserves copied source bodies rather than rewriting each skill.
 - Final Wave 6 status: `task-09-rewrite-docs-router-integration` complete.
+
+## 2026-06-25 - Plan Adjustment: Add Skill Synthesis Wave
+
+- Reason: final consistency should not hide behavioral synthesis work. Duplicated copied source instances, especially `code-review-and-quality`, need a dedicated wave that merges the best compatible guidance into the active top-level Mithril skills.
+- Change:
+  - Added `task-10-synthesize-merged-skills` as Wave 7.
+  - Moved final consistency and release readiness to `task-11-final-consistency-release` as Wave 8.
+  - Updated the README dependency graph, requirements, design, and `spec.json` so release readiness depends on skill synthesis.
+- Scope guard:
+  - The synthesis wave updates active top-level Mithril skills.
+  - Copied `sources/` folders remain as provenance.
+  - `skill-design` and `docs/skill-anatomy.md` are not the rewrite basis; the basis is direct comparison of copied source instances and Mithril routing needs.

@@ -56,7 +56,8 @@
         "task-05-add-agent-specialists-references",
         "task-07-add-matt-alignment-domain",
         "task-08-add-simplicity-layer",
-        "task-10-final-consistency-release"
+        "task-10-synthesize-merged-skills",
+        "task-11-final-consistency-release"
       ],
       "files": {
         "create": [
@@ -364,7 +365,7 @@
         "task-08-add-simplicity-layer"
       ],
       "blocks": [
-        "task-10-final-consistency-release"
+        "task-10-synthesize-merged-skills"
       ],
       "files": {
         "create": [
@@ -396,14 +397,44 @@
       ]
     },
     {
-      "id": "task-10-final-consistency-release",
-      "title": "Final Consistency and Release Readiness",
-      "file": "tasks/task-10-final-consistency-release.md",
+      "id": "task-10-synthesize-merged-skills",
+      "title": "Synthesize Merged Skills",
+      "file": "tasks/task-10-synthesize-merged-skills.md",
       "wave": 7,
       "status": "pending",
       "dependsOn": [
         "task-02-add-validation-harness",
         "task-09-rewrite-docs-router-integration"
+      ],
+      "blocks": [
+        "task-11-final-consistency-release"
+      ],
+      "files": {
+        "create": [],
+        "modify": [
+          "skills/test-driven-development/SKILL.md",
+          "skills/systematic-debugging/SKILL.md",
+          "skills/code-review-and-quality/SKILL.md",
+          "skills/skill-design/SKILL.md",
+          "skills/implementation-standards/SKILL.md",
+          "skills/using-mithril/SKILL.md"
+        ]
+      },
+      "verificationCommands": [
+        "npm run validate:skills",
+        "npm test",
+        "rg -n \"debugging-and-error-recovery|using-superpowers|using-agent-skills|ask-matt|simplicity-debt|simplicity-gain|simplicity-help\" skills/using-mithril/SKILL.md skills"
+      ]
+    },
+    {
+      "id": "task-11-final-consistency-release",
+      "title": "Final Consistency and Release Readiness",
+      "file": "tasks/task-11-final-consistency-release.md",
+      "wave": 8,
+      "status": "pending",
+      "dependsOn": [
+        "task-02-add-validation-harness",
+        "task-10-synthesize-merged-skills"
       ],
       "blocks": [],
       "files": {

@@ -1,4 +1,4 @@
-# Task 10: Final Consistency and Release Readiness
+# Task 11: Final Consistency and Release Readiness
 
 ## Status
 
@@ -6,7 +6,7 @@ pending
 
 ## Wave
 
-7
+8
 
 ## Description
 
@@ -14,10 +14,10 @@ Run the final consistency, validation, packaging, and release-readiness pass aft
 
 ## Dependencies
 
-**Depends on:** task-02-add-validation-harness.md, task-09-rewrite-docs-router-integration.md
+**Depends on:** task-02-add-validation-harness.md, task-10-synthesize-merged-skills.md
 **Blocks:** None
 
-**Context from dependencies:** Task 02 provides validation scripts. Task 09 completes final routing and docs, so the consistency pass can evaluate the whole product.
+**Context from dependencies:** Task 02 provides validation scripts. Task 10 completes the merged top-level skill synthesis, so the consistency pass can evaluate the whole product.
 
 ## Files to Create
 

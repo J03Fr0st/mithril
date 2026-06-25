@@ -15,7 +15,7 @@ Add validation early so later import tasks can verify their work. The approved d
 ## Dependencies
 
 **Depends on:** None (Wave 1)
-**Blocks:** task-03-port-superpowers-core.md, task-04-merge-canonical-disciplines.md, task-05-add-agent-specialists-references.md, task-07-add-matt-alignment-domain.md, task-08-add-simplicity-layer.md, task-10-final-consistency-release.md
+**Blocks:** task-03-port-superpowers-core.md, task-04-merge-canonical-disciplines.md, task-05-add-agent-specialists-references.md, task-07-add-matt-alignment-domain.md, task-08-add-simplicity-layer.md, task-10-synthesize-merged-skills.md, task-11-final-consistency-release.md
 
 **Context from dependencies:** None. This is a foundation task.
 

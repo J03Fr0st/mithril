@@ -25,7 +25,8 @@ graph TD
     task07["07: Copy and Rename Matt Alignment and Domain Layer"]
     task08["08: Copy and Rename Mithril Simplicity Layer"]
     task09["09: Rewrite Docs and Router Integration"]
-    task10["10: Final Consistency and Release Readiness"]
+    task10["10: Synthesize Merged Skills"]
+    task11["11: Final Consistency and Release Readiness"]
     task01 --> task03
     task01 --> task09
     task02 --> task03
@@ -34,6 +35,7 @@ graph TD
     task02 --> task07
     task02 --> task08
     task02 --> task10
+    task02 --> task11
     task03 --> task04
     task04 --> task05
     task04 --> task07
@@ -46,6 +48,7 @@ graph TD
     task08 --> task09
     task06 --> task09
     task09 --> task10
+    task10 --> task11
 ```
 
 ## Waves
@@ -58,7 +61,8 @@ graph TD
 | 4 | task-05, task-07, task-08 | Copy and rename specialist skill surfaces in parallel without router integration. |
 | 5 | task-06 | Add command and persona orchestration after the skill surfaces exist. |
 | 6 | task-09 | Rewrite docs and integrate routing once the complete skill set is present. |
-| 7 | task-10 | Run final consistency, validation, packaging, and release-readiness checks. |
+| 7 | task-10 | Synthesize duplicated copied source instances into active top-level Mithril skills. |
+| 8 | task-11 | Run final consistency, validation, packaging, and release-readiness checks. |
 
 ## Task Status
 
@@ -84,4 +88,7 @@ graph TD
 - [x] [task-09-rewrite-docs-router-integration](./tasks/task-09-rewrite-docs-router-integration.md) - Rewrite public docs, instruction files, and `using-mithril` routing
 
 ### Wave 7
-- [ ] [task-10-final-consistency-release](./tasks/task-10-final-consistency-release.md) - Final validation, stale-name search, packaging, and release notes
+- [ ] [task-10-synthesize-merged-skills](./tasks/task-10-synthesize-merged-skills.md) - Synthesize copied source instances into active Mithril skills
+
+### Wave 8
+- [ ] [task-11-final-consistency-release](./tasks/task-11-final-consistency-release.md) - Final validation, stale-name search, packaging, and release notes
