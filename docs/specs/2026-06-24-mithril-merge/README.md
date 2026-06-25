@@ -67,7 +67,7 @@ graph TD
 - [x] [task-02-add-validation-harness](./tasks/task-02-add-validation-harness.md) - Add validators, test scripts, and CI-ready verification commands
 
 ### Wave 2
-- [ ] [task-03-port-superpowers-core](./tasks/task-03-port-superpowers-core.md) - Copy and rename the Superpowers core workflow skills
+- [x] [task-03-port-superpowers-core](./tasks/task-03-port-superpowers-core.md) - Copy and rename the Superpowers core workflow skills
 
 ### Wave 3
 - [ ] [task-04-merge-canonical-disciplines](./tasks/task-04-merge-canonical-disciplines.md) - Copy and rename TDD, debugging, review, skill-design, and implementation standards source material

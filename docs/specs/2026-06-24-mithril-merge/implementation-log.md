@@ -62,3 +62,26 @@ Start with `task-01-stabilize-shell-assets-attribution`, then continue through t
 - Spec compliance review: PASS; task-owned files and acceptance criteria are satisfied.
 - Code quality review: PASS; no implementation diff was introduced in this wave.
 - Final Wave 1 statuses: `task-01-stabilize-shell-assets-attribution` complete; `task-02-add-validation-harness` complete.
+
+## 2026-06-25 - Wave 2 Completion
+
+- Task: `task-03-port-superpowers-core`.
+- Starting status: `pending`.
+- Wave risk preflight:
+  - This wave owns the copied Superpowers execution-core skill directories and `skills/using-mithril/SKILL.md` routing.
+  - Security-sensitive: yes, because copied support scripts include shell scripts and local server helpers.
+  - Integration risk: the source-copy baseline intentionally preserves upstream structure, so `validate:skills` may fail until the later rewrite pass.
+- Result:
+  - Copied ten selected Superpowers core skill directories from `D:\Source\_ai\superpowers\skills`.
+  - Excluded `skills/using-superpowers`.
+  - Applied required Mithril renames for `using-superpowers`, `superpowers:`, `docs/superpowers`, `.superpowers`, `SUPERPOWERS`, `Superpowers`, and lowercase `superpowers`.
+  - Preserved source directory structure, including support prompts and scripts.
+  - `skills/using-mithril/SKILL.md` already routed the imported core workflows and did not require edits.
+- Verification:
+  - `Test-Path skills/brainstorming/SKILL.md; Test-Path skills/verification-before-completion/SKILL.md`: both returned `True`.
+  - `rg -n "using-superpowers|superpowers:|docs/superpowers|\\.superpowers|SUPERPOWERS|Superpowers|superpowers" skills`: no matches.
+  - `bash -n` on copied shell helpers and `node --check` on copied Node helpers: passed.
+  - `npm run validate:skills`: failed with 37 errors across copied source skills because preserved Superpowers structures do not include the later Mithril rewrite sections. This is the expected documented validator gap for this source-copy baseline.
+- Spec compliance review: PASS; selected source skill directories were copied, renamed, and kept structurally intact.
+- Code quality review: PASS with documented concern; validator failures are limited to preserved source structure and are deferred to the later rewrite pass by design.
+- Final Wave 2 status: `task-03-port-superpowers-core` complete.

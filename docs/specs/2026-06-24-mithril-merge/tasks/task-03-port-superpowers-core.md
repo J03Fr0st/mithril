@@ -2,7 +2,7 @@
 
 ## Status
 
-pending
+complete
 
 ## Wave
 
@@ -22,12 +22,26 @@ Copy the Superpowers core workflow skills into Mithril as the runtime and autono
 ## Files to Create
 
 - `skills/brainstorming/SKILL.md`
+- `skills/brainstorming/spec-document-reviewer-prompt.md`
+- `skills/brainstorming/visual-companion.md`
+- `skills/brainstorming/scripts/frame-template.html`
+- `skills/brainstorming/scripts/helper.js`
+- `skills/brainstorming/scripts/server.cjs`
+- `skills/brainstorming/scripts/start-server.sh`
+- `skills/brainstorming/scripts/stop-server.sh`
 - `skills/writing-plans/SKILL.md`
+- `skills/writing-plans/plan-document-reviewer-prompt.md`
 - `skills/using-git-worktrees/SKILL.md`
 - `skills/subagent-driven-development/SKILL.md`
+- `skills/subagent-driven-development/implementer-prompt.md`
+- `skills/subagent-driven-development/task-reviewer-prompt.md`
+- `skills/subagent-driven-development/scripts/review-package`
+- `skills/subagent-driven-development/scripts/sdd-workspace`
+- `skills/subagent-driven-development/scripts/task-brief`
 - `skills/executing-plans/SKILL.md`
 - `skills/dispatching-parallel-agents/SKILL.md`
 - `skills/requesting-code-review/SKILL.md`
+- `skills/requesting-code-review/code-reviewer.md`
 - `skills/receiving-code-review/SKILL.md`
 - `skills/verification-before-completion/SKILL.md`
 - `skills/finishing-a-development-branch/SKILL.md`
