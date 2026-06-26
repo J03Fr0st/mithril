@@ -1,98 +1,89 @@
 ---
 name: implementation-standards
-description: Use when implementing, refactoring, reviewing code shape, choosing tests, naming domain concepts, adding dependencies, or reporting evidence for code changes.
+description: Use when implementation work needs local code-shape rules, tool-backed style, dependency choices, test seams, naming, or evidence requirements before code is written or reviewed.
 ---
 
 # Implementation Standards
 
 ## Overview
 
-Implementation standards govern how code should look, where behavior should live, and what evidence proves the change is safe. Style is not taste: local conventions, tools, tests, and domain vocabulary decide.
+Mithril treats implementation shape as an enforceable engineering constraint, not taste. This skill summarizes the cross-cutting rules that should govern coding, debugging, testing, review, naming, dependencies, and verification.
 
-Core rule: make the smallest behavior-correct change that fits the local codebase and can be verified with fresh evidence.
+Use the dedicated skills for deep workflow guidance. Use this skill as the local standard that keeps those workflows aligned.
 
 ## When to Use
 
-Use this skill:
+- Before implementing a task that touches local code style, architecture, public interfaces, dependencies, tests, or naming.
+- Before reviewing a diff where correctness alone is not enough.
+- When deciding whether to reuse local code, the standard library, platform features, installed dependencies, or custom code.
+- When project vocabulary, ADRs, or surrounding modules should shape names and seams.
 
-- Before writing or reviewing production code.
-- When choosing test seams, module boundaries, names, dependencies, or abstractions.
-- When a change risks mixing feature work with refactoring or formatting.
-- When reporting whether code is ready, complete, or safe to hand off.
+## Source Principles
 
-Do not use it to expand scope beyond the requested behavior. Raise unrelated improvement opportunities separately.
+| Principle | Mithril rule |
+| --- | --- |
+| Mechanical style belongs to tools. | Formatters, linters, type checks, manifest checks, and validators decide objective style and structural validity. |
+| Local consistency beats external preference. | Inspect nearby code and follow the local pattern unless changing that pattern is the task. |
+| Behavior drives shape. | Add one vertical behavior at a time, write the smallest green implementation, then refactor only while tests stay green. |
+| Interfaces are design surfaces. | Prefer deep modules, narrow public APIs, and tests that cross the same seam as callers. Do not expose internals just to make tests convenient. |
+| Simplicity is not code golf. | Remove speculative code, but do not remove validation, security, accessibility, or data-loss prevention. |
+| Review covers more than passing tests. | Review architecture, readability, security, performance, type boundaries, dependency choices, and missed simplifications. |
+| Refactors stay separate and reversible. | Keep behavior changes, refactors, generated artifacts, and formatting-only changes separate unless explicitly approved. |
+| Domain language shapes names. | Names should come from the repo glossary, ADRs, and surrounding code. |
+| Evidence before claims. | Run and report the commands that prove formatting, linting, tests, or validation passed. |
+| Bugs require feedback loops. | Reproduce, minimize, or instrument before proposing fixes. Fix root causes, not symptoms. |
+| Reviews are technical claims. | Request focused review, evaluate feedback with evidence, and clarify or push back when feedback is ambiguous or unsound. |
 
-## Process
+## Core Loop
 
-1. Inspect the touched area.
-   - Read nearby files, tests, config, and build scripts before choosing a style.
-   - Identify naming, error handling, module layout, dependency, and test patterns already in use.
-   - Read `CONTEXT.md` and relevant ADRs when they exist. If vocabulary is unclear, treat it as a design question.
+1. Inspect the touched area and identify local style, architecture, naming, and test patterns.
+2. Choose the smallest vertical behavior slice and write or update the test at the public seam.
+3. If fixing a bug, build the feedback loop first: reproduce, minimize, or instrument the failure.
+4. Implement the minimum code that passes using existing code, standard library, native features, or installed dependencies first.
+5. Run formatter, linter, type checks, validators, and the focused test.
+6. Refactor only while tests stay green, keeping feature and refactor changes separable.
+7. Review correctness, readability, architecture, security, performance, simplicity, and verification quality.
+8. Report verification evidence, including skipped checks and why.
 
-2. Let behavior drive shape.
-   - Use `test-driven-development` for behavior changes.
-   - Test through the public seam callers use.
-   - Prefer deep modules: narrow interfaces that hide substantial implementation.
-   - Do not expose internals only to make tests easier.
+## Skill and Documentation Changes
 
-3. Choose the smallest sufficient implementation.
-   - Use the `simplicity` skill when the smallest sufficient implementation is not obvious.
-   - Apply the `simplicity` ladder in order before adding custom code, dependencies, public APIs, options, or abstractions.
-   - Add a new dependency only when the existing stack cannot reasonably solve the problem and the license, maintenance, size, and security tradeoffs are acceptable.
-   - Do not add speculative configurability, extension points, compatibility layers, or abstractions.
-   - Simplicity does not mean removing validation, authorization, security controls, accessibility, data-loss handling, trust-boundary checks, or root-cause debugging.
+Treat behavior-shaping documentation like code:
 
-4. Follow local style and tool decisions.
-   - Formatters, linters, type checks, manifest validators, and project scripts decide mechanical style.
-   - Match adjacent code where tools are silent.
-   - Keep feature edits, refactors, generated artifacts, and formatting-only changes separable unless the user approved a combined change.
-
-5. Refactor only with evidence.
-   - Refactor after behavior is green, not while chasing a failing test.
-   - A refactor should reduce concepts, remove duplication, deepen a module, or isolate a clearer seam.
-   - Moving complexity without reducing it is churn.
-
-6. Review the result.
-   - Use `code-review-and-quality` to check correctness, readability, architecture, security, and performance.
-   - Verify type boundaries, dependency choices, missed simplifications, and local consistency.
-
-7. Report evidence.
-   - Run the focused tests and broader checks appropriate to the change.
-   - Report exact commands, pass/fail results, skipped checks, and reasons.
-   - Use `verification-before-completion` before any completion or readiness claim.
+- Update the active canonical skill, command, or doc that owns the rule.
+- Preserve provenance folders and source material when they are part of the design.
+- Keep routing names stable unless a task explicitly renames them.
+- Prefer a short pointer to a canonical rule over duplicating the same guidance in multiple places.
+- Validate skills and commands after changing runtime-facing documentation.
 
 ## Common Rationalizations
 
 | Rationalization | Reality |
 | --- | --- |
-| "I prefer a different style." | Local style and tooling beat individual preference. |
-| "This abstraction will help later." | Future use does not justify present complexity. Wait for real pressure. |
-| "Tests need an internal hook." | If callers cannot use that seam, reconsider the module shape. |
-| "Refactoring while here saves time." | Mixed changes are harder to review and revert. Separate them unless approved. |
-| "Simpler means fewer checks." | Safety checks at trust boundaries are part of correctness, not bloat. |
-| "The ladder is only for new features." | Bug fixes, refactors, and tests can also duplicate existing, standard, native, or installed capability. |
-| "The command should pass." | Evidence requires a fresh command result, not confidence. |
+| "This style is cleaner than the surrounding code." | Local consistency wins unless the style change is the approved task. |
+| "The tests pass, so the shape is fine." | Tests are necessary but not sufficient; review still covers architecture, readability, security, and simplicity. |
+| "A new abstraction will help later." | Future flexibility is speculative until a real second use exists. |
+| "This dependency is convenient." | Existing code, standard library, native platform features, and installed dependencies come first. |
+| "The error says X, so I'll patch X." | Error output is evidence to verify, not a root-cause conclusion. |
+| "The reviewer asked for it, so I should just implement it." | Review feedback is a technical claim; verify it and clarify when needed. |
 
 ## Red Flags
 
-- New code does not resemble nearby code without an explicit reason.
-- A public API grows to support only a test or hypothetical future caller.
-- A dependency is added before checking existing utilities and native features.
-- Behavior, refactor, formatting, and generated output are bundled without approval.
-- Domain names conflict with glossary, ADRs, or surrounding code.
-- Validation or authorization is removed in the name of simplicity.
-- A bug fix patches one symptom path without checking for a shared root cause.
-- Completion is claimed without exact verification evidence.
+- Introducing a new pattern without checking nearby files first.
+- Exposing internals just to make tests easier.
+- Mixing behavior changes with broad formatting or refactoring.
+- Adding configuration, extension points, or dependency wrappers before there is a real caller.
+- Reporting completion without current command output.
+- Fixing a symptom before reproducing or instrumenting the failure.
+- Mocking internal modules instead of testing the public seam.
+- Duplicating guidance across skills without one canonical home.
 
 ## Verification
 
-Before reporting implementation complete:
+Before accepting implementation work:
 
-- The touched area's local style, tests, and conventions were inspected.
-- Behavior changes have tests through the public seam.
-- The simplicity ladder was considered before adding custom code, dependencies, public APIs, options, or abstractions.
-- Mechanical checks required by the repo were run or explicitly unavailable.
-- Refactors are either necessary for the task or separated from behavior changes.
-- New dependencies, public APIs, and abstractions have concrete present need.
-- Security, data-loss, authorization, accessibility, trust-boundary checks, and root-cause debugging were preserved where relevant.
-- Exact verification commands and results are reported.
+1. Identify the local style and architectural pattern that governed the change.
+2. Run the focused behavior check for the touched seam.
+3. Confirm bug fixes have a feedback loop and regression check.
+4. Confirm review feedback was resolved with evidence, clarification, or explicit deferral.
+5. Run available formatting, linting, type, validator, and project test commands.
+6. Record skipped checks with a concrete reason.

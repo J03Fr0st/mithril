@@ -15,7 +15,7 @@ Rewrite Mithril public docs and instruction files using agent-skills as the stru
 ## Dependencies
 
 **Depends on:** task-01-stabilize-shell-assets-attribution.md, task-03-port-superpowers-core.md, task-04-merge-canonical-disciplines.md, task-05-add-agent-specialists-references.md, task-06-add-commands-personas.md, task-07-add-matt-alignment-domain.md, task-08-add-simplicity-layer.md
-**Blocks:** task-10-final-consistency-release.md
+**Blocks:** task-10-synthesize-merged-skills.md
 
 **Context from dependencies:** Prior tasks create assets, validation, core skills, canonical skills, specialists, commands, personas, Matt-derived skills, and simplicity skills. This task wires them together and documents the finished shape.
 
@@ -104,12 +104,12 @@ Not applicable.
 
 ## Acceptance Criteria
 
-- [ ] Public docs follow the agent-skills structural baseline.
-- [ ] `AGENTS.md` and `CLAUDE.md` are Mithril-specific and clear about routing boundaries.
-- [ ] `using-mithril` routes the final selected skill set.
-- [ ] Persona and command composition rules are documented.
-- [ ] Excluded routers and excluded simplicity surfaces are not routed.
-- [ ] Host setup docs exist for supported harnesses.
+- [x] Public docs follow the agent-skills structural baseline.
+- [x] `AGENTS.md` and `CLAUDE.md` are Mithril-specific and clear about routing boundaries.
+- [x] `using-mithril` routes the final selected skill set.
+- [x] Persona and command composition rules are documented.
+- [x] Excluded routers and excluded simplicity surfaces are not routed.
+- [x] Host setup docs exist for supported harnesses.
 
 ## Notes
 

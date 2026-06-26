@@ -1,4 +1,4 @@
-# Task 05: Add agent-skills Specialists and References
+# Task 05: Copy and Rename agent-skills Specialists and References
 
 ## Status
 
@@ -10,14 +10,14 @@ complete
 
 ## Description
 
-Add the selected agent-skills specialist layer and reference checklists. The approved design uses agent-skills for broad SDLC coverage, validation depth, references, and documentation structure. This task imports only the selected specialist skills and checklists, rewritten into Mithril skill anatomy where needed.
+Add the selected agent-skills specialist layer and reference checklists by copying source files first and applying only required Mithril naming. The approved design uses agent-skills for broad SDLC coverage, validation depth, references, and documentation structure. This task creates an auditable copied-and-renamed baseline for the later rewrite pass.
 
 ## Dependencies
 
 **Depends on:** task-02-add-validation-harness.md, task-04-merge-canonical-disciplines.md
 **Blocks:** task-06-add-commands-personas.md, task-09-rewrite-docs-router-integration.md
 
-**Context from dependencies:** Task 02 provides validators. Task 04 creates `docs/skill-anatomy.md` and canonical discipline skills that these specialists should reference instead of duplicating.
+**Context from dependencies:** Task 02 provides validators. Task 04 creates copied-and-renamed canonical discipline source material that these specialists should reference instead of duplicating.
 
 ## Files to Create
 
@@ -51,15 +51,16 @@ None. Router integration happens in task 09.
 ### Implementation Steps
 
 1. Source material from `D:\Source\_ai\agent-skills\skills\` and `D:\Source\_ai\agent-skills\references\`.
-2. Rewrite imported skills into `docs/skill-anatomy.md` structure.
-3. Replace `agent-skills` product-facing mentions with Mithril language.
+2. Preserve source structure in the copied skills and references.
+3. Replace only product-facing `agent-skills` mentions that conflict with Mithril naming.
 4. Keep source attribution in `NOTICE.md` if substantial text is copied.
-5. Ensure specialists reference canonical Mithril skills for shared disciplines:
+5. Do not merge or rewrite shared disciplines in this task. Where a copied specialist names shared disciplines, use the intended Mithril destination names:
    - `test-driven-development`
    - `systematic-debugging`
    - `code-review-and-quality`
    - `implementation-standards`
 6. Do not import `using-agent-skills`.
+7. Commit the copied-and-renamed specialist baseline before the later combined rewrite.
 
 ### Code Snippets
 
@@ -88,7 +89,7 @@ Not applicable.
 ### GREEN
 
 - Command: `npm run validate:skills`
-- Expected: All imported specialist skills pass validation.
+- Expected: Copied-and-renamed specialist skills exist. Validator failures caused only by preserved source structure are documented for the later rewrite pass.
 
 ### Final Verification
 
@@ -100,7 +101,7 @@ Not applicable.
 - [ ] All selected specialist skills exist.
 - [ ] All selected reference checklists exist.
 - [ ] `using-agent-skills` is not imported.
-- [ ] Skills follow `docs/skill-anatomy.md`.
+- [ ] Source structure is preserved except required Mithril renaming.
 - [ ] Specialists reference canonical Mithril disciplines instead of duplicating them.
 
 ## Notes

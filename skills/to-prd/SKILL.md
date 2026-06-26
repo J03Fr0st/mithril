@@ -1,72 +1,85 @@
 ---
 name: to-prd
-description: Use when current conversation context, project facts, and clarified decisions should be synthesized into a PRD for the project issue tracker.
+description: Use when current conversation context should become a PRD for the project tracker without a fresh interview.
+disable-model-invocation: true
 ---
-
-# To PRD
+# To Prd
 
 ## Overview
 
-`to-prd` converts already-known context into a product requirements document. It is synthesis, not a new interview: use the conversation, repo evidence, domain vocabulary, and existing decisions to produce a durable issue-tracker artifact.
+This skill takes the current conversation context and codebase understanding and produces a PRD. Do NOT interview the user — just synthesize what you already know.
+
+The issue tracker and triage label vocabulary should have been provided to you — run `/setup-mithril-project` if not.
 
 ## When to Use
 
-Use this skill when:
+1. Explore the repo to understand the current state of the codebase, if you haven't already. Use the project's domain glossary vocabulary throughout the PRD, and respect any ADRs in the area you're touching.
 
-- The user asks for a PRD from the current discussion.
-- A feature idea has enough context to preserve as a product artifact.
-- A prototype or grilling session produced decisions that need product framing.
-- Work should be published before issue slicing.
+2. Sketch out the seams at which you're going to test the feature. Existing seams should be preferred to new ones. Use the highest seam possible. If new seams are needed, propose them at the highest point you can. The fewer seams across the codebase, the better - the ideal number is one.
 
-If issue tracker or label conventions are unknown, use the `setup-mithril-project` skill first.
+Check with the user that these seams match their expectations.
 
-## Process
+3. Write the PRD using the template below, then publish it to the project issue tracker. Apply the `ready-for-agent` triage label - no need for additional triage.
 
-1. Review conversation context, relevant code, domain glossary, and ADRs.
-2. Identify the highest useful testing seam with `codebase-design` vocabulary.
-3. Confirm the seam with the user when it is a real design choice.
-4. Draft the PRD:
-   - Problem Statement
-   - Solution
-   - User Stories
-   - Implementation Decisions
-   - Testing Decisions
-   - Out of Scope
-   - Further Notes
-5. Avoid brittle file paths and code snippets.
-   - Exception: include a trimmed prototype-derived state shape or schema only when it captures a decision better than prose.
-6. Before publication, run the publication safety gate:
-   - Present the PRD draft and tracker metadata to the user.
-   - Identify the issue-tracker target, repo or project, labels, and triage state to apply.
-   - Redact secrets, credentials, customer data, and sensitive details from the body and metadata.
-   - Get explicit user approval for the exact target, body, labels, and state.
-7. After approval, create or update external tracker items and apply only the approved triage state.
+<prd-template>
+
+## Problem Statement
+
+The problem that the user is facing, from the user's perspective.
+
+## Solution
+
+The solution to the problem, from the user's perspective.
+
+## User Stories
+
+A LONG, numbered list of user stories. Each user story should be in the format of:
+
+1. As an <actor>, I want a <feature>, so that <benefit>
+
+<user-story-example>
+1. As a mobile bank customer, I want to see balance on my accounts, so that I can make better informed decisions about my spending
+</user-story-example>
+
+This list of user stories should be extremely extensive and cover all aspects of the feature.
+
+## Implementation Decisions
+
+A list of implementation decisions that were made. This can include:
+
+- The modules that will be built/modified
+- The interfaces of those modules that will be modified
+- Technical clarifications from the developer
+- Architectural decisions
+- Schema changes
+- API contracts
+- Specific interactions
+
+Do NOT include specific file paths or code snippets. They may end up being outdated very quickly.
+
+Exception: if a prototype produced a snippet that encodes a decision more precisely than prose can (state machine, reducer, schema, type shape), inline it within the relevant decision and note briefly that it came from a prototype. Trim to the decision-rich parts — not a working demo, just the important bits.
+
+## Testing Decisions
+
+A list of testing decisions that were made. Include:
+
+- A description of what makes a good test (only test external behavior, not implementation details)
+- Which modules will be tested
+- Prior art for the tests (i.e. similar types of tests in the codebase)
+
+## Out of Scope
+
+A description of the things that are out of scope for this PRD.
+
+## Further Notes
+
+Any further notes about the feature.
+
+</prd-template>
+
 
 ## Common Rationalizations
 
-| Rationalization | Reality |
-| --- | --- |
-| "I should ask more questions." | This skill preserves what is already known; use `grilling` first if context is not settled. |
-| "Implementation file paths make it precise." | File paths decay quickly in product artifacts. Capture decisions, not transient locations. |
-| "A short user story list is enough." | PRDs should expose the breadth of user value and edge cases. |
-| "Testing can wait for tasks." | Testing decisions shape the feature and belong in the PRD. |
-
 ## Red Flags
 
-- The PRD invents decisions not present in conversation, code, or docs.
-- User stories are implementation tasks in disguise.
-- Testing decisions name internals instead of behavior seams.
-- Out-of-scope items are missing for a feature with obvious temptations.
-- The issue tracker target is unknown.
-
 ## Verification
-
-Before publishing or handing off:
-
-- The PRD uses project domain terms consistently.
-- Implementation decisions avoid brittle paths unless a prototype snippet is justified.
-- Testing decisions name behavior and seams.
-- Out-of-scope items prevent likely scope creep.
-- The body and tracker metadata have been redacted for secrets, credentials, customer data, and sensitive details.
-- The user explicitly approved the target, body, labels, and state before any external tracker mutation or triage state change.
-- The artifact is published or its target location is reported.

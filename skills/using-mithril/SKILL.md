@@ -128,7 +128,7 @@ Some Mithril skills are situational rather than lifecycle defaults:
 - Use `simplicity` before choosing an implementation shape when the smallest correct approach is unclear.
 - Use `code-simplification` when working code should be made clearer without changing behavior.
 - Use `simplicity-audit` for a broad over-engineering audit.
-- Use `skill-design` when creating, editing, porting, validating, or routing Mithril skills.
+- Use `source-driven-development` for copied or source-backed skill alignment; preserve source material and apply only requested Mithril naming, routing, and validator fixes unless the user explicitly asks for a redesign.
 - Use `api-and-interface-design` for public module, component, service, schema, REST, or GraphQL contracts.
 - Use `frontend-ui-engineering` for user-facing UI, layout, interaction, accessibility, or visual polish.
 - Use `source-driven-development` when current authoritative documentation is required.

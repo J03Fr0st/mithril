@@ -1,4 +1,4 @@
-# Task 10: Final Consistency and Release Readiness
+# Task 11: Final Consistency and Release Readiness
 
 ## Status
 
@@ -6,7 +6,7 @@ complete
 
 ## Wave
 
-7
+8
 
 ## Description
 
@@ -14,10 +14,10 @@ Run the final consistency, validation, packaging, and release-readiness pass aft
 
 ## Dependencies
 
-**Depends on:** task-02-add-validation-harness.md, task-09-rewrite-docs-router-integration.md
+**Depends on:** task-02-add-validation-harness.md, task-10-synthesize-merged-skills.md
 **Blocks:** None
 
-**Context from dependencies:** Task 02 provides validation scripts. Task 09 completes final routing and docs, so the consistency pass can evaluate the whole product.
+**Context from dependencies:** Task 02 provides validation scripts. Task 10 completes the merged top-level skill synthesis, so the consistency pass can evaluate the whole product.
 
 ## Files to Create
 
@@ -97,12 +97,12 @@ Not applicable.
 
 ## Acceptance Criteria
 
-- [ ] `npm test` passes.
-- [ ] `npm pack --dry-run` succeeds.
-- [ ] Stale-name search has only intentional provenance/history matches.
-- [ ] Excluded routers and surfaces are absent from product behavior.
-- [ ] `RELEASE-NOTES.md` describes the merge.
-- [ ] `git status` contains only intended Mithril changes.
+- [x] `npm test` passes.
+- [x] `npm pack --dry-run` succeeds.
+- [x] Stale-name search has only intentional provenance/history matches.
+- [x] Excluded routers and surfaces are absent from product behavior.
+- [x] `RELEASE-NOTES.md` describes the merge.
+- [x] `git status` contains only intended Mithril changes.
 
 ## Notes
 

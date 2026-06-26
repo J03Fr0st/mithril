@@ -1,66 +1,85 @@
 ---
 name: domain-modeling
-description: Use when project domain terms, glossary entries, context maps, or ADR-worthy decisions need to be created, sharpened, reconciled, or recorded.
+description: Build and sharpen a project's domain model. Use when the user wants to pin down domain terminology or a ubiquitous language, record an architectural decision, or when another skill needs to maintain the domain model.
 ---
 
 # Domain Modeling
 
 ## Overview
 
-Domain modeling keeps project language precise. It challenges vague terms, reconciles glossary conflicts, records durable decisions, and keeps `CONTEXT.md`, `CONTEXT-MAP.md`, and ADRs useful without turning them into specs.
+Actively build and sharpen the project's domain model as you design. This is the *active* discipline — challenging terms, inventing edge-case scenarios, and writing the glossary and decisions down the moment they crystallise. (Merely *reading* `CONTEXT.md` for vocabulary is not this skill — that's a one-line habit any skill can do. This skill is for when you're changing the model, not just consuming it.)
+
+## File structure
+
+Most repos have a single context:
+
+```
+/
+├── CONTEXT.md
+├── docs/
+│   └── adr/
+│       ├── 0001-event-sourced-orders.md
+│       └── 0002-postgres-for-write-model.md
+└── src/
+```
+
+If a `CONTEXT-MAP.md` exists at the root, the repo has multiple contexts. The map points to where each one lives:
+
+```
+/
+├── CONTEXT-MAP.md
+├── docs/
+│   └── adr/                          ← system-wide decisions
+├── src/
+│   ├── ordering/
+│   │   ├── CONTEXT.md
+│   │   └── docs/adr/                 ← context-specific decisions
+│   └── billing/
+│       ├── CONTEXT.md
+│       └── docs/adr/
+```
+
+Create files lazily — only when you have something to write. If no `CONTEXT.md` exists, create one when the first term is resolved. If no `docs/adr/` exists, create it when the first ADR is needed.
+
+## During the session
+
+### Challenge against the glossary
+
+When the user uses a term that conflicts with the existing language in `CONTEXT.md`, call it out immediately. "Your glossary defines 'cancellation' as X, but you seem to mean Y — which is it?"
+
+### Sharpen fuzzy language
+
+When the user uses vague or overloaded terms, propose a precise canonical term. "You're saying 'account' — do you mean the Customer or the User? Those are different things."
+
+### Discuss concrete scenarios
+
+When domain relationships are being discussed, stress-test them with specific scenarios. Invent scenarios that probe edge cases and force the user to be precise about the boundaries between concepts.
+
+### Cross-reference with code
+
+When the user states how something works, check whether the code agrees. If you find a contradiction, surface it: "Your code cancels entire Orders, but you just said partial cancellation is possible — which is right?"
+
+### Update CONTEXT.md inline
+
+When a term is resolved, update `CONTEXT.md` right there. Don't batch these up — capture them as they happen. Use the format in [CONTEXT-FORMAT.md](./CONTEXT-FORMAT.md).
+
+`CONTEXT.md` should be totally devoid of implementation details. Do not treat `CONTEXT.md` as a spec, a scratch pad, or a repository for implementation decisions. It is a glossary and nothing else.
+
+### Offer ADRs sparingly
+
+Only offer to create an ADR when all three are true:
+
+1. **Hard to reverse** — the cost of changing your mind later is meaningful
+2. **Surprising without context** — a future reader will wonder "why did they do it this way?"
+3. **The result of a real trade-off** — there were genuine alternatives and you picked one for specific reasons
+
+If any of the three is missing, skip the ADR. Use the format in [ADR-FORMAT.md](./ADR-FORMAT.md).
+
 
 ## When to Use
 
-Use this skill when:
-
-- A discussion introduces or changes a project domain term.
-- The user uses one word for multiple concepts, or multiple words for one concept.
-- A plan needs to respect existing domain language before becoming an issue, PRD, or design.
-- A decision may need an ADR.
-- Another skill needs active glossary or ADR maintenance.
-
-Do not use this skill merely to read existing terms. Reading project vocabulary is a normal input to other skills.
-
-## Process
-
-1. Locate the relevant domain docs.
-   - If `CONTEXT-MAP.md` exists, use it to find the relevant context glossary.
-   - Otherwise use the root `CONTEXT.md` when present.
-   - Read ADRs that touch the area under discussion.
-2. Challenge unclear language immediately.
-   - Name the conflicting definitions.
-   - Offer a precise candidate term.
-   - Use concrete scenarios to expose edge cases.
-3. Check code when a domain claim is about existing behavior.
-4. Update glossary entries lazily.
-   - Create `CONTEXT.md` only when a real term has been resolved.
-   - Keep glossary entries about domain meaning, not implementation details.
-5. Offer ADRs sparingly.
-   - Use an ADR only for a decision that is hard to reverse, surprising without context, and chosen from real alternatives.
-
 ## Common Rationalizations
-
-| Rationalization | Reality |
-| --- | --- |
-| "Everyone knows what this means." | Future agents and reviewers only know what the repo records. |
-| "Implementation details help define the term." | Glossaries define domain meaning; specs and code define implementation. |
-| "An ADR is safer for every choice." | Routine choices bury the decisions that actually need history. |
-| "We can clean up the wording later." | Domain language decays fastest while decisions are fresh. |
 
 ## Red Flags
 
-- A term is used differently in code, docs, and conversation.
-- A glossary entry describes tables, files, functions, or UI rather than domain meaning.
-- A plan introduces a new concept without naming it.
-- An ADR is being written without alternatives.
-- An ADR conflict is ignored because the new plan feels obvious.
-
 ## Verification
-
-Before leaving domain-modeling work:
-
-- Relevant glossary and ADR sources were checked when present.
-- New or changed terms are precise, singular, and implementation-free.
-- ADRs record only durable tradeoffs.
-- Any code-vs-language contradiction is reported.
-- Follow-on work uses the canonical terms.
