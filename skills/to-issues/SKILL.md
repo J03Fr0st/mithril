@@ -1,72 +1,93 @@
 ---
 name: to-issues
-description: Use when a PRD, plan, design, or spec should be broken into independently executable vertical-slice issues for the project issue tracker.
+description: Use when a plan, spec, or PRD needs to become independently executable project-tracker issues.
+disable-model-invocation: true
 ---
 
 # To Issues
 
 ## Overview
 
-`to-issues` turns product or design intent into agent-ready vertical slices. Each issue should deliver a narrow, complete path through the system rather than a horizontal layer of work.
+Break a plan into independently-grabbable issues using vertical slices (tracer bullets).
+
+The issue tracker and triage label vocabulary should have been provided to you — run `/setup-mithril-project` if not.
 
 ## When to Use
 
-Use this skill when:
+### 1. Gather context
 
-- A PRD, design, plan, or spec needs issue-tracker tasks.
-- Work should be split for independent agents or reviewable checkpoints.
-- A parent issue needs child issues with dependencies.
-- A broad request needs tracer-bullet slices before implementation.
+Work from whatever is already in the conversation context. If the user passes an issue reference (issue number, URL, or path) as an argument, fetch it from the issue tracker and read its full body and comments.
 
-If issue tracker or triage state conventions are unknown, use the `setup-mithril-project` skill first.
+### 2. Explore the codebase (optional)
 
-## Process
+If you have not already explored the codebase, do so to understand the current state of the code. Issue titles and descriptions should use the project's domain glossary vocabulary, and respect ADRs in the area you're touching.
 
-1. Gather the source artifact and existing comments.
-2. Read relevant code, domain glossary, and ADRs when the codebase shape affects slicing.
-3. Identify any prefactor slice that makes later changes simple without shipping speculative behavior.
-4. Draft vertical slices.
-   - Each slice should be independently demonstrable or verifiable.
-   - Each slice should cut through all necessary layers for one behavior.
-   - Dependencies should be explicit and minimal.
-5. Present the proposed breakdown to the user:
-   - Title
-   - Blocked by
-   - User stories or requirements covered
-   - Verification signal
-6. Iterate until approved.
-7. Before publishing, run the publication safety gate:
-   - Present the exact issue drafts and tracker metadata to the user.
-   - Identify the issue-tracker target, repo or project, labels, and triage state to apply.
-   - Redact secrets, credentials, customer data, and sensitive details from each issue body and metadata.
-   - Get explicit user approval for the exact target, issue bodies, labels, and state.
-8. After approval, create or update external tracker items in dependency order so later issues can reference real blockers, and apply only the approved triage state.
+Look for opportunities to prefactor the code to make the implementation easier. "Make the change easy, then make the easy change."
+
+### 3. Draft vertical slices
+
+Break the plan into **tracer bullet** issues. Each issue is a thin vertical slice that cuts through ALL integration layers end-to-end, NOT a horizontal slice of one layer.
+
+<vertical-slice-rules>
+
+- Each slice delivers a narrow but COMPLETE path through every layer (schema, API, UI, tests)
+- A completed slice is demoable or verifiable on its own
+- Any prefactoring should be done first
+
+</vertical-slice-rules>
+
+### 4. Quiz the user
+
+Present the proposed breakdown as a numbered list. For each slice, show:
+
+- **Title**: short descriptive name
+- **Blocked by**: which other slices (if any) must complete first
+- **User stories covered**: which user stories this addresses (if the source material has them)
+
+Ask the user:
+
+- Does the granularity feel right? (too coarse / too fine)
+- Are the dependency relationships correct?
+- Should any slices be merged or split further?
+
+Iterate until the user approves the breakdown.
+
+### 5. Publish the issues to the issue tracker
+
+For each approved slice, publish a new issue to the issue tracker. Use the issue body template below. These issues are considered ready for AFK agents, so publish them with the correct triage label unless instructed otherwise.
+
+Publish issues in dependency order (blockers first) so you can reference real issue identifiers in the "Blocked by" field.
+
+<issue-template>
+## Parent
+
+A reference to the parent issue on the issue tracker (if the source was an existing issue, otherwise omit this section).
+
+## What to build
+
+A concise description of this vertical slice. Describe the end-to-end behavior, not layer-by-layer implementation.
+
+Avoid specific file paths or code snippets — they go stale fast. Exception: if a prototype produced a snippet that encodes a decision more precisely than prose can (state machine, reducer, schema, type shape), inline it here and note briefly that it came from a prototype. Trim to the decision-rich parts — not a working demo, just the important bits.
+
+## Acceptance criteria
+
+- [ ] Criterion 1
+- [ ] Criterion 2
+- [ ] Criterion 3
+
+## Blocked by
+
+- A reference to the blocking ticket (if any)
+
+Or "None - can start immediately" if no blockers.
+
+</issue-template>
+
+Do NOT close or modify any parent issue.
+
 
 ## Common Rationalizations
 
-| Rationalization | Reality |
-| --- | --- |
-| "Layer-by-layer tasks are easier to assign." | They produce integration risk and partial work that cannot be evaluated alone. |
-| "Dependencies can be figured out later." | Missing blockers create idle agents and merge friction. |
-| "The parent issue has enough detail." | Child issues must stand alone for execution. |
-| "A prefactor is just cleanup." | A prefactor is valid only when it directly enables the slices that follow. |
-
 ## Red Flags
 
-- Issues are named by layer rather than user-visible or behavior-visible slices.
-- A completed issue would not be demoable, testable, or reviewable alone.
-- Acceptance criteria include vague phrases like "handle edge cases".
-- Dependencies point both ways or depend on uncreated work.
-- Issue bodies copy brittle implementation details from the plan.
-
 ## Verification
-
-Before publishing:
-
-- Every issue maps to source requirements or user stories.
-- Each issue has acceptance criteria and a concrete verification signal.
-- Blockers are ordered and publishable.
-- The user approved the granularity.
-- The issue-tracker target, repo or project, labels, and triage state are known.
-- Issue bodies and tracker metadata have been redacted for secrets, credentials, customer data, and sensitive details.
-- The user explicitly approved the exact target, issue bodies, labels, and state before any external tracker mutation or triage state change.

@@ -1,4 +1,4 @@
-# Task 03: Port Superpowers Core
+# Task 03: Copy and Rename Superpowers Core
 
 ## Status
 
@@ -10,7 +10,7 @@ complete
 
 ## Description
 
-Port the Superpowers core workflow skills into Mithril as the runtime and autonomous execution foundation. The approved design says Superpowers has the strongest bootstrap, autonomous execution model, worktree/subagent flow, and verification discipline. This task imports that core while excluding the upstream router.
+Copy the Superpowers core workflow skills into Mithril as the runtime and autonomous execution foundation, then apply only required Mithril renaming. The approved design says Superpowers has the strongest bootstrap, autonomous execution model, worktree/subagent flow, and verification discipline. This task creates a copied-and-renamed source baseline while excluding the upstream router.
 
 ## Dependencies
 
@@ -22,12 +22,26 @@ Port the Superpowers core workflow skills into Mithril as the runtime and autono
 ## Files to Create
 
 - `skills/brainstorming/SKILL.md`
+- `skills/brainstorming/spec-document-reviewer-prompt.md`
+- `skills/brainstorming/visual-companion.md`
+- `skills/brainstorming/scripts/frame-template.html`
+- `skills/brainstorming/scripts/helper.js`
+- `skills/brainstorming/scripts/server.cjs`
+- `skills/brainstorming/scripts/start-server.sh`
+- `skills/brainstorming/scripts/stop-server.sh`
 - `skills/writing-plans/SKILL.md`
+- `skills/writing-plans/plan-document-reviewer-prompt.md`
 - `skills/using-git-worktrees/SKILL.md`
 - `skills/subagent-driven-development/SKILL.md`
+- `skills/subagent-driven-development/implementer-prompt.md`
+- `skills/subagent-driven-development/task-reviewer-prompt.md`
+- `skills/subagent-driven-development/scripts/review-package`
+- `skills/subagent-driven-development/scripts/sdd-workspace`
+- `skills/subagent-driven-development/scripts/task-brief`
 - `skills/executing-plans/SKILL.md`
 - `skills/dispatching-parallel-agents/SKILL.md`
 - `skills/requesting-code-review/SKILL.md`
+- `skills/requesting-code-review/code-reviewer.md`
 - `skills/receiving-code-review/SKILL.md`
 - `skills/verification-before-completion/SKILL.md`
 - `skills/finishing-a-development-branch/SKILL.md`
@@ -54,7 +68,8 @@ Port the Superpowers core workflow skills into Mithril as the runtime and autono
    - subagent-driven task execution where appropriate
    - review gates
    - verification before completion claims
-5. Normalize each imported skill into the Mithril `docs/skill-anatomy.md` structure if that file is already available; otherwise keep the source structure and leave a local note for task 04 to normalize.
+5. Keep the source skill structure intact for this commit. Do not rewrite headings, merge loops, or force a new Mithril structure in this task.
+6. Commit the copied-and-renamed Superpowers baseline before any later synthesis or behavioral rewrite.
 
 ### Code Snippets
 
@@ -84,7 +99,7 @@ Not applicable.
 ### GREEN
 
 - Command: `npm run validate:skills`
-- Expected: All ported core skills pass the Mithril skill validator.
+- Expected: Copied-and-renamed core skills exist. Validator failures caused only by preserved source structure are documented for the later rewrite pass.
 
 ### Final Verification
 
@@ -97,7 +112,8 @@ Not applicable.
 - [ ] `using-superpowers` is not imported.
 - [ ] Product-facing references are rebranded to Mithril.
 - [ ] `using-mithril` routes core workflows without invoking upstream routers.
-- [ ] `npm run validate:skills` passes or reports only documented pre-existing gaps.
+- [ ] Source structure is preserved except required Mithril renaming.
+- [ ] The copied-and-renamed baseline can be committed before any behavioral rewrite.
 
 ## Notes
 
