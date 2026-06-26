@@ -193,7 +193,7 @@ Start with `task-01-stabilize-shell-assets-attribution`, then continue through t
   - Updated the README dependency graph, requirements, design, and `spec.json` so release readiness depends on skill synthesis.
 - Scope guard:
   - The synthesis wave updates active top-level Mithril skills.
-  - Copied `sources/` folders remain as provenance.
+  - Copied `sources/` folders are temporary synthesis inputs, not final runtime payload.
   - `skill-design` and `docs/skill-anatomy.md` are not the rewrite basis; the basis is direct comparison of copied source instances and Mithril routing needs.
 
 ## 2026-06-25 - Wave 7 Completion
@@ -212,7 +212,7 @@ Start with `task-01-stabilize-shell-assets-attribution`, then continue through t
   - `implementation-standards`: updated the cross-cutting guardrails to align TDD, debugging, review, skill-doc, dependency, naming, and evidence requirements.
 - Result:
   - Active canonical skills now contain the missing synthesis guidance from copied source material.
-  - Copied `sources/` folders remain present as provenance.
+  - Copied `sources/` folders were temporary synthesis inputs and are removed from final runtime skill directories.
   - Removed the final live agent-facing `docs/skill-anatomy.md` filename reference from `AGENTS.md` while preserving the generic guard against template-driven rewrites.
 - Verification:
   - `npm run validate:skills`: passed, 46 skills checked with 0 errors and 0 warnings.
@@ -244,3 +244,13 @@ Start with `task-01-stabilize-shell-assets-attribution`, then continue through t
 - Spec compliance review: PASS; final release-readiness evidence is recorded and package contents exclude implementation-planning directories.
 - Code quality review: PASS; no implementation files outside the intended skill/docs/release scope were changed.
 - Final Wave 8 status: `task-11-final-consistency-release` complete.
+
+## 2026-06-26 - Post-PR Source Payload Cleanup
+
+- Reason: copied `skills/**/sources/**` payloads still shipped inside canonical skill directories after synthesis, which made the merge look unfinished.
+- Result:
+  - Removed copied source payloads from `code-review-and-quality`, `skill-design`, `systematic-debugging`, and `test-driven-development`.
+  - Added a validator guard that fails any future `skills/<name>/sources` directory.
+  - Updated release and merge notes so final runtime skill directories are Mithril-owned skills plus deliberate support files, not nested upstream source payloads.
+- Verification:
+  - `npm run validate:skills`: failed before cleanup on the four `sources` directories, then passed after cleanup.

@@ -23,11 +23,6 @@ Copy and rename the source material for the canonical Mithril discipline skills 
 
 - `skills/test-driven-development/SKILL.md`
 - `skills/test-driven-development/testing-anti-patterns.md`
-- `skills/test-driven-development/sources/agent-skills/SKILL.md`
-- `skills/test-driven-development/sources/matt-tdd/SKILL.md`
-- `skills/test-driven-development/sources/matt-tdd/mocking.md`
-- `skills/test-driven-development/sources/matt-tdd/refactoring.md`
-- `skills/test-driven-development/sources/matt-tdd/tests.md`
 - `skills/systematic-debugging/SKILL.md`
 - `skills/systematic-debugging/condition-based-waiting-example.ts`
 - `skills/systematic-debugging/condition-based-waiting.md`
@@ -39,13 +34,7 @@ Copy and rename the source material for the canonical Mithril discipline skills 
 - `skills/systematic-debugging/test-pressure-1.md`
 - `skills/systematic-debugging/test-pressure-2.md`
 - `skills/systematic-debugging/test-pressure-3.md`
-- `skills/systematic-debugging/sources/agent-skills-debugging-and-error-recovery/SKILL.md`
-- `skills/systematic-debugging/sources/matt-diagnosing-bugs/SKILL.md`
-- `skills/systematic-debugging/sources/matt-diagnosing-bugs/scripts/hitl-loop.template.sh`
 - `skills/code-review-and-quality/SKILL.md`
-- `skills/code-review-and-quality/sources/superpowers-receiving-code-review/SKILL.md`
-- `skills/code-review-and-quality/sources/superpowers-requesting-code-review/SKILL.md`
-- `skills/code-review-and-quality/sources/superpowers-requesting-code-review/code-reviewer.md`
 - `skills/skill-design/SKILL.md`
 - `skills/skill-design/anthropic-best-practices.md`
 - `skills/skill-design/examples/CLAUDE_MD_TESTING.md`
@@ -53,8 +42,6 @@ Copy and rename the source material for the canonical Mithril discipline skills 
 - `skills/skill-design/persuasion-principles.md`
 - `skills/skill-design/render-graphs.js`
 - `skills/skill-design/testing-skills-with-subagents.md`
-- `skills/skill-design/sources/matt-writing-great-skills/GLOSSARY.md`
-- `skills/skill-design/sources/matt-writing-great-skills/SKILL.md`
 - `skills/implementation-standards/SKILL.md`
 
 ## Files to Modify
@@ -84,7 +71,7 @@ Copy and rename the source material for the canonical Mithril discipline skills 
    - validation expectations and practical authoring guidance.
 6. Copy or draft the initial `implementation-standards` source baseline from the approved Code Shape Governance section without merging it into other skills yet.
 7. Apply only required Mithril naming and destination renames.
-8. Commit the copied-and-renamed collision-source baseline before the later synthesis pass creates single canonical Mithril-owned workflows.
+8. Commit the copied-and-renamed collision-source baseline before the later synthesis pass creates single canonical Mithril-owned workflows. The final synthesis result must not retain nested `sources` payloads inside runtime skill directories.
 
 ### Code Snippets
 
@@ -125,8 +112,8 @@ Not applicable.
 
 ## Acceptance Criteria
 
-- [ ] Selected source material for TDD, debugging, review, skill-design, and implementation standards exists under Mithril destinations.
-- [ ] Source structure is preserved except required Mithril renaming.
+- [ ] Selected source material for TDD, debugging, review, skill-design, and implementation standards is merged into Mithril destinations.
+- [ ] Temporary source structure is not retained in final runtime skill directories.
 - [ ] No duplicate upstream router is activated from `using-mithril`.
 - [ ] The copied-and-renamed baseline can be committed before canonical rewriting.
 

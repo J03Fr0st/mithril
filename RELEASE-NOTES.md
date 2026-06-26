@@ -9,7 +9,7 @@ This is the first merged Mithril release: a curated agent engineering methodolog
 - Added lifecycle coverage for brainstorming, planning, TDD, systematic debugging, parallel execution, review, simplification, and launch readiness.
 - Added validated skill and command metadata for supported agent hosts.
 - Added advisory personas, shared references, hook assets, setup guides, and package manifests for the supported distribution surfaces.
-- Synthesized copied TDD, debugging, review, skill-authoring, and implementation-standard sources into active Mithril skills while keeping copied `sources/` folders for provenance.
+- Synthesized copied TDD, debugging, review, skill-authoring, and implementation-standard sources into active Mithril skills, then removed copied `sources/` payloads from runtime skill directories.
 - Preserved source attribution in `NOTICE.md` without promoting excluded upstream surfaces in product-facing metadata.
 
 ## Validation Evidence

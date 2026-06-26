@@ -15,7 +15,7 @@ The merge must be selective and source-first. Mithril keeps one router, `using-m
 - Add selected Matt alignment, domain-modeling, issue, triage, handoff, and architecture skills by source copy plus Mithril renaming first.
 - Add the Mithril Simplicity Layer with copied source material for embedded simplicity principles, `simplicity-review`, and `simplicity-audit`.
 - Rewrite public docs, `AGENTS.md`, and `CLAUDE.md` using agent-skills as the structural baseline.
-- Synthesize duplicate source-backed skill instances into active top-level Mithril skills while retaining copied source folders as provenance.
+- Synthesize duplicate source-backed skill instances into active top-level Mithril skills, then remove copied source folders from runtime skill directories.
 - Add validation and consistency checks so Mithril is not a hand-assembled plugin.
 
 ## Non-Goals
@@ -32,7 +32,7 @@ The merge must be selective and source-first. Mithril keeps one router, `using-m
 - [ ] `using-mithril` is the only active router.
 - [ ] Selected Superpowers, agent-skills, Matt, and simplicity-source skills are copied from source before rewrite.
 - [ ] Source-copied skills receive only required Mithril renaming before the source-baseline commit.
-- [ ] Final active Mithril skills synthesize the best compatible guidance from copied source instances while preserving source folders as provenance; do not use `skill-design` or `docs/skill-anatomy.md` as the rewrite basis unless explicitly approved.
+- [ ] Final active Mithril skills synthesize the best compatible guidance from copied source instances while removing copied source folders from runtime skill directories; do not use `skill-design` or `docs/skill-anatomy.md` as the rewrite basis unless explicitly approved.
 - [ ] Selected Superpowers, agent-skills, Matt, and simplicity-source material is renamed where product-facing and attribution is preserved.
 - [ ] `simplicity-review` and `simplicity-audit` exist, while `simplicity-debt`, `simplicity-gain`, and `simplicity-help` do not.
 - [ ] Public docs, `AGENTS.md`, and `CLAUDE.md` follow the agent-skills structural baseline with Mithril-specific lifecycle and boundaries.
@@ -52,7 +52,7 @@ The merge must be selective and source-first. Mithril keeps one router, `using-m
 
 - Use `skills/<skill-name>/SKILL.md` for Mithril-owned skills.
 - Rebrand internal references from Superpowers to Mithril: `docs/superpowers` to `docs/mithril`, `.superpowers` to `.mithril`, `superpowers:*` to `mithril:*`, and `SUPERPOWERS_*` to `MITHRIL_*`.
-- Do not rewrite copied skills into a new structure during the source-baseline commit. During the later alignment pass, make minimal source-preserving naming, routing, and validator fixes. During the synthesis pass, compare source instances directly and update the active top-level Mithril skill with the best compatible guidance while preserving copied source folders.
+- Do not rewrite copied skills into a new structure during the source-baseline commit. During the later alignment pass, make minimal source-preserving naming, routing, and validator fixes. During the synthesis pass, compare source instances directly, update the active top-level Mithril skill with the best compatible guidance, then remove copied source folders from runtime skill directories.
 - Keep skills, commands, personas, references, and human docs as separate layers.
 - Personas do not invoke other personas; commands or the main agent orchestrate fan-out and merge reports.
 - Validation should be available through package scripts once the validation harness is added.

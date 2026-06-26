@@ -131,6 +131,11 @@ function validateSkill(dirName, knownSkills) {
   const warnings = [];
 
   const skillPath = path.join(SKILLS_DIR, dirName, 'SKILL.md');
+  const sourcesPath = path.join(SKILLS_DIR, dirName, 'sources');
+
+  if (fs.existsSync(sourcesPath)) {
+    errors.push("Disallowed 'sources' directory; merge source material into the Mithril-owned skill or explicit support files");
+  }
 
   if (!fs.existsSync(skillPath)) {
     errors.push('Missing SKILL.md');
