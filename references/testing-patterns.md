@@ -1,86 +1,236 @@
-# Testing Patterns
+# Testing Patterns Reference
 
-Quick reference for behavior-focused tests. Use with the `test-driven-development` skill.
+Quick reference for common testing patterns across the stack. Use alongside the `test-driven-development` skill.
 
-## Test Shape
+## Table of Contents
 
-Use Arrange, Act, Assert:
+- [Test Structure (Arrange-Act-Assert)](#test-structure-arrange-act-assert)
+- [Test Naming Conventions](#test-naming-conventions)
+- [Common Assertions](#common-assertions)
+- [Mocking Patterns](#mocking-patterns)
+- [React/Component Testing](#reactcomponent-testing)
+- [API / Integration Testing](#api--integration-testing)
+- [E2E Testing (Playwright)](#e2e-testing-playwright)
+- [Test Anti-Patterns](#test-anti-patterns)
 
-- Arrange: create inputs, fixtures, dependencies, and preconditions.
-- Act: call the public function, endpoint, command, or user action.
-- Assert: check the externally observable result.
+## Test Structure (Arrange-Act-Assert)
 
-Prefer one behavior per test. If the test name needs "and", split it unless the combined behavior is the contract.
+```typescript
+it('describes expected behavior', () => {
+  // Arrange: Set up test data and preconditions
+  const input = { title: 'Test Task', priority: 'high' };
 
-## Naming
+  // Act: Perform the action being tested
+  const result = createTask(input);
 
-Good test names describe behavior and condition:
+  // Assert: Verify the outcome
+  expect(result.title).toBe('Test Task');
+  expect(result.priority).toBe('high');
+  expect(result.status).toBe('pending');
+});
+```
 
-- `creates a task with default pending status`
-- `returns 422 when title is empty`
-- `does not expose passwordHash in user response`
-- `announces validation errors to screen readers`
+## Test Naming Conventions
 
-Avoid names such as `works`, `test1`, or `handles bad input`.
+```typescript
+// Pattern: [unit] [expected behavior] [condition]
+describe('TaskService.createTask', () => {
+  it('creates a task with default pending status', () => {});
+  it('throws ValidationError when title is empty', () => {});
+  it('trims whitespace from title', () => {});
+  it('generates a unique ID for each task', () => {});
+});
+```
 
-## Assertion Guidance
+## Common Assertions
 
-- Assert outcomes, not implementation details.
-- Assert specific values where possible.
-- Use broad matchers only for non-essential generated fields.
-- For errors, assert the error type or stable code rather than brittle prose unless message text is a contract.
-- Always await asynchronous assertions so failures cannot be swallowed.
+```typescript
+// Equality
+expect(result).toBe(expected);           // Strict equality (===)
+expect(result).toEqual(expected);        // Deep equality (objects/arrays)
+expect(result).toStrictEqual(expected);  // Deep equality + type matching
 
-## What to Mock
+// Truthiness
+expect(result).toBeTruthy();
+expect(result).toBeFalsy();
+expect(result).toBeNull();
+expect(result).toBeDefined();
+expect(result).toBeUndefined();
 
-Mock at slow, unsafe, or external boundaries:
+// Numbers
+expect(result).toBeGreaterThan(5);
+expect(result).toBeLessThanOrEqual(10);
+expect(result).toBeCloseTo(0.3, 5);      // Floating point
 
-- Database, filesystem, network, payment provider, email/SMS provider, clock, randomness, browser APIs, and third-party services.
+// Strings
+expect(result).toMatch(/pattern/);
+expect(result).toContain('substring');
 
-Avoid mocking:
+// Arrays / Objects
+expect(array).toContain(item);
+expect(array).toHaveLength(3);
+expect(object).toHaveProperty('key', 'value');
 
-- The unit under test, pure helpers, validation logic, business rules, or code whose behavior the test is meant to prove.
+// Errors
+expect(() => fn()).toThrow();
+expect(() => fn()).toThrow(ValidationError);
+expect(() => fn()).toThrow('specific message');
 
-Prefer fakes when they make behavior clearer than interaction mocks.
+// Async
+await expect(asyncFn()).resolves.toBe(value);
+await expect(asyncFn()).rejects.toThrow(Error);
+```
 
-## Component and Browser Tests
+## Mocking Patterns
 
-- Query elements by role, label, text, or accessible name before test IDs.
-- Verify keyboard behavior and focus for interactions.
-- Include loading, empty, error, disabled, and success states.
-- Pair automated component tests with browser checks for layout, console, network, and accessibility when visual behavior matters.
+### Mock Functions
 
-## API and Integration Tests
+```typescript
+const mockFn = jest.fn();
+mockFn.mockReturnValue(42);
+mockFn.mockResolvedValue({ data: 'test' });
+mockFn.mockImplementation((x) => x * 2);
 
-- Test through the public HTTP, command, package, or service boundary.
-- Cover success, validation failure, authentication failure, authorization failure, not-found, and conflict cases as risk warrants.
-- Use realistic fixtures and reset state between tests.
-- Assert response shape, status, headers, and side effects that are part of the contract.
-- Treat third-party and model outputs as untrusted inputs in tests.
+expect(mockFn).toHaveBeenCalled();
+expect(mockFn).toHaveBeenCalledWith('arg1', 'arg2');
+expect(mockFn).toHaveBeenCalledTimes(3);
+```
 
-## End-to-End Tests
+### Mock Modules
 
-- Reserve E2E for critical user flows and integration risks.
-- Keep flows short and deterministic.
-- Avoid asserting every detail through E2E when smaller tests cover it.
-- Capture screenshots or traces on failure when the tool supports it.
+```typescript
+// Mock an entire module
+jest.mock('./database', () => ({
+  query: jest.fn().mockResolvedValue([{ id: 1, title: 'Test' }]),
+}));
 
-## Anti-Patterns
+// Mock specific exports
+jest.mock('./utils', () => ({
+  ...jest.requireActual('./utils'),
+  generateId: jest.fn().mockReturnValue('test-id'),
+}));
+```
 
-| Anti-Pattern | Problem | Better Shape |
-| --- | --- | --- |
-| Test passes before implementation | It did not prove missing behavior | Fix the RED step. |
-| Snapshot everything | Reviewers stop reading diffs | Assert meaningful contract fields. |
-| Shared mutable state | Tests influence each other | Isolate setup and teardown. |
-| Permanent skipped tests | Hidden broken behavior | Fix or delete. |
-| Over-mocking | Tests call choreography | Test observable behavior. |
-| Test-only production hooks | Public API polluted by tests | Use existing seams or improve design. |
-| Manual-only verification | No regression guard | Automate the important check. |
+### Mock at Boundaries Only
 
-## Verification
+```
+Mock these:                    Don't mock these:
+├── Database calls             ├── Internal utility functions
+├── HTTP requests              ├── Business logic
+├── File system operations     ├── Data transformations
+├── External API calls         ├── Validation functions
+└── Time/Date (when needed)    └── Pure functions
+```
 
-- [ ] New behavior has a failing test before implementation unless explicitly out of scope.
-- [ ] Tests exercise public seams.
-- [ ] Tests fail for the intended reason when behavior is absent.
-- [ ] Tests are deterministic and independent.
-- [ ] Focused and relevant broader suites pass after the final edit.
+## React/Component Testing
+
+```tsx
+import { render, screen, fireEvent, waitFor } from '@testing-library/react';
+
+describe('TaskForm', () => {
+  it('submits the form with entered data', async () => {
+    const onSubmit = jest.fn();
+    render(<TaskForm onSubmit={onSubmit} />);
+
+    // Find elements by accessible role/label (not test IDs)
+    await screen.findByRole('textbox', { name: /title/i });
+    fireEvent.change(screen.getByRole('textbox', { name: /title/i }), {
+      target: { value: 'New Task' },
+    });
+    fireEvent.click(screen.getByRole('button', { name: /create/i }));
+
+    await waitFor(() => {
+      expect(onSubmit).toHaveBeenCalledWith({ title: 'New Task' });
+    });
+  });
+
+  it('shows validation error for empty title', async () => {
+    render(<TaskForm onSubmit={jest.fn()} />);
+
+    fireEvent.click(screen.getByRole('button', { name: /create/i }));
+
+    expect(await screen.findByText(/title is required/i)).toBeInTheDocument();
+  });
+});
+```
+
+## API / Integration Testing
+
+```typescript
+import request from 'supertest';
+import { app } from '../src/app';
+
+describe('POST /api/tasks', () => {
+  it('creates a task and returns 201', async () => {
+    const response = await request(app)
+      .post('/api/tasks')
+      .send({ title: 'Test Task' })
+      .set('Authorization', `Bearer ${testToken}`)
+      .expect(201);
+
+    expect(response.body).toMatchObject({
+      id: expect.any(String),
+      title: 'Test Task',
+      status: 'pending',
+    });
+  });
+
+  it('returns 422 for invalid input', async () => {
+    const response = await request(app)
+      .post('/api/tasks')
+      .send({ title: '' })
+      .set('Authorization', `Bearer ${testToken}`)
+      .expect(422);
+
+    expect(response.body.error.code).toBe('VALIDATION_ERROR');
+  });
+
+  it('returns 401 without authentication', async () => {
+    await request(app)
+      .post('/api/tasks')
+      .send({ title: 'Test' })
+      .expect(401);
+  });
+});
+```
+
+## E2E Testing (Playwright)
+
+```typescript
+import { test, expect } from '@playwright/test';
+
+test('user can create and complete a task', async ({ page }) => {
+  // Navigate and authenticate
+  await page.goto('/');
+  await page.fill('[name="email"]', 'test@example.com');
+  await page.fill('[name="password"]', 'testpass123');
+  await page.click('button:has-text("Log in")');
+
+  // Create a task
+  await page.click('button:has-text("New Task")');
+  await page.fill('[name="title"]', 'Buy groceries');
+  await page.click('button:has-text("Create")');
+
+  // Verify task appears
+  await expect(page.locator('text=Buy groceries')).toBeVisible();
+
+  // Complete the task
+  await page.click('[aria-label="Complete Buy groceries"]');
+  await expect(page.locator('text=Buy groceries')).toHaveCSS(
+    'text-decoration-line', 'line-through'
+  );
+});
+```
+
+## Test Anti-Patterns
+
+| Anti-Pattern | Problem | Better Approach |
+|---|---|---|
+| Testing implementation details | Breaks on refactor | Test inputs/outputs |
+| Snapshot everything | No one reviews snapshot diffs | Assert specific values |
+| Shared mutable state | Tests pollute each other | Setup/teardown per test |
+| Testing third-party code | Wastes time, not your bug | Mock the boundary |
+| Skipping tests to pass CI | Hides real bugs | Fix or delete the test |
+| Using `test.skip` permanently | Dead code | Remove or fix it |
+| Overly broad assertions | Doesn't catch regressions | Be specific |
+| No async error handling | Swallowed errors, false passes | Always `await` async tests |

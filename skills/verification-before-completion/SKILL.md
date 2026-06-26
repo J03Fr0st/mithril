@@ -1,61 +1,142 @@
 ---
 name: verification-before-completion
-description: Use when about to claim work is complete, fixed, passing, ready, or safe to hand off, before commits, branch completion, PRs, or final status updates
+description: Use when about to claim work is complete, fixed, or passing, before committing or creating PRs - requires running verification commands and confirming output before making any success claims; evidence before assertions always
 ---
 
 # Verification Before Completion
 
 ## Overview
 
-Completion claims require fresh evidence. Do not say work is complete, fixed, passing, ready, or safe based on confidence, intention, or a previous run.
+Claiming work is complete without verification is dishonesty, not efficiency.
 
-Core rule: evidence before claims, always.
+**Core principle:** Evidence before claims, always.
 
-## When to Use
+**Violating the letter of this rule is violating the spirit of this rule.**
 
-Use this skill before:
+## The Iron Law
 
-- Final responses that imply success.
-- Marking a task complete.
-- Committing, merging, pushing, opening a PR, or handing off.
-- Saying tests, validation, lint, build, or review passed.
-- Moving from implementation to branch finishing.
+```
+NO COMPLETION CLAIMS WITHOUT FRESH VERIFICATION EVIDENCE
+```
 
-## Gate
+If you haven't run the verification command in this message, you cannot claim it passes.
 
-Before making a completion claim:
+## The Gate Function
 
-1. Identify the command or inspection that proves the claim.
-2. Run the full command fresh in the current workspace.
-3. Read the output and exit code.
-4. Compare the result against the acceptance criteria.
-5. Report the evidence, including failures or skipped checks.
+```
+BEFORE claiming any status or expressing satisfaction:
 
-Partial verification can support a partial claim only. Do not generalize it into broader success.
+1. IDENTIFY: What command proves this claim?
+2. RUN: Execute the FULL command (fresh, complete)
+3. READ: Full output, check exit code, count failures
+4. VERIFY: Does output confirm the claim?
+   - If NO: State actual status with evidence
+   - If YES: State claim WITH evidence
+5. ONLY THEN: Make the claim
 
-## Common Rationalizations
+Skip any step = lying, not verifying
+```
 
-| Rationalization | Reality |
-| --- | --- |
-| "It should pass." | Run the command. |
-| "A related check passed." | Related checks prove related claims only. |
-| "The change is documentation only." | Validators and stale-reference searches still matter when specified. |
-| "The agent said it passed." | Verify reports and diffs yourself. |
+## Common Failures
+
+| Claim | Requires | Not Sufficient |
+|-------|----------|----------------|
+| Tests pass | Test command output: 0 failures | Previous run, "should pass" |
+| Linter clean | Linter output: 0 errors | Partial check, extrapolation |
+| Build succeeds | Build command: exit 0 | Linter passing, logs look good |
+| Bug fixed | Test original symptom: passes | Code changed, assumed fixed |
+| Regression test works | Red-green cycle verified | Test passes once |
+| Agent completed | VCS diff shows changes | Agent reports "success" |
+| Requirements met | Line-by-line checklist | Tests passing |
 
 ## Red Flags
 
-- You are using "should", "probably", or "seems".
-- You are about to send a final response without running the requested checks.
-- You have not read the full failure output.
-- You are relying on an old command result from before edits.
-- The diff contains files outside the allowed scope.
+- Using "should", "probably", "seems to"
+- Expressing satisfaction before verification ("Great!", "Perfect!", "Done!", etc.)
+- About to commit/push/PR without verification
+- Trusting agent success reports
+- Relying on partial verification
+- Thinking "just this once"
+- Tired and wanting work over
+- **ANY wording implying success without having run verification**
+
+## Common Rationalizations
+
+| Excuse | Reality |
+|--------|---------|
+| "Should work now" | RUN the verification |
+| "I'm confident" | Confidence ≠ evidence |
+| "Just this once" | No exceptions |
+| "Linter passed" | Linter ≠ compiler |
+| "Agent said success" | Verify independently |
+| "I'm tired" | Exhaustion ≠ excuse |
+| "Partial check is enough" | Partial proves nothing |
+| "Different words so rule doesn't apply" | Spirit over letter |
+
+## Key Patterns
+
+**Tests:**
+```
+✅ [Run test command] [See: 34/34 pass] "All tests pass"
+❌ "Should pass now" / "Looks correct"
+```
+
+**Regression tests (TDD Red-Green):**
+```
+✅ Write → Run (pass) → Revert fix → Run (MUST FAIL) → Restore → Run (pass)
+❌ "I've written a regression test" (without red-green verification)
+```
+
+**Build:**
+```
+✅ [Run build] [See: exit 0] "Build passes"
+❌ "Linter passed" (linter doesn't check compilation)
+```
+
+**Requirements:**
+```
+✅ Re-read plan → Create checklist → Verify each → Report gaps or completion
+❌ "Tests pass, phase complete"
+```
+
+**Agent delegation:**
+```
+✅ Agent reports success → Check VCS diff → Verify changes → Report actual state
+❌ Trust agent report
+```
+
+## Why This Matters
+
+From 24 failure memories:
+- your human partner said "I don't believe you" - trust broken
+- Undefined functions shipped - would crash
+- Missing requirements shipped - incomplete features
+- Time wasted on false completion → redirect → rework
+- Violates: "Honesty is a core value. If you lie, you'll be replaced."
+
+## When to Use
+
+**ALWAYS before:**
+- ANY variation of success/completion claims
+- ANY expression of satisfaction
+- ANY positive statement about work state
+- Committing, PR creation, task completion
+- Moving to next task
+- Delegating to agents
+
+**Rule applies to:**
+- Exact phrases
+- Paraphrases and synonyms
+- Implications of success
+- ANY communication suggesting completion/correctness
+
+## The Bottom Line
+
+**No shortcuts for verification.**
+
+Run the command. Read the output. THEN claim the result.
+
+This is non-negotiable.
+
 
 ## Verification
-
-For this skill itself, verification means:
-
-- The relevant commands were run after the final edit.
-- Exit codes and meaningful output were read.
-- Acceptance criteria were checked line by line.
-- Any no-match search with exit code 1 is interpreted correctly when no matches are expected.
-- The final report distinguishes pass, fail, skipped, and pre-existing concern.
