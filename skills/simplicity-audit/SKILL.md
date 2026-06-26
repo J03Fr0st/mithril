@@ -1,74 +1,47 @@
 ---
 name: simplicity-audit
-description: Use when auditing a repository or large area for over-engineering, deletion opportunities, avoidable dependencies, speculative abstractions, native replacements, or standard-library replacements.
+description: Use when auditing a whole codebase for over-engineering, bloat, unnecessary dependencies, speculative abstractions, or code that can be deleted.
 ---
-
 # Simplicity Audit
 
 ## Overview
 
-Simplicity audit is a report-only scan of a repository or large area for owned complexity that can be deleted, replaced, or shrunk. Rank the biggest simplifications first.
+simplicity-review, repo-wide. Scan the whole tree instead of a diff. Rank
+findings biggest cut first.
 
-It is broader than `simplicity-review`: audit the tree, not just one diff.
+## Tags
+
+Same as simplicity-review:
+
+- `delete:` dead code, unused flexibility, speculative feature. Replacement: nothing.
+- `stdlib:` hand-rolled thing the standard library ships. Name the function.
+- `native:` dependency or code doing what the platform already does. Name the feature.
+- `yagni:` abstraction with one implementation, config nobody sets, layer with one caller.
+- `shrink:` same logic, fewer lines. Show the shorter form.
+
+## Hunt
+
+Deps the stdlib or platform already ships, single-implementation interfaces,
+factories with one product, wrappers that only delegate, files exporting one
+thing, dead flags and config, hand-rolled stdlib.
+
+## Output
+
+One line per finding, ranked: `<tag> <what to cut>. <replacement>. [path]`.
+End with `net: -<N> lines, -<M> deps possible.` Nothing to cut: `Lean already. Ship.`
+
+## Boundaries
+
+Scope: over-engineering and complexity only. Correctness bugs, security holes,
+and performance are explicitly out of scope. Route them to a normal review
+pass. Lists findings, applies nothing. One-shot.
+"stop simplicity-audit" or "normal mode" to revert.
+
 
 ## When to Use
 
-Use this skill:
-
-- When asked to audit a codebase, package, module, or large feature area for bloat.
-- When the user asks what can be deleted, simplified, replaced with native capability, or replaced with standard library behavior.
-- Before a cleanup plan where the first step should be evidence, not edits.
-- When repeated wrappers, one-off abstractions, flags, or dependencies appear across the tree.
-
-Do not apply fixes while using this skill. Report findings only. Do not recommend removing trust-boundary validation, authorization, security controls, accessibility basics, data-loss prevention, root-cause debugging, or necessary tests.
-
-## Audit Targets
-
-Look for:
-
-- Dependencies that duplicate standard library, native platform, framework, database, or already-installed package capability.
-- Interfaces, factories, adapters, providers, or strategy layers with one current implementation.
-- Options or extension points nobody uses.
-- Wrappers that only delegate.
-- Helpers that hide one line of clearer code.
-- Repeated custom parsing, formatting, date handling, collection transforms, retries, or caching.
-- Dead files, unused exports, and feature scaffolding with no current caller.
-
-## Report Format
-
-Rank findings by likely net reduction:
-
-`<tag>: <what to cut>. <replacement>. [<path>]`
-
-Use these tags: `delete`, `stdlib`, `native`, `yagni`, `shrink`.
-
-End with `net: -<N> lines, -<M> deps possible.` If there is nothing worth cutting, say `Lean already. Ship.`
-
 ## Common Rationalizations
-
-| Rationalization | Reality |
-| --- | --- |
-| "An audit should fix the obvious items." | The audit is report-only. Edits need a separate approved task. |
-| "Every old file is suspect." | Age is not bloat. Look for unused or needless complexity with evidence. |
-| "One implementation may become many." | Current callers decide current shape. |
-| "A broad audit can skip tests." | Tests show whether a simplification is safe to attempt later. |
-| "Security checks look repetitive." | Repetition at trust boundaries may be intentional defense, not waste. |
 
 ## Red Flags
 
-- Findings are not ranked.
-- Findings lack paths or replacement guidance.
-- The audit recommends deleting validation, authorization, accessibility, data-loss protection, or root-cause handling.
-- The report treats generated artifacts, vendored code, or external assets as cleanup targets without confirming ownership.
-- The audit applies fixes or stages files.
-
 ## Verification
-
-Before closing a simplicity audit:
-
-- The scanned scope is stated.
-- Dependency surfaces, repeated abstractions, wrappers, options, and dead exports were checked where relevant.
-- Every finding uses `delete`, `stdlib`, `native`, `yagni`, or `shrink`.
-- Every finding includes a path and concrete replacement or deletion guidance.
-- Safety boundaries and required tests were preserved.
-- No files were edited as part of the report-only audit.

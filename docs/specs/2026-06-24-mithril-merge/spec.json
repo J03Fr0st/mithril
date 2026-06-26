@@ -56,7 +56,8 @@
         "task-05-add-agent-specialists-references",
         "task-07-add-matt-alignment-domain",
         "task-08-add-simplicity-layer",
-        "task-10-final-consistency-release"
+        "task-10-synthesize-merged-skills",
+        "task-11-final-consistency-release"
       ],
       "files": {
         "create": [
@@ -76,7 +77,7 @@
     },
     {
       "id": "task-03-port-superpowers-core",
-      "title": "Port Superpowers Core",
+      "title": "Copy and Rename Superpowers Core",
       "file": "tasks/task-03-port-superpowers-core.md",
       "wave": 2,
       "status": "complete",
@@ -90,12 +91,26 @@
       "files": {
         "create": [
           "skills/brainstorming/SKILL.md",
+          "skills/brainstorming/spec-document-reviewer-prompt.md",
+          "skills/brainstorming/visual-companion.md",
+          "skills/brainstorming/scripts/frame-template.html",
+          "skills/brainstorming/scripts/helper.js",
+          "skills/brainstorming/scripts/server.cjs",
+          "skills/brainstorming/scripts/start-server.sh",
+          "skills/brainstorming/scripts/stop-server.sh",
           "skills/writing-plans/SKILL.md",
+          "skills/writing-plans/plan-document-reviewer-prompt.md",
           "skills/using-git-worktrees/SKILL.md",
           "skills/subagent-driven-development/SKILL.md",
+          "skills/subagent-driven-development/implementer-prompt.md",
+          "skills/subagent-driven-development/task-reviewer-prompt.md",
+          "skills/subagent-driven-development/scripts/review-package",
+          "skills/subagent-driven-development/scripts/sdd-workspace",
+          "skills/subagent-driven-development/scripts/task-brief",
           "skills/executing-plans/SKILL.md",
           "skills/dispatching-parallel-agents/SKILL.md",
           "skills/requesting-code-review/SKILL.md",
+          "skills/requesting-code-review/code-reviewer.md",
           "skills/receiving-code-review/SKILL.md",
           "skills/verification-before-completion/SKILL.md",
           "skills/finishing-a-development-branch/SKILL.md"
@@ -111,7 +126,7 @@
     },
     {
       "id": "task-04-merge-canonical-disciplines",
-      "title": "Merge Canonical Disciplines",
+      "title": "Copy and Rename Canonical Sources",
       "file": "tasks/task-04-merge-canonical-disciplines.md",
       "wave": 3,
       "status": "complete",
@@ -128,11 +143,27 @@
       "files": {
         "create": [
           "skills/test-driven-development/SKILL.md",
+          "skills/test-driven-development/testing-anti-patterns.md",
           "skills/systematic-debugging/SKILL.md",
+          "skills/systematic-debugging/condition-based-waiting-example.ts",
+          "skills/systematic-debugging/condition-based-waiting.md",
+          "skills/systematic-debugging/CREATION-LOG.md",
+          "skills/systematic-debugging/defense-in-depth.md",
+          "skills/systematic-debugging/find-polluter.sh",
+          "skills/systematic-debugging/root-cause-tracing.md",
+          "skills/systematic-debugging/test-academic.md",
+          "skills/systematic-debugging/test-pressure-1.md",
+          "skills/systematic-debugging/test-pressure-2.md",
+          "skills/systematic-debugging/test-pressure-3.md",
           "skills/code-review-and-quality/SKILL.md",
           "skills/skill-design/SKILL.md",
-          "skills/implementation-standards/SKILL.md",
-          "docs/skill-anatomy.md"
+          "skills/skill-design/anthropic-best-practices.md",
+          "skills/skill-design/examples/CLAUDE_MD_TESTING.md",
+          "skills/skill-design/graphviz-conventions.dot",
+          "skills/skill-design/persuasion-principles.md",
+          "skills/skill-design/render-graphs.js",
+          "skills/skill-design/testing-skills-with-subagents.md",
+          "skills/implementation-standards/SKILL.md"
         ],
         "modify": [
           "skills/using-mithril/SKILL.md"
@@ -145,7 +176,7 @@
     },
     {
       "id": "task-05-add-agent-specialists-references",
-      "title": "Add agent-skills Specialists and References",
+      "title": "Copy and Rename agent-skills Specialists and References",
       "file": "tasks/task-05-add-agent-specialists-references.md",
       "wave": 4,
       "status": "complete",
@@ -229,7 +260,7 @@
     },
     {
       "id": "task-07-add-matt-alignment-domain",
-      "title": "Add Matt Alignment and Domain Layer",
+      "title": "Copy and Rename Matt Alignment and Domain Layer",
       "file": "tasks/task-07-add-matt-alignment-domain.md",
       "wave": 4,
       "status": "complete",
@@ -246,26 +277,41 @@
           "skills/grill-with-docs/SKILL.md",
           "skills/grilling/SKILL.md",
           "skills/domain-modeling/SKILL.md",
+          "skills/domain-modeling/ADR-FORMAT.md",
+          "skills/domain-modeling/CONTEXT-FORMAT.md",
           "skills/codebase-design/SKILL.md",
+          "skills/codebase-design/DEEPENING.md",
+          "skills/codebase-design/DESIGN-IT-TWICE.md",
           "skills/prototype/SKILL.md",
+          "skills/prototype/LOGIC.md",
+          "skills/prototype/UI.md",
           "skills/to-prd/SKILL.md",
           "skills/to-issues/SKILL.md",
           "skills/triage/SKILL.md",
+          "skills/triage/AGENT-BRIEF.md",
+          "skills/triage/OUT-OF-SCOPE.md",
           "skills/handoff/SKILL.md",
           "skills/improve-codebase-architecture/SKILL.md",
+          "skills/improve-codebase-architecture/HTML-REPORT.md",
           "skills/resolving-merge-conflicts/SKILL.md",
-          "skills/setup-mithril-project/SKILL.md"
+          "skills/setup-mithril-project/SKILL.md",
+          "skills/setup-mithril-project/domain.md",
+          "skills/setup-mithril-project/issue-tracker-github.md",
+          "skills/setup-mithril-project/issue-tracker-gitlab.md",
+          "skills/setup-mithril-project/issue-tracker-local.md",
+          "skills/setup-mithril-project/triage-labels.md"
         ],
         "modify": []
       },
       "verificationCommands": [
         "npm run validate:skills",
-        "rg -n \"setup-matt-pocock-skills|ask-matt|deprecated|in-progress|personal\" skills"
+        "Test-Path skills/ask-matt; Test-Path skills/setup-matt-pocock-skills; Test-Path skills/deprecated; Test-Path skills/in-progress; Test-Path skills/personal",
+        "rg -n \"ask-matt|setup-matt-pocock-skills\" skills"
       ]
     },
     {
       "id": "task-08-add-simplicity-layer",
-      "title": "Add Mithril Simplicity Layer",
+      "title": "Copy and Rename Mithril Simplicity Layer",
       "file": "tasks/task-08-add-simplicity-layer.md",
       "wave": 4,
       "status": "complete",
@@ -283,11 +329,7 @@
           "skills/simplicity-review/SKILL.md",
           "skills/simplicity-audit/SKILL.md"
         ],
-        "modify": [
-          "skills/test-driven-development/SKILL.md",
-          "skills/code-review-and-quality/SKILL.md",
-          "skills/implementation-standards/SKILL.md"
-        ]
+        "modify": []
       },
       "verificationCommands": [
         "npm run validate:skills",
@@ -310,7 +352,7 @@
         "task-08-add-simplicity-layer"
       ],
       "blocks": [
-        "task-10-final-consistency-release"
+        "task-10-synthesize-merged-skills"
       ],
       "files": {
         "create": [
@@ -342,14 +384,44 @@
       ]
     },
     {
-      "id": "task-10-final-consistency-release",
-      "title": "Final Consistency and Release Readiness",
-      "file": "tasks/task-10-final-consistency-release.md",
+      "id": "task-10-synthesize-merged-skills",
+      "title": "Synthesize Merged Skills",
+      "file": "tasks/task-10-synthesize-merged-skills.md",
       "wave": 7,
       "status": "complete",
       "dependsOn": [
         "task-02-add-validation-harness",
         "task-09-rewrite-docs-router-integration"
+      ],
+      "blocks": [
+        "task-11-final-consistency-release"
+      ],
+      "files": {
+        "create": [],
+        "modify": [
+          "skills/test-driven-development/SKILL.md",
+          "skills/systematic-debugging/SKILL.md",
+          "skills/code-review-and-quality/SKILL.md",
+          "skills/skill-design/SKILL.md",
+          "skills/implementation-standards/SKILL.md",
+          "skills/using-mithril/SKILL.md"
+        ]
+      },
+      "verificationCommands": [
+        "npm run validate:skills",
+        "npm test",
+        "rg -n \"debugging-and-error-recovery|using-superpowers|using-agent-skills|ask-matt|simplicity-debt|simplicity-gain|simplicity-help\" skills/using-mithril/SKILL.md skills"
+      ]
+    },
+    {
+      "id": "task-11-final-consistency-release",
+      "title": "Final Consistency and Release Readiness",
+      "file": "tasks/task-11-final-consistency-release.md",
+      "wave": 8,
+      "status": "complete",
+      "dependsOn": [
+        "task-02-add-validation-harness",
+        "task-10-synthesize-merged-skills"
       ],
       "blocks": [],
       "files": {
