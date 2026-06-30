@@ -8,6 +8,7 @@ This repository packages Mithril: a curated workflow system for coding agents. F
 - If a request has even a small chance of matching a skill, load the relevant Mithril skill before acting.
 - User instructions have priority over skill instructions. If the user narrows scope, file ownership, commit policy, or external mutation rules, obey that boundary.
 - Do not import another router into the active path. Route directly to Mithril-owned skills.
+- Use [docs/upstream-repos-vs-mithril.md](docs/upstream-repos-vs-mithril.md) when comparing Mithril against upstream source repositories or deciding whether source material should become active Mithril behavior.
 
 ## Layer Contract
 
@@ -31,6 +32,7 @@ The user or command orchestrates composition. Personas do not invoke other perso
 | Add or assess telemetry | `observability-and-instrumentation` |
 | Review a change | `code-review-and-quality`; add `simplicity-review`, `security-and-hardening`, or `performance-optimization` for the relevant risk |
 | Prepare release or branch integration | `shipping-and-launch`, `finishing-a-development-branch`, `ci-cd-and-automation`, `documentation-and-adrs` |
+| Create, edit, port, or review a new Mithril-owned skill | `skill-design` |
 | Create, edit, port, or review a copied/source skill | `source-driven-development`; preserve source material and apply only requested Mithril naming, routing, and validator alignment |
 
 ## Command Surface
@@ -64,6 +66,8 @@ Personas may inspect evidence and return reports. They must not edit files, stag
 ## Repository Conventions
 
 - Skills live at `skills/<name>/SKILL.md` with `name` and `description` frontmatter.
+- New and edited skills follow [docs/skill-anatomy.md](docs/skill-anatomy.md).
+- Skill-writing work routes through `skill-design`; use official Agent Skills compatibility as the format baseline, pressure scenarios as behavioral proof, and Skillgrade-style evals when repeated regression coverage is worth the cost.
 - Skill-copy and skill-rewrite work is source-first: preserve copied structure, apply required Mithril renaming, and make only requested validator or routing alignment unless a redesign is explicitly approved.
 - Do not use skill-authoring templates as the basis for copied-skill rewrites unless the user explicitly asks for that structure.
 - Commands live in `commands/*.toml` with `description` and `prompt`.

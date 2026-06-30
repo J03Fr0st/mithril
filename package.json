@@ -77,6 +77,8 @@
     "docs/opencode-setup.md",
     "docs/skill-anatomy.md",
     "docs/testing.md",
+    "docs/upstream-merge-details.md",
+    "docs/upstream-repos-vs-mithril.md",
     "docs/windsurf-setup.md",
     "gemini-extension.json",
     "hooks/",
