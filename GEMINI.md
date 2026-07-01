@@ -1,6 +1,5 @@
 @./AGENTS.md
 @./skills/using-mithril/SKILL.md
-@./skills/using-mithril/references/gemini-tools.md
 
 # Mithril For Gemini CLI
 

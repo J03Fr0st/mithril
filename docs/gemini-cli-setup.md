@@ -29,10 +29,9 @@ Mithril's `GEMINI.md` is include-oriented:
 ```markdown
 @./AGENTS.md
 @./skills/using-mithril/SKILL.md
-@./skills/using-mithril/references/gemini-tools.md
 ```
 
-This keeps shared routing, the active router, and Gemini-specific tool mapping in context.
+This keeps shared routing and the active router in context.
 
 ## Skills
 
