@@ -1,0 +1,17 @@
+{
+  "skill_name": "codebase-design",
+  "trigger": {
+    "positive": [
+      {
+        "prompt": "Design a deep module interface and decide where the seams should go.",
+        "top_k": 3
+      }
+    ],
+    "negative": [
+      {
+        "prompt": "Audit the whole architecture for coupling and deepening opportunities.",
+        "owner": "improve-codebase-architecture"
+      }
+    ]
+  }
+}

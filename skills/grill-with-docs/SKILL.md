@@ -7,7 +7,7 @@ disable-model-invocation: true
 
 ## Overview
 
-Run a `/grilling` session, using the `/domain-modeling` skill.
+Run a `/grilling` session using `/domain-modeling`. Look up discoverable facts, reserve decisions for the user, update the approved domain records as decisions land, and do not enact the resulting plan until the user confirms shared understanding.
 
 
 ## When to Use

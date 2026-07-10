@@ -1,0 +1,17 @@
+{
+  "skill_name": "performance-optimization",
+  "trigger": {
+    "positive": [
+      {
+        "prompt": "Profile and fix the N+1 queries, slow backend, and poor Core Web Vitals.",
+        "top_k": 3
+      }
+    ],
+    "negative": [
+      {
+        "prompt": "Add logs, metrics, traces, and alerts for production diagnosis.",
+        "owner": "observability-and-instrumentation"
+      }
+    ]
+  }
+}

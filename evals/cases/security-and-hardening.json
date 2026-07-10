@@ -1,0 +1,17 @@
+{
+  "skill_name": "security-and-hardening",
+  "trigger": {
+    "positive": [
+      {
+        "prompt": "Harden authentication and untrusted user input against vulnerabilities.",
+        "top_k": 3
+      }
+    ],
+    "negative": [
+      {
+        "prompt": "Optimize the slow API and database query performance.",
+        "owner": "performance-optimization"
+      }
+    ]
+  }
+}

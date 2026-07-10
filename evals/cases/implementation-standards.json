@@ -1,0 +1,17 @@
+{
+  "skill_name": "implementation-standards",
+  "trigger": {
+    "positive": [
+      {
+        "prompt": "Establish local naming, dependency, test-seam, and code-shape rules before implementation.",
+        "top_k": 3
+      }
+    ],
+    "negative": [
+      {
+        "prompt": "Design the public REST API and frontend-backend type contracts.",
+        "owner": "api-and-interface-design"
+      }
+    ]
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "skill_name": "ci-cd-and-automation",
+  "trigger": {
+    "positive": [
+      {
+        "prompt": "Set up a CI pipeline with automated tests and deployment quality gates.",
+        "top_k": 3
+      }
+    ],
+    "negative": [
+      {
+        "prompt": "Prepare a staged production rollout and rollback checklist.",
+        "owner": "shipping-and-launch"
+      }
+    ]
+  }
+}

@@ -12,30 +12,44 @@ The Cursor plugin manifest in this repository is:
 .cursor-plugin/plugin.json
 ```
 
-## Option 2: Rules Directory
+## Option 2: Native Skills And A Thin Rule
 
-If plugin support is unavailable, use Cursor rules.
-
-Create:
+If plugin support is unavailable, install Mithril workflows as native Cursor skills. Cursor discovers procedural workflows from:
 
 ```text
-.cursor/rules/
+.cursor/skills/<skill-name>/SKILL.md
 ```
 
-Add the router and a focused set of core skills as rules:
+Copy or sync the full Mithril `skills/` tree so each skill keeps its supporting scripts and references:
 
 ```text
-skills/using-mithril/SKILL.md
-skills/brainstorming/SKILL.md
-skills/writing-plans/SKILL.md
-skills/executing-plans/SKILL.md
-skills/test-driven-development/SKILL.md
-skills/systematic-debugging/SKILL.md
-skills/code-review-and-quality/SKILL.md
-skills/verification-before-completion/SKILL.md
+.cursor/skills/using-mithril/SKILL.md
+.cursor/skills/brainstorming/SKILL.md
+.cursor/skills/writing-plans/SKILL.md
+.cursor/skills/test-driven-development/SKILL.md
+...
 ```
 
-Keep the always-loaded set small. Add specialized skills for the task at hand.
+Treat the Mithril checkout or release as upstream and `.cursor/skills/` as the installed copy. Re-sync after Mithril updates rather than editing only the upstream checkout.
+
+Use `.cursor/rules/*.mdc` for short, stable project policies—not full workflow skills. An optional thin router pointer can live at `.cursor/rules/mithril.mdc`:
+
+```markdown
+---
+description: Route engineering work through installed Mithril skills
+alwaysApply: true
+---
+
+Before non-trivial engineering work, use the task description to select and follow the matching workflow under `.cursor/skills/`. Start with `using-mithril`; keep user instructions and project-specific rules authoritative.
+```
+
+Do not paste complete `SKILL.md` bodies into `.cursor/rules/`, and do not create a monolithic `.cursorrules` file. Skills are loaded on demand; rules remain concise and project-specific.
+
+## Verify The Installation
+
+1. Confirm `.cursor/skills/using-mithril/SKILL.md` exists with valid frontmatter.
+2. Confirm `.cursor/rules/mithril.mdc` appears in Cursor's project rules if you added it.
+3. Ask Cursor to add a feature test-first without naming a skill. It should discover `test-driven-development` through Mithril routing.
 
 ## Personas
 

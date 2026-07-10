@@ -1,0 +1,17 @@
+{
+  "skill_name": "receiving-code-review",
+  "trigger": {
+    "positive": [
+      {
+        "prompt": "Assess this questionable review feedback before changing the code.",
+        "top_k": 3
+      }
+    ],
+    "negative": [
+      {
+        "prompt": "The feature is complete; request an independent review before merge.",
+        "owner": "requesting-code-review"
+      }
+    ]
+  }
+}

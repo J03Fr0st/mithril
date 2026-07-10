@@ -1,0 +1,17 @@
+{
+  "skill_name": "context-engineering",
+  "trigger": {
+    "positive": [
+      {
+        "prompt": "Configure project rules and session context so the agent has the right information.",
+        "top_k": 3
+      }
+    ],
+    "negative": [
+      {
+        "prompt": "Set up this repository with Mithril skills, tracker labels, and domain docs.",
+        "owner": "setup-mithril-project"
+      }
+    ]
+  }
+}

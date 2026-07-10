@@ -222,8 +222,11 @@ Avoid the horizontal anti-pattern: all tests, then all data models, then all ser
 | **Public seam** | Calls the same interface production callers use | Reaches into private helpers |
 | **State over interaction** | Asserts observable result or state | Asserts internal call order |
 | **DAMP** | Test setup is readable at the point of use | DRY helpers hide the behavior being tested |
+| **Independent oracle** | Expected result comes from a known example or specification | Recomputes the result with the same logic as production |
 
 Use Arrange-Act-Assert structure unless the local test style says otherwise. One assertion concept per test is the goal; multiple assertions are fine when they verify one behavior.
+
+Avoid tautological tests: an assertion that calculates its expected value using the same algorithm as the implementation passes by construction. Use an independent known literal, worked example, invariant, or specification as the oracle.
 
 ## Why Order Matters
 
@@ -296,6 +299,7 @@ Tests-first force edge case discovery before implementing. Tests-after verify yo
 - Code before test
 - Test after implementation
 - Test passes immediately
+- Expected value restates the implementation's algorithm
 - Can't explain why test failed
 - Tests added "later"
 - Rationalizing "just this once"
@@ -358,6 +362,7 @@ Before marking work complete:
 - [ ] All tests pass
 - [ ] Output pristine (no errors, warnings)
 - [ ] Tests use real code
+- [ ] Expected values come from an independent oracle rather than duplicating implementation logic
 - [ ] Mocks are only at true system boundaries, not for internal modules
 - [ ] Edge cases and errors covered
 - [ ] Bug fixes include a regression test that failed before the fix

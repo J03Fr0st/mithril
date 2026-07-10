@@ -10,7 +10,9 @@ Interview me relentlessly about every aspect of this plan until we reach a share
 
 Ask the questions one at a time, waiting for feedback on each question before continuing. Asking multiple questions at once is bewildering.
 
-If a question can be answered by exploring the codebase, explore the codebase instead.
+If a fact can be found by exploring the codebase, look it up rather than asking the user. Decisions belong to the user: present each decision with a recommendation, ask one at a time, and wait for their answer. Never answer the human side of the grilling yourself.
+
+Do not enact the plan until the user confirms that shared understanding has been reached.
 
 
 ## When to Use

@@ -1,0 +1,17 @@
+{
+  "skill_name": "systematic-debugging",
+  "trigger": {
+    "positive": [
+      {
+        "prompt": "Diagnose this unexpected failing test before proposing a fix.",
+        "top_k": 3
+      }
+    ],
+    "negative": [
+      {
+        "prompt": "Implement this new feature test-first with a failing test.",
+        "owner": "test-driven-development"
+      }
+    ]
+  }
+}

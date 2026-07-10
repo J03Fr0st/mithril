@@ -1,0 +1,17 @@
+{
+  "skill_name": "api-and-interface-design",
+  "trigger": {
+    "positive": [
+      {
+        "prompt": "Design a stable REST API contract between the frontend and backend.",
+        "top_k": 3
+      }
+    ],
+    "negative": [
+      {
+        "prompt": "Build an accessible responsive settings page.",
+        "owner": "frontend-ui-engineering"
+      }
+    ]
+  }
+}

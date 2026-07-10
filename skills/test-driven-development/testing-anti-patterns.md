@@ -270,6 +270,21 @@ TDD cycle:
 
 **If you're testing mock behavior, you violated TDD** - you added mocks without watching test fail against real code first.
 
+## Tautological Tests
+
+A tautological test derives its expected value with the same logic as the production code, so both can be wrong in the same way.
+
+```typescript
+// BAD: repeats the implementation's summing algorithm
+const expected = items.reduce((sum, item) => sum + item.price, 0);
+expect(calculateTotal(items)).toBe(expected);
+
+// GOOD: independent worked example
+expect(calculateTotal([{ price: 10 }, { price: 5 }])).toBe(15);
+```
+
+Use a known literal, specification example, invariant, or separately verified source as the oracle.
+
 ## Quick Reference
 
 | Anti-Pattern | Fix |
@@ -280,6 +295,7 @@ TDD cycle:
 | Incomplete mocks | Mirror real API completely |
 | Tests as afterthought | TDD - tests first |
 | Over-complex mocks | Consider integration tests |
+| Expected value repeats implementation | Use an independent oracle |
 
 ## Red Flags
 
@@ -289,6 +305,7 @@ TDD cycle:
 - Test fails when you remove mock
 - Can't explain why mock is needed
 - Mocking "just to be safe"
+- Expected value is calculated by duplicating production logic
 
 ## The Bottom Line
 

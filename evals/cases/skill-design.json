@@ -1,0 +1,17 @@
+{
+  "skill_name": "skill-design",
+  "trigger": {
+    "positive": [
+      {
+        "prompt": "Create and validate a Mithril skill description and structure.",
+        "top_k": 3
+      }
+    ],
+    "negative": [
+      {
+        "prompt": "Implement this framework feature using official documentation as the source.",
+        "owner": "source-driven-development"
+      }
+    ]
+  }
+}

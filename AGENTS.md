@@ -24,7 +24,7 @@ The user or command orchestrates composition. Personas do not invoke other perso
 | User intent | Route |
 | --- | --- |
 | Define or clarify a feature | `brainstorming`; add `grill-me`, `grill-with-docs`, or `domain-modeling` when the problem needs pressure or shared vocabulary |
-| Turn approved intent into work | `writing-plans`, `to-prd`, `to-issues`, or `triage` |
+| Turn approved intent into work | `writing-plans`, `to-spec`, `to-tickets`, or `triage` |
 | Execute an approved plan | `subagent-driven-development` when independent subagents are available; otherwise `executing-plans` |
 | Implement or change behavior | `test-driven-development` and `implementation-standards` |
 | Debug failing or surprising behavior | `systematic-debugging` |

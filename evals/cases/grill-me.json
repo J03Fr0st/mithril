@@ -1,0 +1,17 @@
+{
+  "skill_name": "grill-me",
+  "trigger": {
+    "positive": [
+      {
+        "prompt": "Grill me relentlessly on my design choices so I can sharpen the plan.",
+        "top_k": 3
+      }
+    ],
+    "negative": [
+      {
+        "prompt": "Pressure-test this plan while updating its ADR and glossary.",
+        "owner": "grill-with-docs"
+      }
+    ]
+  }
+}

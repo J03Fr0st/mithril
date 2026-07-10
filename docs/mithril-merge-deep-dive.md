@@ -67,8 +67,8 @@ The larger issue is conceptual overlap:
 | Router | `using-superpowers` | `using-agent-skills` | `ask-matt` | Do not import. Fold selected routing ideas into `using-mithril`. |
 | TDD | `test-driven-development` | `test-driven-development` | `engineering/tdd` | Merge into one canonical `test-driven-development`. |
 | Debugging | `systematic-debugging` | `debugging-and-error-recovery` | `diagnosing-bugs` | Merge into one canonical `systematic-debugging`. |
-| Spec/design | `brainstorming` | `spec-driven-development`, `idea-refine` | `grill-with-docs`, `to-prd` | Keep Superpowers flow, add Matt domain grilling and optional PRD publishing. |
-| Planning | `writing-plans` | `planning-and-task-breakdown` | `to-issues` | Keep executable plans as canonical; add issue publishing as adapter. |
+| Spec/design | `brainstorming` | `spec-driven-development`, `idea-refine` | `grill-with-docs`, `to-spec` | Keep Superpowers flow, add Matt domain grilling and optional spec publishing. |
+| Planning | `writing-plans` | `planning-and-task-breakdown` | `to-tickets` | Keep executable plans as canonical; add ticket publishing as adapter. |
 | Review/ship | `requesting-code-review`, `receiving-code-review` | `code-review-and-quality`, `/ship`, personas | `review` draft | Keep Superpowers review gates; add agent-skills personas and fan-out command. |
 | Delivery/git | `finishing-a-development-branch`, worktrees | `git-workflow-and-versioning`, `shipping-and-launch` | guardrails misc | Keep worktree/finish flow; add launch/security/perf checks. |
 | Simplicity/over-engineering | YAGNI language in planning/TDD | `code-simplification` | codebase design/deep modules | Add the Mithril Simplicity Layer's ladder as a cross-cutting discipline; keep review and audit as explicit specialist commands. |
@@ -207,8 +207,8 @@ From Matt skills:
 - `domain-modeling`
 - `codebase-design`
 - `prototype`
-- `to-prd`
-- `to-issues`
+- `to-spec`
+- `to-tickets`
 - `triage`
 - `handoff`
 - `improve-codebase-architecture`

@@ -7,7 +7,5 @@ node_modules/
 inspo
 /triage/
 
-# Eval harness lives in its own repository, cloned into evals/ for local
-# development (see CLAUDE.md / README.md). It is not part of the published
-# plugin, so the whole directory is ignored here.
-evals/
+# Deterministic routing cases are versioned; generated eval output is not.
+/evals/results/

@@ -1,0 +1,17 @@
+{
+  "skill_name": "grill-with-docs",
+  "trigger": {
+    "positive": [
+      {
+        "prompt": "Pressure-test this design while updating the ADR and project glossary.",
+        "top_k": 3
+      }
+    ],
+    "negative": [
+      {
+        "prompt": "Challenge my assumptions through a question-by-question design interview.",
+        "owner": "grill-me"
+      }
+    ]
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "skill_name": "executing-plans",
+  "trigger": {
+    "positive": [
+      {
+        "prompt": "Execute this written implementation plan in a separate session with review checkpoints.",
+        "top_k": 3
+      }
+    ],
+    "negative": [
+      {
+        "prompt": "Run independent tasks from this plan through subagents in the current session.",
+        "owner": "subagent-driven-development"
+      }
+    ]
+  }
+}

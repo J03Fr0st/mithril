@@ -1,0 +1,17 @@
+{
+  "skill_name": "simplicity-review",
+  "trigger": {
+    "positive": [
+      {
+        "prompt": "Review this diff for over-engineering, removable code, and simpler standard-library alternatives.",
+        "top_k": 3
+      }
+    ],
+    "negative": [
+      {
+        "prompt": "Audit the entire repository for bloat and unnecessary abstractions.",
+        "owner": "simplicity-audit"
+      }
+    ]
+  }
+}

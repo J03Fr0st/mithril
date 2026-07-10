@@ -1,0 +1,17 @@
+{
+  "skill_name": "grilling",
+  "trigger": {
+    "positive": [
+      {
+        "prompt": "Stress-test this plan before building by relentlessly interviewing me.",
+        "top_k": 3
+      }
+    ],
+    "negative": [
+      {
+        "prompt": "Interview me while maintaining the ADR and glossary as decisions change.",
+        "owner": "grill-with-docs"
+      }
+    ]
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "skill_name": "code-simplification",
+  "trigger": {
+    "positive": [
+      {
+        "prompt": "Refactor this working code for clarity without changing its behavior.",
+        "top_k": 3
+      }
+    ],
+    "negative": [
+      {
+        "prompt": "Review this diff specifically for over-engineering and removable abstractions.",
+        "owner": "simplicity-review"
+      }
+    ]
+  }
+}

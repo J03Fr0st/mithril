@@ -1,0 +1,17 @@
+{
+  "skill_name": "doubt-driven-development",
+  "trigger": {
+    "positive": [
+      {
+        "prompt": "Get a fresh-context adversarial review of this high-stakes technical decision.",
+        "top_k": 3
+      }
+    ],
+    "negative": [
+      {
+        "prompt": "Request a normal code review now that the feature is complete.",
+        "owner": "requesting-code-review"
+      }
+    ]
+  }
+}
