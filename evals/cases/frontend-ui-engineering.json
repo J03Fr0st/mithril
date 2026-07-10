@@ -1,0 +1,17 @@
+{
+  "skill_name": "frontend-ui-engineering",
+  "trigger": {
+    "positive": [
+      {
+        "prompt": "Build an accessible responsive dashboard page with production-quality components.",
+        "top_k": 3
+      }
+    ],
+    "negative": [
+      {
+        "prompt": "Inspect the rendered page DOM and browser console for runtime errors.",
+        "owner": "browser-testing-with-devtools"
+      }
+    ]
+  }
+}

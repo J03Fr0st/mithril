@@ -1,0 +1,17 @@
+{
+  "skill_name": "shipping-and-launch",
+  "trigger": {
+    "positive": [
+      {
+        "prompt": "Prepare a staged production launch with monitoring, rollback, and a pre-launch checklist.",
+        "top_k": 3
+      }
+    ],
+    "negative": [
+      {
+        "prompt": "Choose whether to merge, open a PR, or clean up this completed branch.",
+        "owner": "finishing-a-development-branch"
+      }
+    ]
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "skill_name": "finishing-a-development-branch",
+  "trigger": {
+    "positive": [
+      {
+        "prompt": "Implementation is complete and tests pass; help choose merge, PR, or branch cleanup.",
+        "top_k": 3
+      }
+    ],
+    "negative": [
+      {
+        "prompt": "Plan a staged production launch with monitoring and rollback.",
+        "owner": "shipping-and-launch"
+      }
+    ]
+  }
+}

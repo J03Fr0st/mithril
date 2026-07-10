@@ -1,0 +1,17 @@
+{
+  "skill_name": "domain-modeling",
+  "trigger": {
+    "positive": [
+      {
+        "prompt": "Define a ubiquitous language and sharpen the domain terms for this project.",
+        "top_k": 3
+      }
+    ],
+    "negative": [
+      {
+        "prompt": "Document this already-made architecture decision in an ADR.",
+        "owner": "documentation-and-adrs"
+      }
+    ]
+  }
+}

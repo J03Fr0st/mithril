@@ -74,8 +74,8 @@ Use these after intent is approved and work must become executable:
 | Skill | Use when |
 | --- | --- |
 | `writing-plans` | An approved design or requirement set needs a concrete implementation plan. |
-| `to-prd` | Current context should become a product requirements document for the project tracker. |
-| `to-issues` | A PRD, plan, design, or spec should become independently executable issues. |
+| `to-spec` | Current context should become a product specification for the project tracker. |
+| `to-tickets` | A plan, design, spec, or conversation should become independently executable tracker tickets. |
 | `triage` | Issues or external pull requests need categorization, validation, follow-up, or an agent-ready brief. |
 
 ### Build

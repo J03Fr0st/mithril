@@ -1,0 +1,17 @@
+{
+  "skill_name": "verification-before-completion",
+  "trigger": {
+    "positive": [
+      {
+        "prompt": "Run fresh checks and show evidence before claiming the work is complete or passing.",
+        "top_k": 3
+      }
+    ],
+    "negative": [
+      {
+        "prompt": "Request a code review for the completed feature.",
+        "owner": "requesting-code-review"
+      }
+    ]
+  }
+}

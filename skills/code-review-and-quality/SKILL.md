@@ -328,6 +328,16 @@ Part of code review is dependency review:
 
 **Rule:** Prefer standard library and existing utilities over new dependencies. Every dependency is a liability.
 
+**Upgrading an existing dependency** is a behavior change and receives the same review discipline as authored code:
+
+1. Read the changelog and migration notes; do not infer safety from the version number alone.
+2. Upgrade one dependency or one coherent related group per change so failures and reverts stay attributable.
+3. Run the relevant suite before and after the upgrade. If coverage around the dependency's behavior is thin, add the missing behavior proof first.
+4. Review the transitive and lockfile diff, not only the direct manifest edit.
+5. Generate and commit the lockfile with the package manager; never hand-edit it.
+
+Use `security-and-hardening` for vulnerability reachability and supply-chain verdicts. This section owns the upgrade workflow.
+
 ## The Review Checklist
 
 ```markdown
@@ -391,6 +401,8 @@ Part of code review is dependency review:
 | "The tests pass, so it's good" | Tests are necessary but not sufficient. They don't catch architecture problems, security issues, or readability concerns. |
 | "The refactor makes it cleaner" | Relocating complexity isn't reducing it. If the reader still holds the same number of concepts, the structure didn't improve — look for the version where branches disappear. |
 | "It's only a small addition to this file" | Small diffs still push files past a healthy size and bolt branches onto unrelated flows. Judge the resulting structure, not the diff size. |
+| "It's just a version bump" | A version change can alter behavior you did not write. Review its changelog, migration notes, tests, and lockfile. |
+| "I'll upgrade everything together" | Bulk upgrades hide which package caused a failure. Isolate one dependency or coherent related group. |
 
 ## Red Flags
 
@@ -406,6 +418,8 @@ Part of code review is dependency review:
 - A change that grows an already-large file instead of decomposing it
 - New conditionals scattered into unrelated code paths (a missing abstraction)
 - A bespoke helper that duplicates an existing canonical one, or feature logic placed in a shared module
+- A bulk dependency bump with no changelog review or isolation strategy
+- A hand-edited, missing, or unreviewed lockfile change
 
 ## Verification
 
@@ -419,5 +433,6 @@ After review is complete:
 - [ ] Tests pass
 - [ ] Build succeeds
 - [ ] The verification story is documented (what changed, how it was verified)
+- [ ] Dependency upgrades have reviewed changelog, migration, test, and lockfile evidence
 
 **Presumptive blockers:** surface and propose the simpler design for each of these; escalate to Required only when the change actively makes structure worse: a refactor that relocates complexity instead of reducing it; a change that pushes a file past the size boundary with no decomposition; feature logic added to a shared module; a near-duplicate of an existing canonical helper; a silent fallback that hides an unclear invariant.

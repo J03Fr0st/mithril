@@ -1,0 +1,17 @@
+{
+  "skill_name": "code-review-and-quality",
+  "trigger": {
+    "positive": [
+      {
+        "prompt": "Review this code change across correctness, maintainability, tests, and security before merge.",
+        "top_k": 3
+      }
+    ],
+    "negative": [
+      {
+        "prompt": "I finished the feature and need to request a requirements-focused review.",
+        "owner": "requesting-code-review"
+      }
+    ]
+  }
+}

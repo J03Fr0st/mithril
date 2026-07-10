@@ -1,0 +1,17 @@
+{
+  "skill_name": "dispatching-parallel-agents",
+  "trigger": {
+    "positive": [
+      {
+        "prompt": "Split these unrelated investigations across parallel agents.",
+        "top_k": 3
+      }
+    ],
+    "negative": [
+      {
+        "prompt": "Execute this implementation plan with independent subagent tasks in the current session.",
+        "owner": "subagent-driven-development"
+      }
+    ]
+  }
+}

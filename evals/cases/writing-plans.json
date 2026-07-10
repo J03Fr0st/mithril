@@ -1,0 +1,17 @@
+{
+  "skill_name": "writing-plans",
+  "trigger": {
+    "positive": [
+      {
+        "prompt": "Turn these approved requirements into a multi-step implementation plan before touching code.",
+        "top_k": 3
+      }
+    ],
+    "negative": [
+      {
+        "prompt": "Execute this already-written plan in a separate session.",
+        "owner": "executing-plans"
+      }
+    ]
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "skill_name": "requesting-code-review",
+  "trigger": {
+    "positive": [
+      {
+        "prompt": "The feature is complete; request a code review to verify it meets requirements.",
+        "top_k": 3
+      }
+    ],
+    "negative": [
+      {
+        "prompt": "Evaluate this reviewer suggestion critically before implementing it.",
+        "owner": "receiving-code-review"
+      }
+    ]
+  }
+}

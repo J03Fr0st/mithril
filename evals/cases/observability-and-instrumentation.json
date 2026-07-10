@@ -1,0 +1,17 @@
+{
+  "skill_name": "observability-and-instrumentation",
+  "trigger": {
+    "positive": [
+      {
+        "prompt": "Add production logging, metrics, tracing, and alerts so failures are diagnosable.",
+        "top_k": 3
+      }
+    ],
+    "negative": [
+      {
+        "prompt": "Profile and fix the slow database queries and load time.",
+        "owner": "performance-optimization"
+      }
+    ]
+  }
+}

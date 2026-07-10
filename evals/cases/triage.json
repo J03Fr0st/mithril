@@ -1,0 +1,17 @@
+{
+  "skill_name": "triage",
+  "trigger": {
+    "positive": [
+      {
+        "prompt": "Categorize and validate these incoming issues and prepare agent-ready briefs.",
+        "top_k": 3
+      }
+    ],
+    "negative": [
+      {
+        "prompt": "Turn this plan into independently executable project-tracker issues.",
+        "owner": "to-tickets"
+      }
+    ]
+  }
+}

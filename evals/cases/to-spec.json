@@ -1,0 +1,17 @@
+{
+  "skill_name": "to-spec",
+  "trigger": {
+    "positive": [
+      {
+        "prompt": "Turn our current conversation into a product specification without interviewing me again.",
+        "top_k": 3
+      }
+    ],
+    "negative": [
+      {
+        "prompt": "Break this approved spec into independent tracker tickets.",
+        "owner": "to-tickets"
+      }
+    ]
+  }
+}

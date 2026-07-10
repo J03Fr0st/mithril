@@ -1,0 +1,17 @@
+{
+  "skill_name": "browser-testing-with-devtools",
+  "trigger": {
+    "positive": [
+      {
+        "prompt": "Inspect the DOM, console errors, and network requests in a real browser.",
+        "top_k": 3
+      }
+    ],
+    "negative": [
+      {
+        "prompt": "Investigate this unexpected unit test failure and find the root cause before proposing a fix.",
+        "owner": "systematic-debugging"
+      }
+    ]
+  }
+}

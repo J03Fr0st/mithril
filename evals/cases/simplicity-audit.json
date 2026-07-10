@@ -1,0 +1,17 @@
+{
+  "skill_name": "simplicity-audit",
+  "trigger": {
+    "positive": [
+      {
+        "prompt": "Audit the whole codebase for bloat, speculative abstractions, and code we can delete.",
+        "top_k": 3
+      }
+    ],
+    "negative": [
+      {
+        "prompt": "Review only this diff for unnecessary complexity and simpler native replacements.",
+        "owner": "simplicity-review"
+      }
+    ]
+  }
+}

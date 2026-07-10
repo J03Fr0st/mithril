@@ -1,0 +1,17 @@
+{
+  "skill_name": "using-git-worktrees",
+  "trigger": {
+    "positive": [
+      {
+        "prompt": "Create an isolated git worktree before starting this feature plan.",
+        "top_k": 3
+      }
+    ],
+    "negative": [
+      {
+        "prompt": "Resolve the conflicts in the rebase already in progress.",
+        "owner": "resolving-merge-conflicts"
+      }
+    ]
+  }
+}

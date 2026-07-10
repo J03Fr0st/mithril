@@ -1,0 +1,17 @@
+{
+  "skill_name": "handoff",
+  "trigger": {
+    "positive": [
+      {
+        "prompt": "Compact this conversation into a handoff document for the next agent.",
+        "top_k": 3
+      }
+    ],
+    "negative": [
+      {
+        "prompt": "Turn the approved requirements into an implementation plan.",
+        "owner": "writing-plans"
+      }
+    ]
+  }
+}

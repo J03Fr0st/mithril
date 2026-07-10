@@ -1,0 +1,17 @@
+{
+  "skill_name": "brainstorming",
+  "trigger": {
+    "positive": [
+      {
+        "prompt": "Help me shape this feature idea before we start implementing it.",
+        "top_k": 3
+      }
+    ],
+    "negative": [
+      {
+        "prompt": "Turn this approved specification into a step-by-step implementation plan.",
+        "owner": "writing-plans"
+      }
+    ]
+  }
+}

@@ -52,7 +52,7 @@ The user or command orchestrates composition. Personas do not invoke other perso
 | Phase | Default route |
 | --- | --- |
 | Define/spec | `brainstorming`, `grill-me`, `grill-with-docs`, `domain-modeling` |
-| Plan | `writing-plans`, `to-prd`, `to-issues`, `triage` |
+| Plan | `writing-plans`, `to-spec`, `to-tickets`, `triage` |
 | Build | `subagent-driven-development`, `executing-plans`, `test-driven-development`, `implementation-standards` |
 | Verify/debug | `systematic-debugging`, `browser-testing-with-devtools`, `observability-and-instrumentation` |
 | Review | `code-review-and-quality`, `simplicity-review`, `security-and-hardening`, `performance-optimization` |

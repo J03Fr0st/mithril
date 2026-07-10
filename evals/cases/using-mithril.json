@@ -1,0 +1,17 @@
+{
+  "skill_name": "using-mithril",
+  "trigger": {
+    "positive": [
+      {
+        "prompt": "Start this conversation by routing the request to the right Mithril skills and personas.",
+        "top_k": 3
+      }
+    ],
+    "negative": [
+      {
+        "prompt": "Configure this repository to install Mithril and its tracker conventions.",
+        "owner": "setup-mithril-project"
+      }
+    ]
+  }
+}

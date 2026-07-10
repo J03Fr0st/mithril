@@ -24,7 +24,7 @@ Mithril starts with `skills/using-mithril/SKILL.md`. That router maps intent to 
 | Phase | Primary skills |
 | --- | --- |
 | Define/spec | `brainstorming`, `grill-me`, `grill-with-docs`, `domain-modeling` |
-| Plan | `writing-plans`, `to-prd`, `to-issues`, `triage` |
+| Plan | `writing-plans`, `to-spec`, `to-tickets`, `triage` |
 | Build | `subagent-driven-development`, `executing-plans`, `test-driven-development`, `implementation-standards` |
 | Verify/debug | `systematic-debugging`, `browser-testing-with-devtools`, `observability-and-instrumentation` |
 | Review | `code-review-and-quality`, `simplicity-review`, `security-and-hardening`, `performance-optimization` |
@@ -71,7 +71,7 @@ Install Mithril separately for each host you use. Start with the host-specific g
 | Claude Code | [docs/claude-code-setup.md](docs/claude-code-setup.md) |
 | Codex | [docs/codex-setup.md](docs/codex-setup.md) |
 | GitHub Copilot | [docs/copilot-setup.md](docs/copilot-setup.md) |
-| Cursor | [docs/cursor-setup.md](docs/cursor-setup.md) |
+| Cursor | [docs/cursor-setup.md](docs/cursor-setup.md) — plugin or native `.cursor/skills/` installation |
 | Gemini CLI | [docs/gemini-cli-setup.md](docs/gemini-cli-setup.md) |
 | OpenCode | [docs/opencode-setup.md](docs/opencode-setup.md) |
 | Windsurf | [docs/windsurf-setup.md](docs/windsurf-setup.md) |

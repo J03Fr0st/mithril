@@ -1,0 +1,17 @@
+{
+  "skill_name": "subagent-driven-development",
+  "trigger": {
+    "positive": [
+      {
+        "prompt": "Execute this implementation plan through independent subagent coding tasks in this session.",
+        "top_k": 3
+      }
+    ],
+    "negative": [
+      {
+        "prompt": "Split several unrelated research questions across parallel agents.",
+        "owner": "dispatching-parallel-agents"
+      }
+    ]
+  }
+}

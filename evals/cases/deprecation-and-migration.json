@@ -1,0 +1,17 @@
+{
+  "skill_name": "deprecation-and-migration",
+  "trigger": {
+    "positive": [
+      {
+        "prompt": "Plan how to migrate users off a deprecated API and sunset the old implementation.",
+        "top_k": 3
+      }
+    ],
+    "negative": [
+      {
+        "prompt": "Prepare the production deployment, monitoring, and rollback plan.",
+        "owner": "shipping-and-launch"
+      }
+    ]
+  }
+}

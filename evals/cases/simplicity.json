@@ -1,0 +1,17 @@
+{
+  "skill_name": "simplicity",
+  "trigger": {
+    "positive": [
+      {
+        "prompt": "Use YAGNI and find the minimal solution with less code and no unnecessary dependencies.",
+        "top_k": 3
+      }
+    ],
+    "negative": [
+      {
+        "prompt": "Audit the whole codebase for over-engineering, bloat, unnecessary dependencies, speculative abstractions, and code to delete.",
+        "owner": "simplicity-audit"
+      }
+    ]
+  }
+}

@@ -161,6 +161,25 @@ function getTaskService(userId: string): TaskService {
 }
 ```
 
+### Database Schema Migrations (Expand/Contract)
+
+Keep old and new application versions valid during rollout by changing schemas in compatible phases:
+
+```text
+EXPAND → MIGRATE → CONTRACT
+add compatible shape → backfill and cut over → remove old shape later
+```
+
+For a column replacement:
+
+1. Generate the additive migration with the project's ORM or migration tool, then inspect the generated SQL.
+2. Add the new nullable or backward-compatible shape without removing the old one.
+3. Dual-write where needed and backfill existing data in monitored, throttled batches.
+4. Switch reads after completeness and compatibility checks pass; keep the old path available during the bake period.
+5. Stop old writes, verify zero use, then remove the old shape in a separate destructive migration.
+
+Plan a tested recovery strategy appropriate to the database and tool: rollback when genuinely supported, forward repair, backup restore, or feature-flag cutback. Schema reversal does not recover data that a destructive step already discarded. Test migration timing and recovery against production-like data, and treat online index creation or locking behavior as database-specific.
+
 ## Zombie Code
 
 Zombie code is code that nobody owns but everybody depends on. It's not actively maintained, has no clear owner, and accumulates security vulnerabilities and compatibility issues. Signs:
@@ -183,6 +202,8 @@ Zombie code is code that nobody owns but everybody depends on. It's not actively
 | "We'll deprecate it after we finish the new system" | Deprecation planning starts at design time. By the time the new system is done, you'll have new priorities. Plan now. |
 | "Users will migrate on their own" | They won't. Provide tooling, documentation, and incentives — or do the migration yourself (the Churn Rule). |
 | "We can maintain both systems indefinitely" | Two systems doing the same thing is double the maintenance, testing, documentation, and onboarding cost. |
+| "It's only a column rename" | In-place destructive changes break rolling deployments. Expand, migrate consumers, then contract. |
+| "We'll decide recovery during the deploy" | Recovery must be chosen and tested before a migration reaches production. |
 
 ## Red Flags
 
@@ -193,6 +214,9 @@ Zombie code is code that nobody owns but everybody depends on. It's not actively
 - New features added to a deprecated system (invest in the replacement instead)
 - Deprecation without measuring current usage
 - Removing code without verifying zero active consumers
+- A destructive schema change shipped before old readers and writers are gone
+- A generated migration merged without inspecting its SQL, lock behavior, or recovery strategy
+- An unbounded backfill running on the request path or without monitoring
 
 ## Verification
 
@@ -204,3 +228,11 @@ After completing a deprecation:
 - [ ] Old code, tests, documentation, and configuration are fully removed
 - [ ] No references to the deprecated system remain in the codebase
 - [ ] Deprecation notices are removed (they served their purpose)
+
+After a database schema migration:
+
+- [ ] ORM or migration-tool output and generated SQL were reviewed
+- [ ] Old and new application versions remain valid at each rollout phase
+- [ ] Backfills are bounded, monitored, and tested with production-like data
+- [ ] A tool-appropriate recovery strategy was tested before deployment
+- [ ] Destructive contract steps occur only after old usage is verified at zero

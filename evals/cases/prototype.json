@@ -1,0 +1,17 @@
+{
+  "skill_name": "prototype",
+  "trigger": {
+    "positive": [
+      {
+        "prompt": "Build a throwaway prototype to validate this workflow and state model.",
+        "top_k": 3
+      }
+    ],
+    "negative": [
+      {
+        "prompt": "Implement the approved production feature test-first.",
+        "owner": "test-driven-development"
+      }
+    ]
+  }
+}

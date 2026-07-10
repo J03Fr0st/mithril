@@ -1,0 +1,17 @@
+{
+  "skill_name": "documentation-and-adrs",
+  "trigger": {
+    "positive": [
+      {
+        "prompt": "Record this architectural decision and its consequences in an ADR.",
+        "top_k": 3
+      }
+    ],
+    "negative": [
+      {
+        "prompt": "Define the domain terminology and ubiquitous language for this product.",
+        "owner": "domain-modeling"
+      }
+    ]
+  }
+}

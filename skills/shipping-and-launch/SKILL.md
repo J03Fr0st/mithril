@@ -255,8 +255,9 @@ Every deployment needs a rollback plan before it happens:
 3. Communicate: notify team of rollback
 
 ### Database Considerations
-- Migration [X] has a rollback: `npx prisma migrate rollback`
-- Data inserted by new feature: [preserved / cleaned up]
+- Migration [X] recovery: [tool-supported rollback / forward repair / backup restore / feature-flag cutback]
+- Generated migration and SQL reviewed: [yes / no]
+- Data inserted or transformed by the feature: [preserved / restored / repaired / cleaned up]
 
 ### Time to Rollback
 - Feature flag: < 1 minute

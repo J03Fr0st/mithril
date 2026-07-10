@@ -1,0 +1,17 @@
+{
+  "skill_name": "improve-codebase-architecture",
+  "trigger": {
+    "positive": [
+      {
+        "prompt": "Audit this codebase for coupling, module deepening, and AI-navigability improvements.",
+        "top_k": 3
+      }
+    ],
+    "negative": [
+      {
+        "prompt": "Simplify this one working function without changing behavior.",
+        "owner": "code-simplification"
+      }
+    ]
+  }
+}

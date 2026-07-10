@@ -1,0 +1,17 @@
+{
+  "skill_name": "resolving-merge-conflicts",
+  "trigger": {
+    "positive": [
+      {
+        "prompt": "Resolve the conflicts in this in-progress git rebase.",
+        "top_k": 3
+      }
+    ],
+    "negative": [
+      {
+        "prompt": "Create an isolated git worktree before starting feature work.",
+        "owner": "using-git-worktrees"
+      }
+    ]
+  }
+}

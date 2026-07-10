@@ -1,0 +1,17 @@
+{
+  "skill_name": "setup-mithril-project",
+  "trigger": {
+    "positive": [
+      {
+        "prompt": "Configure this repository with Mithril skills, tracker conventions, labels, and domain docs.",
+        "top_k": 3
+      }
+    ],
+    "negative": [
+      {
+        "prompt": "Tune the agent session context and project rules files.",
+        "owner": "context-engineering"
+      }
+    ]
+  }
+}

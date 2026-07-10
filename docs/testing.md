@@ -9,10 +9,11 @@ Run these from the repository root:
 ```powershell
 npm run validate:skills
 npm run validate:commands
+npm run validate:routing
 npm test
 ```
 
-`npm test` currently runs skill validation, command validation, and shell linting.
+`npm test` runs skill validation, command validation, deterministic routing validation, and shell linting.
 
 ## Skill Validation
 
@@ -35,6 +36,16 @@ npm run validate:commands
 ```
 
 This checks every `commands/*.toml` file has a non-empty `description` and `prompt`.
+
+## Routing Validation
+
+```powershell
+npm run validate:routing
+```
+
+This zero-dependency check scores realistic prompts against skill names and descriptions. It requires one case file per skill, verifies positive prompts route into the requested top-k, verifies every negative prompt declares a valid owner that ranks first, and flags near-duplicate descriptions. It is a deterministic vocabulary regression check, not a substitute for behavioral evaluation with an agent.
+
+Cases live at `evals/cases/<skill-name>.json`. Keep prompts natural and update descriptions when realistic wording reveals a vocabulary gap instead of copying description text into the case.
 
 ## Shell Linting
 
