@@ -2,7 +2,7 @@
   "name": "mithril",
   "displayName": "Mithril",
   "description": "Core skills library: TDD, debugging, collaboration patterns, and proven techniques",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "author": {
     "name": "Joe Vreugdenburg",
     "email": "joevreug@gmail.com"

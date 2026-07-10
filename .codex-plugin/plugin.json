@@ -1,6 +1,6 @@
 {
   "name": "mithril",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Curated agent engineering methodology for planning, TDD, debugging, review, simplicity, and launch readiness.",
   "author": {
     "name": "Joe Vreugdenburg",

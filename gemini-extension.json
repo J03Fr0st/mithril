@@ -1,6 +1,6 @@
 {
   "name": "mithril",
   "description": "Mithril agent engineering methodology: planning, TDD, debugging, review, simplicity, and launch readiness",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "contextFileName": "GEMINI.md"
 }
