@@ -76,7 +76,7 @@ Install Mithril separately for each host you use. Start with the host-specific g
 | OpenCode | [docs/opencode-setup.md](docs/opencode-setup.md) |
 | Windsurf | [docs/windsurf-setup.md](docs/windsurf-setup.md) |
 
-Universal setup is covered in [docs/getting-started.md](docs/getting-started.md).
+Universal setup is covered in [docs/getting-started.md](docs/getting-started.md). Then choose the appropriate rollout in the [greenfield and brownfield adoption guide](docs/adoption-guide.md).
 
 ## Repository Shape
 

@@ -101,24 +101,48 @@ cors({ origin: '*' })  // Allows any origin
 
 ## Dependency Security
 
-```bash
-# Audit dependencies
-npm audit
+First locate the **installation boundary**. Use the workspace root that owns the dependency graph and authoritative lockfile. Corroborate `packageManager` when present, the lockfile, workspace configuration, and CI commands. Stop when they disagree or competing manager lockfiles exist at that boundary. A nested project is independent only when it falls outside the parent workspace.
 
-# Fix automatically where possible
-npm audit fix
+| Manager/version signal | Frozen/immutable CI install | Known-advisory audit |
+| --- | --- | --- |
+| npm (`package-lock.json` or `npm-shrinkwrap.json`) | `npm ci` | `npm audit` |
+| pnpm | `pnpm install --frozen-lockfile` | `pnpm audit` |
+| Yarn 2+ | `yarn install --immutable` | `yarn npm audit -A -R` |
+| Yarn 1 | `yarn install --frozen-lockfile` | `yarn audit` |
 
-# Check for critical vulnerabilities
-npm audit --audit-level=critical
+For an unlisted manager or version, consult its official documentation. Do not substitute another manager's commands or assume a newer client's defaults.
 
-# Keep dependencies updated
-npx npm-check-updates
-```
+### Install-Script Gate
 
-**Supply-chain hygiene** (`npm audit` won't catch malicious packages):
-- [ ] Lockfile committed; CI installs with `npm ci` (not `npm install`)
-- [ ] New dependencies reviewed (maintenance, downloads, `postinstall` scripts)
-- [ ] No typosquats (`cross-env` vs `crossenv`, `react-dom` vs `reactdom`)
+Never discover dependency lifecycle scripts by first executing an ordinary install whose defaults have not been verified.
+
+1. Bootstrap with dependency scripts disabled, or with a documented default-deny policy plus fail-closed enforcement.
+2. Inspect the exact script source and installed package version before approval.
+3. Record the narrowest native allow or deny policy at the installation boundary and commit it.
+4. Run a clean frozen or immutable install with that policy and verify that required packages still build.
+
+**Point-in-time snapshot:** Package-manager defaults and commands change quickly. Verify this matrix against the pinned client's current official documentation before relying on it.
+
+| Manager/version | Native policy |
+| --- | --- |
+| npm without verified granular approvals | Bootstrap with `npm ci --ignore-scripts`; keep scripts disabled unless the pinned version documents an enforceable approval policy. |
+| npm 11.18+ | Dependency scripts are blocked by default; set `strict-allow-scripts=true` to fail on unreviewed scripts, then use the workspace-unaware `npm install-scripts ls` and approve only reviewed packages. Approvals are pinned to the installed version by default. |
+| pnpm with `allowBuilds` | Set `strictDepBuilds: true`, use `pnpm approve-builds`, and commit explicit `allowBuilds` decisions. Do not enable `dangerouslyAllowAllBuilds`. |
+| Older or unknown pnpm | Bootstrap with `pnpm install --frozen-lockfile --ignore-scripts`; keep scripts disabled until the pinned version's documented policy is verified. |
+| Yarn 4.14+ | Dependency postinstalls are disabled by default. Grant only required exceptions with top-level `dependenciesMeta.<package>.built: true`. |
+| Yarn 2–4.13 | Set `enableScripts: false`, then grant only required top-level `dependenciesMeta` exceptions. |
+| Yarn 1 | Bootstrap with `yarn install --ignore-scripts`; keep scripts disabled unless the pinned client documents a narrow exception workflow. |
+
+Authoritative references: [npm install-scripts](https://docs.npmjs.com/cli/v11/commands/npm-install-scripts/), [npm install policy](https://docs.npmjs.com/cli/v11/commands/npm-install/), [pnpm approve-builds](https://pnpm.io/cli/approve-builds), [pnpm build settings](https://pnpm.io/settings#allowbuilds), [Yarn security](https://yarnpkg.com/features/security), and [Yarn dependenciesMeta](https://yarnpkg.com/configuration/manifest#dependenciesMeta).
+
+**Supply-chain hygiene** (advisory audits do not catch newly malicious packages):
+
+- [ ] Exactly one authoritative lockfile per installation boundary is committed and CI never rewrites it
+- [ ] Critical and high findings are triaged for reachability; deferrals have a reason and review date
+- [ ] Forced audit remediation (`npm audit fix --force` or equivalent) is never automatic
+- [ ] Registry signatures and provenance are verified where supported
+- [ ] Dependency scripts are blocked before first execution and approved only through the pinned manager's native policy
+- [ ] New dependencies are reviewed for ownership, maintenance, release age, provenance, transitive graph, and typosquatting
 
 ## AI / LLM Security
 
