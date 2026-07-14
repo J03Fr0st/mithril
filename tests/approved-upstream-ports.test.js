@@ -32,6 +32,20 @@ test('MS-2 local tracking publishes one dependency-ordered file per ticket', asy
   assert.match(tickets, /when the `triage` skill is installed/);
 });
 
+test('MS-2 local tracker setup keeps optional triage guidance conditional', async () => {
+  const tracker = await readRepoFile('skills/setup-mithril-project/issue-tracker-local.md');
+
+  assert.match(tracker, /When the `triage` skill is installed, record triage state with a `\*\*Status:\*\*` field/);
+  assert.doesNotMatch(tracker, /see `triage-labels\.md` for the role strings/);
+});
+
+test('MS-2 local tracker publishing distinguishes specs from tickets', async () => {
+  const tracker = await readRepoFile('skills/setup-mithril-project/issue-tracker-local.md');
+
+  assert.match(tracker, /For a spec, write `.scratch\/<feature-slug>\/spec\.md`/);
+  assert.match(tracker, /For tickets, write one file per ticket under `.scratch\/<feature-slug>\/issues\/`/);
+});
+
 test('AS-1 security guidance gates dependency scripts at the detected installation boundary', async () => {
   const [security, checklist] = await Promise.all([
     readRepoFile('skills/security-and-hardening/SKILL.md'),
