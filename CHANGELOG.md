@@ -1,5 +1,11 @@
 # mithril
 
+## 1.1.0
+
+### Minor Changes
+
+- [#12](https://github.com/J03Fr0st/mithril/pull/12) [`37effc3`](https://github.com/J03Fr0st/mithril/commit/37effc3f49cbac8423f79a6c2838263dfa8fe1a0) Thanks [@J03Fr0st](https://github.com/J03Fr0st)! - Port approved upstream setup, local-ticket, package-manager security, and adoption guidance into Mithril-owned workflows.
+
 ## 1.0.0
 
 ### Major Changes
