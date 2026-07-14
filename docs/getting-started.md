@@ -47,6 +47,10 @@ The user or command orchestrates composition. Personas do not invoke other perso
 
    Mithril expects fresh command output, inspected runtime evidence, or a clear skipped-check note before any completion claim.
 
+## Choose an Adoption Path
+
+New projects can use the full lifecycle from their first feature. Established codebases should begin with context, review, debugging, and characterization tests around the next area that will change. See [Adopting Mithril in New and Established Codebases](adoption-guide.md) for both rollout paths.
+
 ## Lifecycle At A Glance
 
 | Phase | Default route |

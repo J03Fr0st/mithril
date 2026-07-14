@@ -6,7 +6,7 @@ This page compares the source repositories used to shape Mithril with Mithril's 
 
 Mithril is a curated synthesis of several upstream workflow systems. The goal is not to mirror every upstream prompt surface. The goal is to keep the strongest compatible behavior from each source while presenting one Mithril-owned router, one skill namespace, one command surface, and read-only advisory personas.
 
-For the granular merge history, see [Upstream Merge Details](upstream-merge-details.md).
+For the granular merge history, see [Upstream Merge Details](upstream-merge-details.md). For the current three-repository review and pending decisions, see [Upstream Update Review — 2026-07-13](upstream-update-review-2026-07-13.md).
 
 | Source | What it contributes | What Mithril changes |
 | --- | --- | --- |
