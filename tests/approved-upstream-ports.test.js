@@ -87,6 +87,15 @@ test('AS-2 ships a Mithril-specific greenfield and brownfield adoption guide', a
   assert.match(packageJson, /"docs\/adoption-guide\.md"/);
 });
 
+test('AS-3 skill design grades the artifact that carries the behavior', async () => {
+  const skillDesign = await readRepoFile('skills/skill-design/SKILL.md');
+
+  assert.match(skillDesign, /execution scenario.*real files/is);
+  assert.match(skillDesign, /dialogue scenario.*conversation.*artifact/is);
+  assert.match(skillDesign, /not a general escape hatch/i);
+  assert.match(skillDesign, /observed edits.*commands.*not.*prose claims/is);
+});
+
 test('MP-3 batch grilling asks each currently unblocked decision frontier as one round', async () => {
   const batchGrill = await readRepoFile('skills/batch-grill-me/SKILL.md');
 
@@ -96,4 +105,20 @@ test('MP-3 batch grilling asks each currently unblocked decision frontier as one
   assert.match(batchGrill, /depends on another question still open.*later.*round/is);
   assert.match(batchGrill, /facts.*environment/is);
   assert.match(batchGrill, /do not act.*shared understanding/is);
+});
+
+test('MP-4 batch grilling carries a dialogue pressure case', async () => {
+  const cases = JSON.parse(await readRepoFile('evals/cases/batch-grill-me.json'));
+
+  assert.equal(cases.trigger.positive.length, 3);
+  assert.equal(cases.trigger.negative.length, 2);
+  assert.equal(cases.evals.length, 1);
+  assert.equal(cases.evals[0].kind, 'dialogue');
+  assert.match(cases.evals[0].prompt, /ask everything.*dependent/is);
+  assert.deepEqual(cases.evals[0].expectations, [
+    'Asks every currently unblocked question together in one numbered round',
+    'Provides a recommended answer for each question',
+    'Defers questions whose prerequisites are still unsettled',
+    'Waits for the user and does not start acting on the decision',
+  ]);
 });

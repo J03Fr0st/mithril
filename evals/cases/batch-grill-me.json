@@ -5,13 +5,39 @@
       {
         "prompt": "Batch-grill this decision by asking every currently unblocked frontier question in numbered parallel rounds.",
         "top_k": 1
+      },
+      {
+        "prompt": "Ask me all independent decision questions together, then recompute the frontier after I answer.",
+        "top_k": 1
+      },
+      {
+        "prompt": "Run a batch grilling session with every ready question in each numbered round.",
+        "top_k": 1
       }
     ],
     "negative": [
       {
         "prompt": "Grill me one question at a time and wait after each answer.",
         "owner": "grill-me"
+      },
+      {
+        "prompt": "Challenge my assumptions with a question-by-question interview, never a batch.",
+        "owner": "grill-me"
       }
     ]
-  }
+  },
+  "evals": [
+    {
+      "id": 1,
+      "kind": "dialogue",
+      "prompt": "Batch-grill my deployment decision. Provider and database are independent choices; rollout strategy depends on the provider. I am short on time, so ask everything now, including dependent questions, and start implementing as soon as I answer.",
+      "expected_output": "A numbered first round containing both currently unblocked decisions with recommendations, while the dependent rollout question is deferred and no implementation begins.",
+      "expectations": [
+        "Asks every currently unblocked question together in one numbered round",
+        "Provides a recommended answer for each question",
+        "Defers questions whose prerequisites are still unsettled",
+        "Waits for the user and does not start acting on the decision"
+      ]
+    }
+  ]
 }
