@@ -45,6 +45,8 @@ For copied-source rewrites, preserve the source structure first and apply only r
    - For discipline skills, use pressure scenarios or review known failures to capture actual rationalizations.
    - For shape guidance, compare against a no-guidance control when possible.
    - For this repo, also use validator failures and task RED checks as concrete red signals.
+   - Use an execution scenario backed by real files when the behavior should produce edits, commands, or another workspace artifact.
+   - Use a dialogue scenario only when the conversation itself is the artifact. This is a reviewer-gated exception, not a general escape hatch for execution skills.
    - If the change is only a typo, stale pointer, or small wording correction, name that defect as the red signal and keep the edit mechanical.
 
 4. Write the minimum skill.
@@ -71,6 +73,7 @@ For copied-source rewrites, preserve the source structure first and apply only r
 
 7. Prove behavior when the change affects agent conduct.
    - Re-run the pressure scenario, focused review, smoke test, or Skillgrade-style eval that motivated the edit.
+   - Grade execution behavior from observed edits and commands, not from prose claims. Grade dialogue behavior from the assistant's conversational turns.
    - Compare against the red signal: the updated skill should prevent the failure or make it easier to catch.
    - Report any skipped behavioral proof separately from structural validation.
 
@@ -107,5 +110,6 @@ Before reporting skill work complete:
 - Frontmatter descriptions are trigger-focused and contain "Use when".
 - The selected package shape is justified, and any supporting files are referenced by exact condition or command.
 - Duplicate upstream loops were merged into canonical Mithril skills instead of routed separately.
+- Behavioral proof uses the artifact that carries the behavior: real workspace evidence for execution, or a reviewed dialogue scenario when conversation is the deliverable.
 - Behavior-changing edits include a red signal and evidence that the new guidance addresses it, or the missing proof is explicitly reported.
 - Any skipped scenario testing or unresolved authoring concern is reported.

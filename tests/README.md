@@ -7,6 +7,7 @@ This directory documents the local verification entrypoints for Mithril.
 | Command | Purpose | Source provenance |
 | --- | --- | --- |
 | `npm run validate:skills` | Validates Mithril-owned `skills/*/SKILL.md` frontmatter, standard sections, and cross-skill references. | Adapted from `D:\Source\_ai\agent-skills\scripts\validate-skills.js` and `D:\Source\_ai\agent-skills\docs\skill-anatomy.md`. |
+| `npm run validate:skill-validator` | Runs focused regression tests for the skill validator's trigger and Markdown-section rules. | Adapted from upstream validator hardening in `D:\Source\_ai\agent-skills`. |
 | `npm run validate:commands` | Validates Mithril `commands/*.toml` files once the optional `commands/` directory exists. | Adapted from `D:\Source\_ai\agent-skills\scripts\validate-commands.js`; narrowed to Mithril's `commands/` TOML structure. |
 | `npm run validate:routing` | Runs deterministic positive, rank-first negative-owner, coverage, schema, and description-collision checks for all skills. | Adapted from the Tier 2 routing checks in `D:\Source\_ai\agent-skills\scripts\run-evals.js`; behavioral and host-specific tiers are intentionally excluded. |
 | `npm run validate:ports` | Guards the approved upstream behavior contracts for setup, local tickets, supply-chain hardening, and adoption guidance. | Mithril regression coverage for the 2026-07-13 upstream decision review. |

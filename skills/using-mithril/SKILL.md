@@ -64,6 +64,7 @@ Use these when the request needs shaping before planning or code:
 | --- | --- |
 | `brainstorming` | The user wants a new feature, behavior change, design, or unclear outcome shaped before implementation. |
 | `grill-me` | The user explicitly asks to be grilled, challenged, or stress-tested. |
+| `batch-grill-me` | The user explicitly wants all currently unblocked decision questions asked in parallel rounds. |
 | `grill-with-docs` | The plan must be tested against project language, context files, ADRs, or existing decisions. |
 | `domain-modeling` | Terms, bounded context, glossary entries, or ADR-worthy domain decisions need to be clarified. |
 
@@ -135,6 +136,7 @@ Some Mithril skills are situational rather than lifecycle defaults:
 - Use `doubt-driven-development` for high-stakes or unfamiliar decisions that need adversarial scrutiny.
 - Use `context-engineering` when project context is missing, stale, conflicting, or spread across sessions.
 - Use `grilling` when the user wants a rigorous question loop but no project-doc integration is needed.
+- Use `batch-grill-me` when the user wants the entire current decision frontier in each round instead of one question at a time.
 - Use `codebase-design` when module boundaries, public interfaces, deep modules, or test seams need design review.
 - Use `prototype` when a throwaway experiment should validate a UI, state model, workflow, or data shape before committing to a design.
 - Use `improve-codebase-architecture` when auditing architecture, coupling, module depth, or AI-navigability.

@@ -55,7 +55,7 @@ New projects can use the full lifecycle from their first feature. Established co
 
 | Phase | Default route |
 | --- | --- |
-| Define/spec | `brainstorming`, `grill-me`, `grill-with-docs`, `domain-modeling` |
+| Define/spec | `brainstorming`, `grill-me`, `batch-grill-me`, `grill-with-docs`, `domain-modeling` |
 | Plan | `writing-plans`, `to-spec`, `to-tickets`, `triage` |
 | Build | `subagent-driven-development`, `executing-plans`, `test-driven-development`, `implementation-standards` |
 | Verify/debug | `systematic-debugging`, `browser-testing-with-devtools`, `observability-and-instrumentation` |

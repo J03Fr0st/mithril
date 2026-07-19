@@ -21,11 +21,12 @@
   },
   "scripts": {
     "validate:skills": "node scripts/validate-skills.js",
+    "validate:skill-validator": "node --test tests/validate-skills.test.js",
     "validate:commands": "node scripts/validate-commands.js",
     "validate:routing": "node scripts/validate-routing.js",
     "validate:ports": "node --test tests/approved-upstream-ports.test.js",
     "lint:shell": "node -e \"const { spawnSync } = require('node:child_process'); const fs = require('node:fs'); const path = require('node:path'); const win = process.platform === 'win32'; const bash = win && fs.existsSync('C:/Program Files/Git/bin/bash.exe') ? 'C:/Program Files/Git/bin/bash.exe' : 'bash'; const env = { ...process.env }; const bundledShellcheck = path.join(env.USERPROFILE || '', '.serena/language_servers/static/BashLanguageServer/bash-lsp/shellcheck'); if (win && fs.existsSync(path.join(bundledShellcheck, 'shellcheck.exe'))) env.PATH = bundledShellcheck + path.delimiter + (env.PATH || ''); const result = spawnSync(bash, ['scripts/lint-shell.sh'], { stdio: 'inherit', env }); if (result.error) { console.error(result.error.message); process.exit(1); } process.exit(result.status ?? 1);\"",
-    "test": "npm run validate:skills && npm run validate:commands && npm run validate:routing && npm run validate:ports && npm run lint:shell",
+    "test": "npm run validate:skills && npm run validate:skill-validator && npm run validate:commands && npm run validate:routing && npm run validate:ports && npm run lint:shell",
     "changeset": "changeset",
     "version": "changeset version",
     "version:sync": "node scripts/sync-manifest-versions.js",

@@ -74,6 +74,8 @@ references/
 
 Use root `references/` for checklists or policies reused by multiple skills. Do not put shared checklists inside one skill directory unless that skill is their only owner.
 
+This is a pack-level tradeoff. A whole-repository or packaged Mithril install carries `references/` with the skills, while copying a single `skills/<name>/` directory can leave its shared references behind. Keep single-skill material inside that skill; use root references only for genuinely shared sources of truth, and preserve the referenced root files when distributing skills individually.
+
 ## Branching Rules
 
 Branch by use case, not by habit:
