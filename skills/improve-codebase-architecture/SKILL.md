@@ -19,6 +19,11 @@ This command is _informed_ by the project's domain model and built on a shared d
 
 ### 1. Explore
 
+Scope the scan before exploring. Deepening work pays off when it improves code that is likely to change again:
+
+- If the user named a module, subsystem, or pain point, start there.
+- Otherwise, inspect a meaningful stretch of recent history with `git log --oneline` and prioritize recurring hot spots. Widen the scan only when the changes are too scattered to identify one.
+
 Read the project's domain glossary (`CONTEXT.md`) and any ADRs in the area you're touching first.
 
 Then use the Agent tool with `subagent_type=Explore` to walk the codebase. Don't follow rigid heuristics — explore organically and note where you experience friction:
@@ -58,7 +63,7 @@ Do NOT propose interfaces yet. After the file is written, ask the user: "Which o
 
 ### 3. Grilling loop
 
-Once the user picks a candidate, run the `/grilling` skill to walk the design tree with them — constraints, dependencies, the shape of the deepened module, what sits behind the seam, what tests survive.
+Once the user picks a candidate, run the `/grilling` skill to walk the decision tree with them — constraints, dependencies, the shape of the deepened module, what sits behind the seam, what tests survive.
 
 Side effects happen inline as decisions crystallize — run the `/domain-modeling` skill to keep the domain model current as you go:
 

@@ -18,6 +18,8 @@ const __dirname = path.dirname(__filename);
 const SKILLS_DIR = path.resolve(__dirname, '..', 'skills');
 const MAX_DESCRIPTION_LENGTH = 1024;
 const SKILL_NAME_PATTERN = /^[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/;
+const DESCRIPTION_TRIGGER = /\bUse when\b/;
+const DESCRIPTION_TRIGGER_NEGATE = /\b(?:do not|don't|never) use when\b/i;
 
 const REQUIRED_SECTIONS = [
   {
@@ -177,7 +179,15 @@ function validateSkill(dirName, knownSkills) {
       );
     }
 
-    if (!/\bUse when\b/.test(frontmatter.description)) {
+    const hasTrigger = DESCRIPTION_TRIGGER.test(frontmatter.description);
+    const onlyNegated =
+      hasTrigger &&
+      DESCRIPTION_TRIGGER_NEGATE.test(frontmatter.description) &&
+      !DESCRIPTION_TRIGGER.test(
+        frontmatter.description.replace(DESCRIPTION_TRIGGER_NEGATE, ''),
+      );
+
+    if (!hasTrigger || onlyNegated) {
       errors.push("Description must include a 'Use when' trigger");
     }
   }

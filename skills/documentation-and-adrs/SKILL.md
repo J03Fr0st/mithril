@@ -24,6 +24,16 @@ Document decisions, not just code. The most valuable documentation captures the 
 
 ADRs capture the reasoning behind significant technical decisions. They're the highest-value documentation you can write.
 
+### Match the Existing Convention First
+
+Before creating an ADR, inspect repository-local evidence for an established convention: existing ADRs, project instructions, and ADR-related configuration or tooling such as `.adr-dir`. Match its:
+
+- **Location and format** — directory, file extension, and markup.
+- **Numbering and naming** — continue the existing sequence and filename pattern.
+- **Section headings** — reuse the project's structure instead of imposing the default template.
+
+If the evidence conflicts, surface the conflict instead of introducing another convention. Use the default below only when no existing convention can be established.
+
 ### When to Write an ADR
 
 - Choosing a framework, library, or major dependency
@@ -35,7 +45,7 @@ ADRs capture the reasoning behind significant technical decisions. They're the h
 
 ### ADR Template
 
-Store ADRs in `docs/decisions/` with sequential numbering:
+Store ADRs in `docs/decisions/` with sequential numbering when the project has no established alternative:
 
 ```markdown
 # ADR-001: Use PostgreSQL for primary database

@@ -1,0 +1,17 @@
+{
+  "skill_name": "batch-grill-me",
+  "trigger": {
+    "positive": [
+      {
+        "prompt": "Batch-grill this decision by asking every currently unblocked frontier question in numbered parallel rounds.",
+        "top_k": 1
+      }
+    ],
+    "negative": [
+      {
+        "prompt": "Grill me one question at a time and wait after each answer.",
+        "owner": "grill-me"
+      }
+    ]
+  }
+}

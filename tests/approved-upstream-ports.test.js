@@ -86,3 +86,14 @@ test('AS-2 ships a Mithril-specific greenfield and brownfield adoption guide', a
   assert.match(gettingStarted, /adoption-guide\.md/);
   assert.match(packageJson, /"docs\/adoption-guide\.md"/);
 });
+
+test('MP-3 batch grilling asks each currently unblocked decision frontier as one round', async () => {
+  const batchGrill = await readRepoFile('skills/batch-grill-me/SKILL.md');
+
+  assert.match(batchGrill, /decision[- ]frontier/i);
+  assert.match(batchGrill, /number each question/i);
+  assert.match(batchGrill, /recommended answer/i);
+  assert.match(batchGrill, /depends on another question still open.*later.*round/is);
+  assert.match(batchGrill, /facts.*environment/is);
+  assert.match(batchGrill, /do not act.*shared understanding/is);
+});
